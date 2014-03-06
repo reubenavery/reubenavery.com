@@ -1,0 +1,13 @@
+; $Id: flickrsync.info,v 1.2 2008/10/31 23:00:51 bjshell Exp $
+name = FlickrSync
+description = Reads users's Flickr photo streams, and turns into nodes.
+package = Flickr
+dependencies[] = flickrapi
+dependencies[] = imagefield
+core = 6.x
+; Information added by drupal.org packaging script on 2008-11-01
+version = "6.x-1.x-dev"
+core = "6.x"
+project = "flickrsync"
+datestamp = "1225497903"
+

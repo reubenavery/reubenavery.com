@@ -1,0 +1,14 @@
+; $Id: multisite_search.info,v 1.1.4.2 2008/06/11 08:55:18 gloscon Exp $
+
+name = "Multisite search"
+description = "Search across all web sites seamlessly."
+dependencies[] = search
+package = Multisite Search
+
+core = 6.x
+; Information added by drupal.org packaging script on 2008-06-11
+version = "6.x-1.1"
+core = "6.x"
+project = "multisite_search"
+datestamp = "1213176011"
+

@@ -1,0 +1,73 @@
+# $Id$
+#
+# LANGUAGE translation of Drupal (general)
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+# No version information was available in the source files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: YAML for Drupal - Turkish\n"
+"POT-Creation-Date: 2008-06-21 19:41+0100\n"
+"PO-Revision-Date: 2008-06-21 19:46+0100\n"
+"Last-Translator: Alexander Hass\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural= (1 != 1);\n"
+"X-Poedit-Language: Turkish\n"
+"X-Poedit-Country: TURKEY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+#: page.tpl.php:20;20
+msgid "Skip to the navigation"
+msgstr ""
+
+#: page.tpl.php:21;21
+msgid "Skip to the content"
+msgstr ""
+
+#: page.tpl.php:25;25;26
+msgid "Home"
+msgstr "Ana sayfa"
+
+#: template.inc:82
+msgid "<a href=\"http://validator.w3.org/check/referer\" title=\"Validate XHTML\">XHTML</a>"
+msgstr ""
+
+#: template.inc:86
+msgid "<a href=\"http://jigsaw.w3.org/css-validator/check/referer\" title=\"Validate CSS\">CSS</a>"
+msgstr ""
+
+#: template.inc:101
+msgid "Layout based on <a href=\"http://www.yaml.de/\">YAML</a>"
+msgstr ""
+
+#: template.inc:116
+msgid "<a href=\"http://www.yaml-fuer-drupal.de/\" title=\"YAML for Drupal Theme\">YAML for Drupal</a> Theme"
+msgstr ""
+
+#: yaml_simple.info:0
+msgid "YAML Simple"
+msgstr ""
+
+#: yaml_simple.info:0
+msgid "A simple starter theme with 2 columns and left sidebar"
+msgstr ""
+
+#: yaml_simple.info:0
+msgid "Left sidebar"
+msgstr "Sol sütun"
+
+#: yaml_simple.info:0
+msgid "Content"
+msgstr "İçerik"
+
+#: yaml_simple.info:0
+msgid "Header"
+msgstr "Başlık"
+
+#: yaml_simple.info:0
+msgid "Footer"
+msgstr "dipnot"
+

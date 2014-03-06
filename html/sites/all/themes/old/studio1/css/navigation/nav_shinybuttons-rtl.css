@@ -1,0 +1,45 @@
+@charset "UTF-8";
+/**
+ * "Yet Another Multicolumn Layout" - (X)HTML/CSS Framework
+ *
+ * (en) RTL Horizontal list navigation "Shiny Buttons"
+ * (de) RTL Horizontale Navigationsliste "Shiny Buttons"
+ *
+ * @copyright       Copyright 2006-2010, Alexander Hass
+ * @license         http://www.yaml-fuer-drupal.de/en/terms-of-use
+ * @link            http://www.yaml-for-drupal.com
+ * @package         yaml-for-drupal
+ * @version         6.x-3.2.1.13
+ * @lastmodified    2010-05-14
+ */
+
+@media all
+{
+ /**
+  * (en) Workaround disappearing list elements on hover
+  * (de) Workaround verhindert das Verschwinden der Listenelemente beim Hovern
+  *
+  * @workaround
+  * @affected   IE 5.x/Win, IE6, IE7
+  * @css-for    IE 5.x/Win, IE6, IE7
+  * @valid      yes
+  */
+
+  .hlist * { direction:ltr !important; }
+  .hlist a { direction:rtl !important; }
+
+  /*------------------------------------------------------------------------------------------------------*/
+
+  .hlist ul {
+    position:relative;
+    float:right;
+    /* (en) Left margin of the first button  */
+    /* (de) Abstand des ersten Buttons vom linken Rand  */
+    margin-left: 0; /* Reset LTR */
+    margin-right: 50px;
+  }
+
+  .hlist ul li {
+    float: right;
+  }
+}

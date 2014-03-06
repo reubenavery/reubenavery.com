@@ -1,0 +1,7 @@
+; $Id: xmlsitemap.info,v 1.2.2.4.2.7 2009/05/03 16:00:29 davereid Exp $
+name = XML Sitemap
+description = "Automatically creates a sitemap that conforms to the sitemaps.org specification."
+package = XML Sitemap
+core = 6.x
+php = 5.x
+recommends[] = robotstxt

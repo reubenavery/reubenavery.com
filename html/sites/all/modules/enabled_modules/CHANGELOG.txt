@@ -1,0 +1,6 @@
+CHANGELOG
+
+6.x-1.0:
+#766296 by juliangb: Partially Fixed 'Key Site Modules' block confuses module and project.
+
+Changelog starts at 6.x-1.x-beta1

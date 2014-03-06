@@ -1,0 +1,244 @@
+<?php
+// $Id: enabled_modules.install,v 1.1.2.1.2.4 2010/04/09 13:48:32 juliangb Exp $
+
+/**
+ * @function
+ * Implementation of hook_schema().
+ */
+function enabled_modules_schema() {
+  return array(
+    'enabled_modules_system' => array(
+      'description' => 'Stores the contents of the "info" field of the {system} table as separate fields',
+      'fields' => array(
+        'filename' => array(
+          'description' => 'The location of the .module file',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+          'not null' => TRUE,
+        ),
+        'name' => array(
+          'description' => 'The name of the module',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+        'description' => array(
+          'description' => 'A description of the module',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+        'package' => array(
+          'description' => 'The package for the modules page',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+        'version' => array(
+          'description' => 'The version of the module',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+        'core' => array(
+          'description' => 'The core version of the module',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+        'project' => array(
+          'description' => 'The project that the module is part of',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+        'datestamp' => array(
+          'description' => 'The release datestamp',
+          'type' => 'int',
+          'default' => NULL,
+        ),
+        'dependencies' => array(
+          'description' => 'Dependencies of the module',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+        'dependents' => array(
+          'description' => 'Dependents of the module',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+        'php' => array(
+          'description' => 'The required PHP version for the module',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+      ),
+      'primary_key' => array('filename'),
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_install().
+ */
+function enabled_modules_install() {
+  drupal_install_schema('enabled_modules');
+  drupal_set_message(t('"Enabled modules" module installed.  See lists of <a href="@list">presently enabled</a> and <a href="@disabled">formerly enabled</a> modules in your Logs section of Administration.  Set which roles can view enabled modules <a href="@permissions">in Access permissions</a>.', array('@list' => url('admin/logs/status'), '@disabled' => url('admin/build/modules'), '@permissions' => url('admin/user/access', array('fragment' => 'module-enabled_modules')))));
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function enabled_modules_uninstall() {
+  drupal_uninstall_schema('enabled_modules');
+}
+
+/**
+ * @function
+ * Implementation of hook_update_N()
+ * Adds table for system.info data
+ */
+function enabled_modules_update_6101() {
+  $ret = array();
+  
+  $schema = array(
+    'enabled_modules_system' => array(
+      'description' => 'Stores the contents of the "info" field of the {system} table as separate fields',
+      'fields' => array(
+        'filename' => array(
+          'description' => 'The location of the .module file',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+          'not null' => TRUE,
+        ),
+        'name' => array(
+          'description' => 'The name of the module',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+        'description' => array(
+          'description' => 'A description of the module',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+        'package' => array(
+          'description' => 'The package for the modules page',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+        'version' => array(
+          'description' => 'The version of the module',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+        'core' => array(
+          'description' => 'The core version of the module',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+        'project' => array(
+          'description' => 'The project that the module is part of',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+        'datestamp' => array(
+          'description' => 'The release datestamp',
+          'type' => 'int',
+          'default' => NULL,
+        ),
+        'dependencies' => array(
+          'description' => 'Dependencies of the module',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '512',
+        ),
+        'dependents' => array(
+          'description' => 'Dependents of the module',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '512',
+        ),
+        'php' => array(
+          'description' => 'The required PHP version for the module',
+          'type' => 'varchar',
+          'size' => 'normal',
+          'default' => '',
+          'length' => '256',
+        ),
+      ),
+      'primary_key' => array('filename'),
+    ),
+  );
+
+  db_create_table($ret, 'enabled_modules_system', $schema['enabled_modules_system']);
+
+  return $ret;
+}
+
+/**
+ * @function
+ * Ensures that the views module is present.
+ */
+function enabled_modules_update_6102() {
+  $ret = array();
+  if (!module_exists('views')) {
+    $ret['#abort'] = array('success' => FALSE, 'query' => 'The enabled_modules module now requires the views module. Please enable the views module.');
+  }
+  return $ret;
+}
+
+/**
+ * @function
+ * Increases the size of the dependents and dependencies fields
+ */
+function enabled_modules_update_6103() {
+  $ret = array();
+  
+  db_change_field($ret, 'enabled_modules_system', 'dependencies', 'dependencies', array(
+    'description' => 'Dependencies of the module',
+    'type' => 'varchar',
+    'size' => 'normal',
+    'default' => '',
+    'length' => '512',
+  ));
+  
+  db_change_field($ret, 'enabled_modules_system', 'dependents', 'dependents', array(
+    'description' => 'Dependents of the module',
+    'type' => 'varchar',
+    'size' => 'normal',
+    'default' => '',
+    'length' => '512',
+  ));
+  
+  return $ret;
+}

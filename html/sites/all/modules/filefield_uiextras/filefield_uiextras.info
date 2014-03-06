@@ -1,0 +1,13 @@
+; $Id: filefield_uiextras.info,v 1.1 2010/01/30 05:53:11 aland Exp $
+name = FileField UI Extras
+description = "A collection of miscellaneous FileField UI enhancements."
+core = 6.x
+package = CCK
+dependencies[] = filefield
+
+; Information added by drupal.org packaging script on 2010-02-01
+version = "6.x-1.0-rc2"
+core = "6.x"
+project = "filefield_uiextras"
+datestamp = "1265008208"
+

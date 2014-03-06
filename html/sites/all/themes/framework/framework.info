@@ -1,0 +1,24 @@
+; $Id: framework.info,v 1.2 2009/03/17 05:04:14 andregriffin Exp $
+
+name = Framework
+description = Framework is a blank canvas for theme developers. Use Framework as a starting point to help facilitate your theme development.
+version = VERSION
+core = 6.x
+engine = phptemplate
+stylesheets[all][] = style.css
+stylesheets[print][] = print.css
+
+regions[left] = Left sidebar
+regions[right] = Right sidebar
+regions[content] = Content
+regions[header] = Header
+regions[nav] = Navigation
+regions[footer] = Footer
+
+
+; Information added by drupal.org packaging script on 2009-03-17
+version = "6.x-2.4"
+core = "6.x"
+project = "framework"
+datestamp = "1237266627"
+

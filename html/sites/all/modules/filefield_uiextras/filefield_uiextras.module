@@ -1,0 +1,139 @@
+<?php
+//$Id: filefield_uiextras.module,v 1.2 2010/02/01 06:48:47 aland Exp $
+
+/**
+ * @file
+ * A simple module that adds a collection of miscellaneous FileField
+ * UI enhancements. There include:
+ *  - A collapable option to FileField data elements.
+ */
+
+/**
+ * Implementation of hook_field_settings_alter().
+ */
+function filefield_uiextras_field_settings_alter(&$settings, $op, $field) {
+  $field_type = isset($field['widget_type']) ? $field['widget_type'] : $field['type'];
+  if ($field_type != 'filefield') {
+    return;
+  }
+
+  // Add our new options to the list of settings to be saved.
+  if ($op == 'save') {
+    $settings = array_merge($settings, array('filefield_uiextras_collapsible_elements'));
+  }
+
+  // Add the additional settings to the form.
+  if ($op == 'form') {
+    $settings['filefield_uiextras_collapsible_elements'] = array(
+      '#type' => 'select',
+      '#options' => filefield_uiextras_collapsible_element_options(),
+      '#title' => t('Collapsible information fields'),
+      '#default_value' => (int) $field['filefield_uiextras_collapsible_elements'],
+      '#description' => t('This option adds an optional fieldset arround the additional information fields, such as title and alt fields.'),
+    );
+  }
+}
+
+function filefield_uiextras_collapsible_element_options() {
+  return array(
+    '0' => t('Skip this field'),
+    '1' => t('Always collapsed'),
+    '2' => t('Always open'),
+    '3' => t('Conditionally collapsed when data is entered'),
+    '4' => t('Conditionally collapsed when no data is entered'),
+    '5' => t('Conditionally collapsed on new uploads only'),
+    '6' => t('Conditionally open on new uploads only'),
+  );
+}
+
+/**
+ * Implementation of hook_elements().
+ */
+function filefield_uiextras_elements() {
+  $extra = array('#after_build' => array('filefield_uiextras_process'));
+
+  $elements = array();
+  foreach (filefield_uiextras_filefield_widgets() as $widget_type => $widget) {
+    $elements[$widget_type] = $extra;
+  }
+
+  return $elements;
+}
+
+function filefield_uiextras_filefield_widgets() {
+  static $filefield_widgets = NULL;
+  if (!isset($filefield_widgets)) {
+    $filefield_widgets = array();
+    foreach (_content_widget_types() as $key => $widget) {
+      if (in_array('filefield', $widget['field types'])) {
+        $filefield_widgets[$key] = $widget['label'];
+      }
+    }
+  }
+  return $filefield_widgets;
+}
+
+/**
+ * Process function for insert-enabled fields.
+ */
+function filefield_uiextras_process($element) {
+  $item = $element['#value'];
+  $field = content_fields($element['#field_name'], $element['#type_name']);
+
+  // Not a filefield or settings yet.
+  if ($field['type'] != 'filefield') {
+    return $element;
+  }
+  if (isset($field['filefield_uiextras_collapsible_elements'])) {
+    _filefield_uiextras_process_collapsible_elements($element, $field);
+  }
+  return $element;
+}
+
+function _filefield_uiextras_process_collapsible_elements(&$element, $field) {
+  // 0 == Skip
+  if (!empty($field['filefield_uiextras_collapsible_elements'])) {
+    $element['data']['#type'] = 'fieldset';
+    $element['data']['#title'] = t('Additional info');
+    $element['data']['#collapsible'] = TRUE;
+
+    switch ($field['filefield_uiextras_collapsible_elements']) {
+      case '1': // Always collapsed
+        $element['data']['#collapsed'] = TRUE;
+        break;
+      case '2': // Always open
+        $element['data']['#collapsed'] = FALSE;
+        break;
+      case '3': // Conditionally collapsed when data is entered
+        $has_data = _filefield_uiextras_empty_form_fields($element['data']);
+        $element['data']['#collapsed'] = $has_data;
+        break;
+      case '4': // Conditionally collapsed when no data is entered
+        $has_data = _filefield_uiextras_empty_form_fields($element['data']);
+        $element['data']['#collapsed'] = !$has_data;
+        break;
+      case '5': // Conditionally collapsed on new uploads only
+        $element['data']['#collapsed'] = empty($element['#value']['status']);
+        break;
+      case '6': // Conditionally open on new uploads only
+        $element['data']['#collapsed'] = !empty($element['#value']['status']);
+        break;
+    }
+  }
+}
+
+function _filefield_uiextras_empty_form_fields($element, $depth = 0) {
+  // recursion limit - should never get called, but ....
+  if ($depth > 5) {
+    return FALSE;
+  }
+  foreach (element_children($element) as $key) {
+    if (!empty($element[$key]['#default_value']) || !empty($element[$key]['#value'])) {
+      return TRUE;
+    }
+    if (_filefield_uiextras_empty_form_fields($element[$key], $depth + 1)) {
+      return TRUE;
+    }
+  }
+  return FALSE;
+}
