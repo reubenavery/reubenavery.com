@@ -1,1 +1,0 @@
-../reubenavery.com/settings.php
