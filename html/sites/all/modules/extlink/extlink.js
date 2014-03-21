@@ -65,7 +65,7 @@ function extlinkAttach(context) {
       // Do not include area tags with begin with mailto: (this prohibits
       // icons from being added to image-maps).
       else if (this.tagName != 'AREA' 
-        && url.indexOf('mailto:') == 0 
+            && url.indexOf('mailto:') == 0 
 	    && !(extCssExclude && $(this).parents(extCssExclude).length > 0)
 	    && !(extCssExplicit && $(this).parents(extCssExplicit).length < 1)) {
         mailto_links.push(this);
@@ -104,19 +104,12 @@ function extlinkAttach(context) {
     $(external_links).attr('target', Drupal.settings.extlink.extTarget);
   }
 
-  Drupal.extlink = Drupal.extlink || {};
-
-  // Set up default click function for the external links popup. This should be
-  // overridden by modules wanting to alter the popup.
-  Drupal.extlink.popupClickHandler = Drupal.extlink.popupClickHandler || function() {
-    if (Drupal.settings.extlink.extAlert) {
-      return confirm(Drupal.settings.extlink.extAlertText);
-    }
-   }
-  
-  $(external_links).click(function(e) {
-    return Drupal.extlink.popupClickHandler(e);
-  });
+  if (Drupal.settings.extlink.extAlert) {
+    // Add pop-up click-through dialog.
+    $(external_links).click(function(e) {
+     return confirm(Drupal.settings.extlink.extAlertText);
+    });
+  }
 
   // Work around for Internet Explorer box model problems.
   if (($.support && !($.support.boxModel === undefined) && !$.support.boxModel) || ($.browser.msie && parseInt($.browser.version) <= 7)) {
@@ -124,8 +117,10 @@ function extlinkAttach(context) {
   }
 }
 
-Drupal.behaviors.extlink = function(context) {
-  extlinkAttach(context);
+Drupal.behaviors.extlink = {
+  attach: function(context){
+    extlinkAttach(context);
+  }
 }
 
 })(jQuery);

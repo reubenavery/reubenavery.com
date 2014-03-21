@@ -7,6 +7,7 @@ hooks: {load: [], list: [], navigate: [], cache: []},
 //initiate imce.
 initiate: function() {
   imce.conf = Drupal.settings.imce || {};
+  imce.ie = (navigator.userAgent.match(/msie (\d+)/i) || ['', 0])[1] * 1;
   if (imce.conf.error != false) return;
   imce.FLW = imce.el('file-list-wrapper'), imce.SBW = imce.el('sub-browse-wrapper');
   imce.NW = imce.el('navigation-wrapper'), imce.BW = imce.el('browse-wrapper');
@@ -78,7 +79,7 @@ dirCollapsible: function (branch) {
     if (branch.ul) {
       $(branch.ul).toggle();
       $(branch.li).toggleClass('expanded');
-      $.browser.msie && $('#navigation-header').css('top', imce.NW.scrollTop);
+      imce.ie && $('#navigation-header').css('top', imce.NW.scrollTop);
     }
     else if (branch.clkbl){
       $(branch.a).click();
@@ -377,7 +378,6 @@ navigate: function(dir) {
   }
   else $.ajax(set);//live load
 },
-
 //ajax navigation settings
 navSet: function (dir, cache) {
   $(imce.tree[dir].li).addClass('loading');
@@ -439,7 +439,7 @@ uploadValidate: function (data, form, options) {
 
 //settings for upload
 uploadSettings: function () {
-  return {beforeSubmit: imce.uploadValidate, success: function (response) {imce.processResponse(Drupal.parseJson(response));}, complete: function () {imce.fopLoading('upload', false);}, resetForm: true};
+  return {beforeSubmit: imce.uploadValidate, success: function (response) {imce.processResponse($.parseJSON(response));}, complete: function () {imce.fopLoading('upload', false);}, resetForm: true};
 },
 
 //validate default ops(delete, thumb, resize)
@@ -713,7 +713,7 @@ decodePlain: function (str) {
 
 //global ajax error function
 ajaxError: function (e, response, settings, thrown) {
-  imce.setMessage(Drupal.ahahError(response, settings.url).replace(/\n/g, '<br />'), 'error');
+  imce.setMessage(Drupal.ajaxError(response, settings.url).replace(/\n/g, '<br />'), 'error');
 },
 
 //convert button elements to standard input buttons
@@ -788,7 +788,7 @@ updateUI: function() {
     imce.opAdd({name: 'help', title: $('#help-box-title').remove().text(), content: $('#help-box').show()});
   });
   //add ie classes
-  $.browser.msie && $('html').addClass('ie') && parseFloat($.browser.version) < 8 && $('html').addClass('ie-7');
+  imce.ie && $('html').addClass('ie') && imce.ie < 8 && $('html').addClass('ie-7');
   // enable box view for file list
   imce.vars.boxW && imce.boxView();
   //scrolling file list

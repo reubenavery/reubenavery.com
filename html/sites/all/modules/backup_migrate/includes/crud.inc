@@ -97,7 +97,7 @@ function backup_migrate_crud_ui_edit($item_id = NULL) {
 /**
  * A form callback to edit an item.
  */
-function backup_migrate_crud_edit_form($form_state, $item) {
+function backup_migrate_crud_edit_form($form, $form_state, $item) {
   $form = $item->edit_form();
   $form['item'] = array(
     '#type' => 'value',
@@ -144,7 +144,7 @@ function backup_migrate_crud_ui_delete($item_id = NULL) {
 /**
  * Ask confirmation for deletion of a item.
  */
-function backup_migrate_crud_delete_confirm_form(&$form_state, $item) {
+function backup_migrate_crud_delete_confirm_form($form, &$form_state, $item) {
   $form['item'] = array(
     '#type' => 'value',
     '#value' => $item,
@@ -179,7 +179,7 @@ function backup_migrate_crud_ui_export($item_id = NULL) {
 /**
  * Ask confirmation for deletion of a destination.
  */
-function backup_migrate_crud_export_form(&$form_state, $export) {
+function backup_migrate_crud_export_form($form, &$form_state, $export) {
   $form['export'] = array(
     '#title' => t('Exported content'),
     '#type' => 'textarea',
@@ -232,24 +232,7 @@ class backup_migrate_item {
    * Constructor, set the basic info pulled from the db or generated programatically.
    */
   function __construct($params = array()) {
-    $this->from_array($this->_merge_defaults((array)$params, (array)$this->get_default_values()));
-  }
-
-  /**
-   * Merge parameters with the given defaults.
-   *
-   * Works like array_merge_recursive, but it doesn't turn scalar values into arrays.
-   */
-  function _merge_defaults($params, $defaults) {
-    foreach ($defaults as $key => $val) {
-      if (!isset($params[$key])) {
-        $params[$key] = $val;
-      }
-      else if (is_array($params[$key])) {
-        $params[$key] = $this->_merge_defaults($params[$key], $val);
-      }
-    }
-    return $params;
+    $this->from_array((array)$params + (array)$this->get_default_values());
   }
 
   /**
@@ -266,7 +249,8 @@ class backup_migrate_item {
     if (!$this->get_id()) {
       $this->generate_id();
     }
-    drupal_write_record($this->db_table, $this->to_array(), !empty($this->storage) ? $this->get_primary_key() : array());
+    $data = $this->to_array();
+    drupal_write_record($this->db_table, $data, !empty($this->storage) ? $this->get_primary_key() : array());
   }
 
   /**
@@ -274,7 +258,7 @@ class backup_migrate_item {
    */  
   function delete() {
     $keys = (array)$this->get_primary_key();
-    db_query("DELETE FROM {{$this->db_table}} WHERE $keys[0] = '%s'", $this->get_id());
+    db_query('DELETE FROM {' . $this->db_table . '} WHERE ' . $keys[0] . ' = :id', array(':id' => $this->get_id()));
   }
 
 
@@ -327,7 +311,7 @@ class backup_migrate_item {
     $schema = $this->get_schema();
     // Load fields as specified in the schema.
     foreach ($schema['fields'] as $field => $info) {
-      $params[$field] = empty($info['serialize']) ? $data[$field] : unserialize(db_decode_blob($data[$field]));
+      $params[$field] = empty($info['serialize']) ? $data[$field] : unserialize($data[$field]);
     }
     $this->from_array($params);
   }
@@ -341,7 +325,7 @@ class backup_migrate_item {
     $schema = $this->get_schema();
     // Load fields as specified in the schema.
     foreach ($schema['fields'] as $field => $info) {
-      $params[$field] = empty($info['serialize']) ? $data[$field] : unserialize(db_decode_blob($data[$field]));
+      $params[$field] = empty($info['serialize']) ? $data[$field] : unserialize($data[$field]);
     }
     return $params;
   }
@@ -426,7 +410,7 @@ class backup_migrate_item {
    * Get the action links for a destination.
    */
   function get_action_links() {
-    $out = array();
+    $out = array('edit' => '', 'delete' => '');
 
     $item_id = $this->get_id();
 
@@ -461,13 +445,10 @@ class backup_migrate_item {
       }
     }
     if (count($rows)) {
-      $out = theme('table', $this->get_list_header(), $rows);
+      $out = theme('table', array('header' => $this->get_list_header(), 'rows' => $rows));
     }
     else {
       $out = t('There are no !items to display.', array('!items' => $this->plural));
-    }
-    if (user_access('administer backup and migrate')) {
-      $out .= ' '. l(t('Create a new !item', array('!item' => $this->singular)), 'admin/content/backup_migrate/'. $this->type_name .'/list/add');
     }
     return $out;
   }
@@ -508,7 +489,7 @@ class backup_migrate_item {
    */
   function get_actions() {
     $links = $this->get_action_links();
-    return implode(" | ", $links);
+    return implode(" &nbsp; ", $links);
   }
 
   /**
@@ -526,7 +507,7 @@ class backup_migrate_item {
     );
     $form['actions'] = array('#prefix' => '<div class="container-inline">', '#suffix' => '</div>', '#weight' => 99);
     $form['actions']['submit'] = array('#type' => 'submit', '#value' => t('Save !type', array('!type' => t($this->singular))));
-    $form['actions']['cancel'] = array('#value' => l(t('Cancel'), BACKUP_MIGRATE_MENU_PATH . '/destination'));
+    $form['actions']['cancel'] = array('#markup' => l(t('Cancel'), BACKUP_MIGRATE_MENU_PATH . '/destination'));
     return $form;
   }
 
@@ -586,13 +567,13 @@ class backup_migrate_item {
       'type' => MENU_DEFAULT_LOCAL_TASK,
     );
     $items[BACKUP_MIGRATE_MENU_PATH . '/' . $type .'/list/add'] = array(
-      'title' => 'Create !type',
+      'title' => 'Add !type',
       'title arguments' => array('!type' => t(ucwords($this->singular))),
       'page callback' => 'backup_migrate_menu_callback',
       'page arguments' => array('crud', 'backup_migrate_crud_ui_create', TRUE),
       'access arguments' => array('administer backup and migrate'),
       'weight' => 2,
-      'type' => MENU_LOCAL_TASK,
+      'type' => MENU_LOCAL_ACTION,
     );
     $items[BACKUP_MIGRATE_MENU_PATH . '/' . $type .'/list/delete'] = array(
       'title' => 'Delete !type',
@@ -600,7 +581,7 @@ class backup_migrate_item {
       'page callback' => 'backup_migrate_menu_callback',
       'page arguments' => array('crud', 'backup_migrate_crud_ui_delete', TRUE),
       'access arguments' => array('administer backup and migrate'),
-      'type' => MENU_LOCAL_TASK,
+      'type' => MENU_CALLBACK,
     );
     $items[BACKUP_MIGRATE_MENU_PATH . '/' . $type .'/list/edit'] = array(
       'title' => 'Edit !type',
@@ -608,7 +589,7 @@ class backup_migrate_item {
       'page callback' => 'backup_migrate_menu_callback',
       'page arguments' => array('crud', 'backup_migrate_crud_ui_edit', TRUE),
       'access arguments' => array('administer backup and migrate'),
-      'type' => MENU_LOCAL_TASK,
+      'type' => MENU_CALLBACK,
     );
     $items[BACKUP_MIGRATE_MENU_PATH . '/' . $type .'/list/export'] = array(
       'title' => 'Export !type',
@@ -616,7 +597,7 @@ class backup_migrate_item {
       'page callback' => 'backup_migrate_menu_callback',
       'page arguments' => array('crud', 'backup_migrate_crud_ui_export', TRUE),
       'access arguments' => array('administer backup and migrate'),
-      'type' => MENU_LOCAL_TASK,
+      'type' => MENU_CALLBACK,
     );
     return $items;
   }
@@ -652,8 +633,8 @@ class backup_migrate_item {
     }
 
     // Get the items from the db.
-    $result = db_query("SELECT * FROM {{$this->db_table}}");
-    while ($info = db_fetch_array($result)) {
+    $result = db_query("SELECT * FROM {{$this->db_table}}", array(), array('fetch' => PDO::FETCH_ASSOC));
+    foreach ($result as $info) {
       $info = $this->decode_db_row($info);
       if ($item = $this->create($info)) {
         $item->storage = empty($items[$item->get_id()]) ? BACKUP_MIGRATE_STORAGE_DB : BACKUP_MIGRATE_STORAGE_OVERRIDEN;

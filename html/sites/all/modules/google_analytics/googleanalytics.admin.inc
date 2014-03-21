@@ -6,18 +6,17 @@
  */
 
 /**
- * Implementation of hook_admin_settings() for configuring the module
+ * Implements hook_admin_settings() for module settings configuration.
  */
-function googleanalytics_admin_settings_form(&$form_state) {
+function googleanalytics_admin_settings_form($form_state) {
   $form['account'] = array(
     '#type' => 'fieldset',
     '#title' => t('General settings'),
-    '#collapsible' => FALSE,
   );
 
   $form['account']['googleanalytics_account'] = array(
-    '#type' => 'textfield',
     '#title' => t('Web Property ID'),
+    '#type' => 'textfield',
     '#default_value' => variable_get('googleanalytics_account', 'UA-'),
     '#size' => 15,
     '#maxlength' => 20,
@@ -25,10 +24,21 @@ function googleanalytics_admin_settings_form(&$form_state) {
     '#description' => t('This ID is unique to each site you want to track separately, and is in the form of UA-xxxxxxx-yy. To get a Web Property ID, <a href="@analytics">register your site with Google Analytics</a>, or if you already have registered your site, go to your Google Analytics Settings page to see the ID next to every site profile. <a href="@webpropertyid">Find more information in the documentation</a>.', array('@analytics' => 'http://www.google.com/analytics/', '@webpropertyid' => url('https://developers.google.com/analytics/resources/concepts/gaConceptsAccounts', array('fragment' => 'webProperty')))),
   );
 
-  $form['domain_tracking'] = array(
+  // Visibility settings.
+  $form['tracking_title'] = array(
+    '#type' => 'item',
+    '#title' => t('Tracking scope'),
+  );
+  $form['tracking'] = array(
+    '#type' => 'vertical_tabs',
+    '#attached' => array(
+      'js' => array(drupal_get_path('module', 'googleanalytics') . '/googleanalytics.admin.js'),
+    ),
+  );
+
+  $form['tracking']['domain_tracking'] = array(
     '#type' => 'fieldset',
     '#title' => t('Domains'),
-    '#collapsible' => TRUE,
   );
 
   global $cookie_domain;
@@ -43,65 +53,91 @@ function googleanalytics_admin_settings_form(&$form_state) {
     }
   }
 
-  $form['domain_tracking']['googleanalytics_domain_mode'] = array(
+  $multiple_toplevel_domains = array();
+  foreach (array('.com', '.net', '.org') as $tldomain) {
+    $host = $_SERVER['HTTP_HOST'];
+    $domain = substr($host, 0, strrpos($host, '.'));
+    if (count(explode('.', $host)) > 2 && !is_numeric(str_replace('.', '', $host))) {
+      $multiple_toplevel_domains[] = $domain . $tldomain;
+    }
+    // IP addresses or localhost
+    else {
+      $multiple_toplevel_domains[] = 'www.example' . $tldomain;
+    }
+  }
+
+  $form['tracking']['domain_tracking']['googleanalytics_domain_mode'] = array(
     '#type' => 'radios',
     '#title' => t('What are you tracking?'),
     '#options' => array(
       0 => t('A single domain (default)') . '<div class="description">' . t('Domain: @domain', array('@domain' => $_SERVER['HTTP_HOST'])) . '</div>',
       1 => t('One domain with multiple subdomains') . '<div class="description">' . t('Examples: @domains', array('@domains' => implode(', ', $multiple_sub_domains))) . '</div>',
+      2 => t('Multiple top-level domains') . '<div class="description">' . t('Examples: @domains', array('@domains' => implode(', ', $multiple_toplevel_domains))) . '</div>',
     ),
     '#default_value' => variable_get('googleanalytics_domain_mode', 0),
   );
+  $form['tracking']['domain_tracking']['googleanalytics_cross_domains'] = array(
+    '#title' => t('List of top-level domains'),
+    '#type' => 'textarea',
+    '#default_value' => variable_get('googleanalytics_cross_domains', ''),
+    '#description' => t('If you selected "Multiple top-level domains" above, enter all related top-level domains. Add one domain per line. By default, the data in your reports only includes the path and name of the page, and not the domain name. For more information see section <em>Show separate domain names</em> in <a href="@url">Tracking Multiple Domains</a>.', array('@url' => url('http://support.google.com/analytics/bin/answer.py', array('query' => array('answer' => '1034342'))))),
+  );
 
   // Page specific visibility configurations.
-  $form['page_vis_settings'] = array(
+  $php_access = user_access('use PHP for tracking visibility');
+  $visibility = variable_get('googleanalytics_visibility_pages', 0);
+  $pages = variable_get('googleanalytics_pages', GOOGLEANALYTICS_PAGES);
+
+  $form['tracking']['page_vis_settings'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Page specific tracking settings'),
+    '#title' => t('Pages'),
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
   );
 
-  $access = user_access('use PHP for tracking visibility');
-  $visibility = variable_get('googleanalytics_visibility', 0);
-  $pages = variable_get('googleanalytics_pages', GOOGLEANALYTICS_PAGES);
-
-  if ($visibility == 2 && !$access) {
-    $form['page_vis_settings'] = array();
-    $form['page_vis_settings']['visibility'] = array('#type' => 'value', '#value' => 2);
-    $form['page_vis_settings']['pages'] = array('#type' => 'value', '#value' => $pages);
+  if ($visibility == 2 && !$php_access) {
+    $form['tracking']['page_vis_settings'] = array();
+    $form['tracking']['page_vis_settings']['visibility'] = array('#type' => 'value', '#value' => 2);
+    $form['tracking']['page_vis_settings']['pages'] = array('#type' => 'value', '#value' => $pages);
   }
   else {
-    $options = array(t('Add to every page except the listed pages.'), t('Add to the listed pages only.'));
-    $description = t("Enter one page per line as Drupal paths. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>'));
+    $options = array(
+      t('Every page except the listed pages'),
+      t('The listed pages only'),
+    );
+    $description = t("Specify pages by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>'));
 
-    if ($access) {
-      $options[] = t('Add if the following PHP code returns <code>TRUE</code> (PHP-mode, experts only).');
-      $description .= ' '. t('If the PHP-mode is chosen, enter PHP code between %php. Note that executing incorrect PHP-code can break your Drupal site.', array('%php' => '<?php ?>'));
+    if (module_exists('php') && $php_access) {
+      $options[] = t('Pages on which this PHP code returns <code>TRUE</code> (experts only)');
+      $title = t('Pages or PHP code');
+      $description .= ' ' . t('If the PHP option is chosen, enter PHP code between %php. Note that executing incorrect PHP code can break your Drupal site.', array('%php' => '<?php ?>'));
     }
-    $form['page_vis_settings']['googleanalytics_visibility'] = array(
+    else {
+      $title = t('Pages');
+    }
+    $form['tracking']['page_vis_settings']['googleanalytics_visibility_pages'] = array(
       '#type' => 'radios',
       '#title' => t('Add tracking to specific pages'),
       '#options' => $options,
       '#default_value' => $visibility,
     );
-    $form['page_vis_settings']['googleanalytics_pages'] = array(
+    $form['tracking']['page_vis_settings']['googleanalytics_pages'] = array(
       '#type' => 'textarea',
-      '#title' => t('Pages'),
+      '#title' => $title,
+      '#title_display' => 'invisible',
       '#default_value' => $pages,
       '#description' => $description,
-      '#wysiwyg' => FALSE,
       '#rows' => 10,
     );
   }
 
   // Render the role overview.
-  $form['role_vis_settings'] = array(
+  $form['tracking']['role_vis_settings'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Role specific tracking settings'),
-    '#collapsible' => TRUE,
+    '#title' => t('Roles'),
   );
 
-  $form['role_vis_settings']['googleanalytics_visibility_roles'] = array(
+  $form['tracking']['role_vis_settings']['googleanalytics_visibility_roles'] = array(
     '#type' => 'radios',
     '#title' => t('Add tracking for specific roles'),
     '#options' => array(
@@ -111,12 +147,8 @@ function googleanalytics_admin_settings_form(&$form_state) {
     '#default_value' => variable_get('googleanalytics_visibility_roles', 0),
   );
 
-  $roles = user_roles();
-  $role_options = array();
-  foreach ($roles as $rid => $name) {
-    $role_options[$rid] = $name;
-  }
-  $form['role_vis_settings']['googleanalytics_roles'] = array(
+  $role_options = array_map('check_plain', user_roles());
+  $form['tracking']['role_vis_settings']['googleanalytics_roles'] = array(
     '#type' => 'checkboxes',
     '#title' => t('Roles'),
     '#default_value' => variable_get('googleanalytics_roles', array()),
@@ -125,62 +157,103 @@ function googleanalytics_admin_settings_form(&$form_state) {
   );
 
   // Standard tracking configurations.
-  $form['user_vis_settings'] = array(
+  $form['tracking']['user_vis_settings'] = array(
     '#type' => 'fieldset',
-    '#title' => t('User specific tracking settings'),
-    '#collapsible' => TRUE,
+    '#title' => t('Users'),
   );
-  $form['user_vis_settings']['googleanalytics_custom'] = array(
+  $t_permission = array('%permission' => t('opt-in or out of tracking'));
+  $form['tracking']['user_vis_settings']['googleanalytics_custom'] = array(
     '#type' => 'radios',
-    '#title' => t('Custom tracking settings'),
+    '#title' => t('Allow users to customize tracking on their account page'),
     '#options' => array(
-      t('Users cannot control whether they are tracked or not.'),
-      t('Track users by default, but let individual users to opt out.'),
-      t('Do not track users by default, but let individual users to opt in.')
+      t('No customization allowed'),
+      t('Tracking on by default, users with %permission permission can opt out', $t_permission),
+      t('Tracking off by default, users with %permission permission can opt in', $t_permission),
     ),
-    '#description' => t('Allow individual users to customize the visibility of tracking in their account settings. Only users with %permission permission are allowed to set their own preference.', array('%permission' => t('opt-in or out of tracking'))),
     '#default_value' => variable_get('googleanalytics_custom', 0),
   );
 
   // Link specific configurations.
-  $form['linktracking'] = array(
+  $form['tracking']['linktracking'] = array(
     '#type' => 'fieldset',
-    '#title' => t('Link tracking settings'),
-    '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
+    '#title' => t('Links and downloads'),
   );
-  $form['linktracking']['googleanalytics_trackoutgoing'] = array(
+  $form['tracking']['linktracking']['googleanalytics_trackoutbound'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Track outbound links'),
-    '#default_value' => variable_get('googleanalytics_trackoutgoing', 1),
-    '#description' => t('Enables tracking of clicks on outgoing links.')
+    '#title' => t('Track clicks on outbound links'),
+    '#default_value' => variable_get('googleanalytics_trackoutbound', 1),
   );
-  $form['linktracking']['googleanalytics_trackmailto'] = array(
+  $form['tracking']['linktracking']['googleanalytics_trackmailto'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Track mailto links'),
+    '#title' => t('Track clicks on mailto links'),
     '#default_value' => variable_get('googleanalytics_trackmailto', 1),
-    '#description' => t('Enables tracking of clicks on mailto links.')
   );
-  $form['linktracking']['googleanalytics_trackfiles'] = array(
+  $form['tracking']['linktracking']['googleanalytics_trackfiles'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Track download links'),
+    '#title' => t('Track downloads (clicks on file links) for the following extensions'),
     '#default_value' => variable_get('googleanalytics_trackfiles', 1),
-    '#description' => t('Enables tracking of clicks on links to files based on the file extensions list below.')
   );
-  $form['linktracking']['googleanalytics_trackfiles_extensions'] = array(
+  $form['tracking']['linktracking']['googleanalytics_trackfiles_extensions'] = array(
+    '#title' => t('List of download file extensions'),
+    '#title_display' => 'invisible',
     '#type' => 'textfield',
-    '#title' => t('File extensions to track'),
     '#default_value' => variable_get('googleanalytics_trackfiles_extensions', GOOGLEANALYTICS_TRACKFILES_EXTENSIONS),
-    '#description' => t('A pipe separated list of file extensions that should be tracked when clicked with regular expression support. Example: !extensions', array('!extensions' => GOOGLEANALYTICS_TRACKFILES_EXTENSIONS)),
+    '#description' => t('A file extension list separated by the | character that will be tracked as download when clicked. Regular expressions are supported. For example: !extensions', array('!extensions' => GOOGLEANALYTICS_TRACKFILES_EXTENSIONS)),
     '#maxlength' => 255,
+  );
+
+  // Message specific configurations.
+  $form['tracking']['messagetracking'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Messages'),
+  );
+  $form['tracking']['messagetracking']['googleanalytics_trackmessages'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Track messages of type'),
+    '#default_value' => variable_get('googleanalytics_trackmessages', array()),
+    '#description' => t('This will track the selected message types shown to users. Tracking of form validation errors may help you identifying usability issues in your site. For each visit (user session), a maximum of approximately 500 combined GATC requests (both events and page views) can be tracked. Every message is tracked as one individual event. Note that - as the number of events in a session approaches the limit - additional events might not be tracked. Messages from excluded pages cannot tracked.'),
+    '#options' => array(
+      'status' => t('Status message'),
+      'warning' => t('Warning message'),
+      'error' => t('Error message'),
+    ),
+  );
+
+  // Google already have many translations, if not - they display a note to change the language.
+  global $language;
+  $form['tracking']['search_and_advertising'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Search and Advertising'),
+  );
+
+  $site_search_dependencies = '<div class="admin-requirements">';
+  $site_search_dependencies .= t('Requires: !module-list', array('!module-list' => (module_exists('search') ? t('@module (<span class="admin-enabled">enabled</span>)', array('@module' => 'Search')) : t('@module (<span class="admin-disabled">disabled</span>)', array('@module' => 'Search')))));
+  $site_search_dependencies .= '</div>';
+
+  $form['tracking']['search_and_advertising']['googleanalytics_site_search'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Track internal search'),
+    '#description' => t('If checked, internal search keywords are tracked. You must configure your Google account to use the internal query parameter <strong>search</strong>. For more information see <a href="@url">Setting Up Site Search for a Profile</a>.', array('@url' => url('http://support.google.com/analytics/bin/answer.py', array('query' => array('answer' => '1012264'))))) . $site_search_dependencies,
+    '#default_value' => variable_get('googleanalytics_site_search', FALSE),
+    '#disabled' => (module_exists('search') ? FALSE : TRUE),
+  );
+  $form['tracking']['search_and_advertising']['googleanalytics_trackadsense'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Track AdSense ads'),
+    '#description' => t('If checked, your AdSense ads will be tracked in your Google Analytics account.'),
+    '#default_value' => variable_get('googleanalytics_trackadsense', FALSE),
+  );
+  $form['tracking']['search_and_advertising']['googleanalytics_trackdoubleclick'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Track DoubleClick data'),
+    '#description' => t('If checked, the alternative Google <a href="@doubleclick">DoubleClick data tracking</a> is used to enable AdWords remarketing features. If you choose this option you will need to <a href="@privacy">update your privacy policy</a>.', array('@doubleclick' => url('http://support.google.com/analytics/bin/answer.py', array('query' => array('answer' => '2444872'))), '@privacy' => url('http://support.google.com/analytics/bin/answer.py', array('query' => array('answer' => '2636405'))))),
+    '#default_value' => variable_get('googleanalytics_trackdoubleclick', FALSE),
   );
 
   // Privacy specific configurations.
   $form['tracking']['privacy'] = array(
     '#type' => 'fieldset',
     '#title' => t('Privacy'),
-    '#collapsible' => TRUE,
-    '#collapsed' => FALSE,
   );
   $form['tracking']['privacy']['googleanalytics_tracker_anonymizeip'] = array(
     '#type' => 'checkbox',
@@ -195,7 +268,7 @@ function googleanalytics_admin_settings_form(&$form_state) {
     '#default_value' => variable_get('googleanalytics_privacy_donottrack', 1),
   );
 
-  // Custom variables
+  // Custom variables.
   $form['googleanalytics_custom_var'] = array(
     '#collapsed' => TRUE,
     '#collapsible' => TRUE,
@@ -206,48 +279,49 @@ function googleanalytics_admin_settings_form(&$form_state) {
     '#type' => 'fieldset',
   );
 
-  $token_enabled = module_exists('token');
   $googleanalytics_custom_vars = variable_get('googleanalytics_custom_var', array());
 
   // Google Analytics supports up to 5 custom variables.
   for ($i = 1; $i < 6; $i++) {
-    // TODO: '#default_value' is currently broken, see http://drupal.org/node/410926.
     $form['googleanalytics_custom_var']['slots'][$i]['slot'] = array(
-      //'#attributes' => array('readonly' => 'readonly'),
-      //'#default_value' => $i,
+      '#default_value' => $i,
       '#description' => t('Slot number'),
       '#disabled' => TRUE,
       '#size' => 1,
+      '#title' => t('Custom variable slot #@slot', array('@slot' => $i)),
+      '#title_display' => 'invisible',
       '#type' => 'textfield',
-      '#value' => $i,
     );
     $form['googleanalytics_custom_var']['slots'][$i]['name'] = array(
       '#default_value' => !empty($googleanalytics_custom_vars['slots'][$i]['name']) ? $googleanalytics_custom_vars['slots'][$i]['name'] : '',
       '#description' => t('The custom variable name.'),
       '#maxlength' => 255,
       '#size' => 20,
+      '#title' => t('Custom variable name #@slot', array('@slot' => $i)),
+      '#title_display' => 'invisible',
       '#type' => 'textfield',
+      '#element_validate' => array('googleanalytics_token_element_validate'),
+      '#token_types' => array('node'),
     );
     $form['googleanalytics_custom_var']['slots'][$i]['value'] = array(
       '#default_value' => !empty($googleanalytics_custom_vars['slots'][$i]['value']) ? $googleanalytics_custom_vars['slots'][$i]['value'] : '',
       '#description' => t('The custom variable value.'),
       '#maxlength' => 255,
+      '#title' => t('Custom variable value #@slot', array('@slot' => $i)),
+      '#title_display' => 'invisible',
       '#type' => 'textfield',
+      '#element_validate' => array('googleanalytics_token_element_validate'),
+      '#token_types' => array('node'),
     );
-    if ($token_enabled) {
-      $form['googleanalytics_custom_var']['slots'][$i]['name']['#element_validate'][] = 'googleanalytics_token_element_validate';
+    if (module_exists('token')) {
       $form['googleanalytics_custom_var']['slots'][$i]['name']['#element_validate'][] = 'token_element_validate';
-      $form['googleanalytics_custom_var']['slots'][$i]['name']['#token_types'][] = 'node';
-      $form['googleanalytics_custom_var']['slots'][$i]['name']['#token_types'][] = 'user';
-
-      $form['googleanalytics_custom_var']['slots'][$i]['value']['#element_validate'][] = 'googleanalytics_token_element_validate';
       $form['googleanalytics_custom_var']['slots'][$i]['value']['#element_validate'][] = 'token_element_validate';
-      $form['googleanalytics_custom_var']['slots'][$i]['value']['#token_types'][] = 'node';
-      $form['googleanalytics_custom_var']['slots'][$i]['value']['#token_types'][] = 'user';
     }
     $form['googleanalytics_custom_var']['slots'][$i]['scope'] = array(
       '#default_value' => !empty($googleanalytics_custom_vars['slots'][$i]['scope']) ? $googleanalytics_custom_vars['slots'][$i]['scope'] : 3,
       '#description' => t('The scope for the custom variable.'),
+      '#title' => t('Custom variable slot #@slot', array('@slot' => $i)),
+      '#title_display' => 'invisible',
       '#type' => 'select',
       '#options' => array(
         1 => t('Visitor'),
@@ -259,12 +333,14 @@ function googleanalytics_admin_settings_form(&$form_state) {
 
   $form['googleanalytics_custom_var']['googleanalytics_custom_var_description'] = array(
     '#type' => 'item',
-    '#description' => t('You can supplement Google Analytics\' basic IP address tracking of visitors by segmenting users based on custom variables.') . (!$token_enabled ? ' '. t('<a href="@module_list">Enable the token module</a> to be able to use tokens for more granular tracking.', array('@module_list' => url('admin/build/modules'))) : '') .' '. t('Section 7 of the <a href="@ga_tos">Google Analytics terms of service</a> requires that You will not (and will not allow any third party to) use the Service to track, collect or upload any data that personally identifies an individual (such as a name, email address or billing information), or other data which can be reasonably linked to such information by Google. You will have and abide by an appropriate Privacy Policy and will comply with all applicable laws and regulations relating to the collection of information from Visitors. You must post a Privacy Policy and that Privacy Policy must provide notice of Your use of cookies that are used to collect traffic data, and You must not circumvent any privacy features (e.g., an opt-out) that are part of the Service.', array('@ga_tos' => 'http://www.google.com/analytics/terms/gb.html')),
+    '#description' => t('You can supplement Google Analytics\' basic IP address tracking of visitors by segmenting users based on custom variables. Section 7 of the <a href="@ga_tos">Google Analytics terms of service</a> requires that You will not (and will not allow any third party to) use the Service to track, collect or upload any data that personally identifies an individual (such as a name, email address or billing information), or other data which can be reasonably linked to such information by Google. You will have and abide by an appropriate Privacy Policy and will comply with all applicable laws and regulations relating to the collection of information from Visitors. You must post a Privacy Policy and that Privacy Policy must provide notice of Your use of cookies that are used to collect traffic data, and You must not circumvent any privacy features (e.g., an opt-out) that are part of the Service.', array('@ga_tos' => 'http://www.google.com/analytics/terms/gb.html')),
   );
   $form['googleanalytics_custom_var']['googleanalytics_custom_var_token_tree'] = array(
     '#theme' => 'token_tree',
-    '#token_types' => array('node', 'user'),
+    '#token_types' => array('node'),
+    '#dialog' => TRUE,
   );
+
 
   // Advanced feature configurations.
   $form['advanced'] = array(
@@ -280,10 +356,6 @@ function googleanalytics_admin_settings_form(&$form_state) {
     '#description' => t("If checked, the tracking code file is retrieved from Google Analytics and cached locally. It is updated daily from Google's servers to ensure updates to tracking code are reflected in the local copy. Do not activate this until after Google Analytics has confirmed that site tracking is working!"),
     '#default_value' => variable_get('googleanalytics_cache', 0),
   );
-  if (variable_get('file_downloads', FILE_DOWNLOADS_PUBLIC) == FILE_DOWNLOADS_PRIVATE) {
-    $form['advanced']['googleanalytics_cache']['#disabled'] = TRUE;
-    $form['advanced']['googleanalytics_cache']['#description'] .= ' '. t('<a href="@url">Public file transfers</a> must be enabled to allow local caching.', array('@url' => url('admin/settings/file-system', array('query' => drupal_get_destination()))));
-  }
 
   // Allow for tracking of the originating node when viewing translation sets.
   if (module_exists('translation')) {
@@ -295,45 +367,18 @@ function googleanalytics_admin_settings_form(&$form_state) {
     );
   }
 
-  $site_search_dependencies = '<div class="admin-dependencies">';
-  $site_search_dependencies .= t('Depends on: !dependencies', array('!dependencies' => (module_exists('search') ? t('@module (<span class="admin-enabled">enabled</span>)', array('@module' => 'Search')) : t('@module (<span class="admin-disabled">disabled</span>)', array('@module' => 'Search')))));
-  $site_search_dependencies .= '</div>';
-
-  // Google already have many translations, if not - they display a note to change the language.
-  global $language;
-  $form['advanced']['googleanalytics_site_search'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Track internal search'),
-    '#description' => t('If checked, internal search keywords are tracked. You must configure your Google account to use the internal query parameter <strong>search</strong>. For more information see <a href="@url">Setting Up Site Search for a Profile</a>.', array('@url' => url('http://support.google.com/analytics/bin/answer.py', array('query' => array('answer' => '1012264'))))) . $site_search_dependencies,
-    '#default_value' => variable_get('googleanalytics_site_search', FALSE),
-    '#disabled' => (module_exists('search') ? FALSE : TRUE),
-  );
-
-  $form['advanced']['googleanalytics_trackadsense'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Track AdSense ads'),
-    '#description' => t('If checked, your AdSense ads will be tracked in your Google Analytics account.'),
-    '#default_value' => variable_get('googleanalytics_trackadsense', FALSE),
-  );
-  $form['advanced']['googleanalytics_trackdoubleclick'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Track DoubleClick data'),
-    '#description' => t('If checked, the alternative Google <a href="@doubleclick">DoubleClick data tracking</a> is used to enable AdWords remarketing features. If you choose this option you will need to <a href="@privacy">update your privacy policy</a>.', array('@doubleclick' => url('http://support.google.com/analytics/bin/answer.py', array('query' => array('answer' => '2444872'))), '@privacy' => url('http://support.google.com/analytics/bin/answer.py', array('query' => array('answer' => '2636405'))))),
-    '#default_value' => variable_get('googleanalytics_trackdoubleclick', FALSE),
-  );
   $form['advanced']['codesnippet'] = array(
     '#type' => 'fieldset',
     '#title' => t('Custom JavaScript code'),
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
-    '#description' => t('You can add custom Google Analytics <a href="@snippets">code snippets</a> here. These will be added to every page that Google Analytics appears on. Before you add custom code to the below textarea\'s you should read <a href="@ga_concepts_overview">Google Analytics Tracking Code - Functional Overview</a> and the <a href="@ga_js_api">Google Analytics Tracking API</a> documentation. <strong>Do not include the &lt;script&gt; tags</strong>, and always end your code with a semicolon (;).', array('@snippets' => 'http://drupal.org/node/248699', '@ga_concepts_overview' => 'https://developers.google.com/analytics/resources/concepts/gaConceptsTrackingOverview', '@ga_js_api' => 'https://developers.google.com/analytics/devguides/collection/gajs/methods/')),
+    '#description' => t('You can add custom Google Analytics <a href="@snippets">code snippets</a> here. These will be added every time tracking is in effect. Before you add your custom code, you should read the <a href="@ga_concepts_overview">Google Analytics Tracking Code - Functional Overview</a> and the <a href="@ga_js_api">Google Analytics Tracking API</a> documentation. <strong>Do not include the &lt;script&gt; tags</strong>, and always end your code with a semicolon (;).', array('@snippets' => 'http://drupal.org/node/248699', '@ga_concepts_overview' => 'https://developers.google.com/analytics/resources/concepts/gaConceptsTrackingOverview', '@ga_js_api' => 'https://developers.google.com/analytics/devguides/collection/gajs/methods/')),
   );
   $form['advanced']['codesnippet']['googleanalytics_codesnippet_before'] = array(
     '#type' => 'textarea',
     '#title' => t('Code snippet (before)'),
     '#default_value' => variable_get('googleanalytics_codesnippet_before', ''),
     '#rows' => 5,
-    '#wysiwyg' => FALSE,
     '#description' => t("Code in this textarea will be added <strong>before</strong> _gaq.push(['_trackPageview'])."),
   );
   $form['advanced']['codesnippet']['googleanalytics_codesnippet_after'] = array(
@@ -341,25 +386,27 @@ function googleanalytics_admin_settings_form(&$form_state) {
     '#title' => t('Code snippet (after)'),
     '#default_value' => variable_get('googleanalytics_codesnippet_after', ''),
     '#rows' => 5,
-    '#wysiwyg' => FALSE,
     '#description' => t("Code in this textarea will be added <strong>after</strong> _gaq.push(['_trackPageview']). This is useful if you'd like to track a site in two accounts."),
   );
 
-  /* hook_footer() is not able to add code to head. Upgrade to D7 required.
   $form['advanced']['googleanalytics_js_scope'] = array(
     '#type' => 'select',
     '#title' => t('JavaScript scope'),
-    '#description' => t("Google recommends adding the external JavaScript files to header for performance reasons."),
+    '#description' => t('Google recommends adding the external JavaScript files to the header for performance reasons. If <em>Multiple top-level domains</em> has been selected, this setting will be forced to header.'),
     '#options' => array(
       'footer' => t('Footer'),
       'header' => t('Header'),
     ),
     '#default_value' => variable_get('googleanalytics_js_scope', 'header'),
-  ); */
+    '#disabled' => (variable_get('googleanalytics_domain_mode', 0) == 2) ? TRUE : FALSE,
+  );
 
   return system_settings_form($form);
 }
 
+/**
+ * Implements _form_validate().
+ */
 function googleanalytics_admin_settings_form_validate($form, &$form_state) {
   // Custom variables validation.
   foreach ($form_state['values']['googleanalytics_custom_var']['slots'] as $custom_var) {
@@ -373,23 +420,12 @@ function googleanalytics_admin_settings_form_validate($form, &$form_state) {
     elseif (!empty($custom_var['name']) && empty($custom_var['value'])) {
       form_set_error("googleanalytics_custom_var][slots][" . $custom_var['slot'] . "][value", t('The custom variable @slot-number requires a <em>Value</em> if a <em>Name</em> has been provided.', array('@slot-number' =>  $custom_var['slot'])));
     }
-
-    // If token module is not available, block tokens with personally identifying
-    // information with an "ugly" value check. Normally the values are validated
-    // via '#element_validate' functions that are not available without token module.
-    if (!module_exists('token')) {
-      if (_googleanalytics_contains_forbidden_token($custom_var['name'])) {
-        form_set_error("googleanalytics_custom_var][slots][" . $custom_var['slot'] . "][name", t('The custom variable %element-title is using forbidden tokens with personal identifying information.', array('%element-title' => $custom_var['name'] ? $custom_var['name'] : $custom_var['slot'])));
-      }
-      if (_googleanalytics_contains_forbidden_token($custom_var['value'])) {
-        form_set_error("googleanalytics_custom_var][slots][" . $custom_var['slot'] . "][value", t('The custom variable %element-title is using forbidden tokens with personal identifying information.', array('%element-title' => $custom_var['name'] ? $custom_var['name'] : $custom_var['slot'])));
-      }
-    }
   }
 
   // Trim some text values.
   $form_state['values']['googleanalytics_account'] = trim($form_state['values']['googleanalytics_account']);
   $form_state['values']['googleanalytics_pages'] = trim($form_state['values']['googleanalytics_pages']);
+  $form_state['values']['googleanalytics_cross_domains'] = trim($form_state['values']['googleanalytics_cross_domains']);
   $form_state['values']['googleanalytics_codesnippet_before'] = trim($form_state['values']['googleanalytics_codesnippet_before']);
   $form_state['values']['googleanalytics_codesnippet_after'] = trim($form_state['values']['googleanalytics_codesnippet_after']);
 
@@ -400,6 +436,10 @@ function googleanalytics_admin_settings_form_validate($form, &$form_state) {
     form_set_error('googleanalytics_account', t('A valid Google Analytics Web Property ID is case sensitive and formatted like UA-xxxxxxx-yy.'));
   }
 
+  // If multiple top-level domains has been selected, a domain names list is required.
+  if ($form_state['values']['googleanalytics_domain_mode'] == 2 && empty($form_state['values']['googleanalytics_cross_domains'])) {
+    form_set_error('googleanalytics_cross_domains', t('A list of top-level domains is required if <em>Multiple top-level domains</em> has been selected.'));
+  }
   // Clear obsolete local cache if cache has been disabled.
   if (empty($form_state['values']['googleanalytics_cache']) && $form['advanced']['googleanalytics_cache']['#default_value']) {
     googleanalytics_clear_js_cache();
@@ -418,12 +458,18 @@ function googleanalytics_admin_settings_form_validate($form, &$form_state) {
   if (preg_match('/(.*)<\/?script(.*)>(.*)/i', $form_state['values']['googleanalytics_codesnippet_after'])) {
     form_set_error('googleanalytics_codesnippet_after', t('Do not include the &lt;script&gt; tags in the javascript code snippets.'));
   }
+
+  // Header section must be forced for multiple top-level domains.
+  if ($form_state['values']['googleanalytics_domain_mode'] == 2) {
+    $form_state['values']['googleanalytics_js_scope'] = 'header';
+  }
 }
 
 /**
  * Layout for the custom variables table in the admin settings form.
  */
-function theme_googleanalytics_admin_custom_var_table($form) {
+function theme_googleanalytics_admin_custom_var_table($variables) {
+  $form = $variables['form'];
 
   $header = array(
     array('data' => t('Slot')),
@@ -444,7 +490,7 @@ function theme_googleanalytics_admin_custom_var_table($form) {
     );
   }
 
-  $output = theme('table', $header, $rows);
+  $output = theme('table', array('header' => $header, 'rows' => $rows));
   $output .= drupal_render($form['googleanalytics_custom_var_description']);
   $output .= drupal_render($form['googleanalytics_custom_var_token_tree']);
 
@@ -474,11 +520,9 @@ function googleanalytics_token_element_validate(&$element, &$form_state) {
   }
 
   $tokens = token_scan($value);
-  $title = empty($element['#title']) ? $element['#parents'][0] : $element['#title'];
-
   $invalid_tokens = _googleanalytics_get_forbidden_tokens($tokens);
   if ($invalid_tokens) {
-    form_error($element, t('The %element-title is using the following forbidden tokens with personal identifying information: @invalid-tokens.', array('%element-title' => $title, '@invalid-tokens' => implode(', ', $invalid_tokens))));
+    form_error($element, t('The %element-title is using the following forbidden tokens with personal identifying information: @invalid-tokens.', array('%element-title' => $element['#title'], '@invalid-tokens' => implode(', ', $invalid_tokens))));
   }
 
   return $element;
@@ -488,14 +532,9 @@ function _googleanalytics_get_forbidden_tokens($value) {
   $invalid_tokens = array();
   $value_tokens = is_string($value) ? token_scan($value) : $value;
 
-  // For porting/compatibility reasons with _googleanalytics_contains_forbidden_token()
-  // the leading and trailing token separator need to be added to every value.
-  $value_tokens = token_prepare_tokens($value_tokens);
-
-  foreach ($value_tokens as $token) {
-    // If token is forbidden, add it to invalid tokens array.
-    if (_googleanalytics_contains_forbidden_token($token)) {
-      $invalid_tokens[] = $token;
+  foreach ($value_tokens as $type => $tokens) {
+    if (array_filter($tokens, '_googleanalytics_contains_forbidden_token')) {
+      $invalid_tokens = array_merge($invalid_tokens, array_values($tokens));
     }
   }
 
@@ -524,22 +563,38 @@ function _googleanalytics_contains_forbidden_token($token_string) {
   //
   // TODO: If someone have better ideas, share them, please!
   $token_blacklist = array(
-    'author-uid]',
-    'author-name',
-    'author-mail',
-    'author-homepage]',
-    '[user-name]',
-    '[user-id]',
-    '[user-mail]',
-    // [user] tokens
-    '[user]',
-    '[user-raw]',
-    '[uid]',
-    '[mail]',
-    '[account-url]',
-    '[account-edit]',
-    // realname module
-    '[realname',
+    ':author]',
+    ':author:edit-url]',
+    ':author:url]',
+    ':author:path]',
+    ':current-user]',
+    ':current-user:original]',
+    ':fid]',
+    ':mail]',
+    ':name]',
+    ':uid]',
+    ':one-time-login-url]',
+    ':owner]',
+    ':owner:cancel-url]',
+    ':owner:edit-url]',
+    ':owner:url]',
+    ':owner:path]',
+    'user:cancel-url]',
+    'user:edit-url]',
+    'user:url]',
+    'user:path]',
+    'user:picture]',
+    // addressfield_tokens.module
+    ':first-name]',
+    ':last-name]',
+    ':name-line]',
+    ':mc-address]',
+    ':thoroughfare]',
+    ':premise]',
+    // realname.module
+    ':name-raw]',
+    // token.module
+    ':ip-address]',
   );
 
   return preg_match('/' . implode('|', array_map('preg_quote', $token_blacklist)) . '/i', $token_string);

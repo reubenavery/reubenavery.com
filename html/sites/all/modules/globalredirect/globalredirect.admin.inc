@@ -31,7 +31,7 @@ function globalredirect_settings() {
   $form['settings']['trailing_zero'] = array(
     '#type' => 'radios',
     '#title' => t('Remove Trailing Zero Argument'),
-    '#description' => t('If enabled, any instance of "/0" will be trimmed from the right of the URL. This stops duplicate pages such as "taxonomy/term/1" and "taxonomy/term/1/0" where 0 is the default depth. There is an option of limiting this feature to taxonomy term pages ONLY or allowing it to effect any page. <strong>By default this feature is disabled to avoid any unexpected behavior</strong>'),
+    '#description' => t('If enabled, any instance of "/0" will be trimmed from the right of the URL. This stops duplicate pages such as "taxonomy/term/1" and "taxonomy/term/1/0" where 0 is the default depth. There is an option of limiting this feature to taxonomy term pages ONLY or allowing it to effect any page. <strong>By default this feature is disabled to avoid any unexpected behavior. Also of note, the trailing /0 "depth modifier" was removed from Drupal 7.</strong>'),
     '#options' => array(
       0 => t('Disabled'),
       1 => t('Enabled for all pages'),
@@ -50,7 +50,7 @@ function globalredirect_settings() {
   $form['settings']['case_sensitive_urls'] = array(
     '#type' => 'checkbox',
     '#title' => t('Case Sensitive URL Checking'),
-    '#description' => t('If enabled, the module will compare the current URL to the alias stored in the system. If there are any differences in case, the the user will be redirected to the correct URL.'),
+    '#description' => t('If enabled, the module will compare the current URL to the alias stored in the system. If there are any differences in case then the user will be redirected to the correct URL.'),
     '#default_value' => $settings['case_sensitive_urls'],
   );
 

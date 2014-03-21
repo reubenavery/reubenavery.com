@@ -13,11 +13,14 @@
  */
 
 /**
- * Implementation of hook_perm()
+ * Implementation of hook_permission()
  */
-function ctools_custom_content_perm() {
+function ctools_custom_content_permission() {
   return array(
-    'administer custom content',
+    'administer custom content' => array(
+      'title' => t('Administer custom content'),
+      'description' => t('Add, edit and delete CTools custom stored custom content'),
+    ),
   );
 }
 
@@ -30,6 +33,26 @@ function ctools_custom_content_ctools_plugin_directory($module, $plugin) {
   // rest is in ctools/includes/ctools_custom_content.inc
   if ($module == 'ctools' && $plugin == 'export_ui') {
     return 'plugins/' . $plugin;
+  }
+}
+
+/**
+ * Implements hook_get_pane_links_alter().
+ */
+function ctools_custom_content_get_pane_links_alter(&$links, $pane, $content_type) {
+  if ($pane->type == 'custom') {
+    if(!isset($pane->configuration['name'])) {
+      $name_of_pane = $pane->subtype;
+    }
+    else {
+      $name_of_pane = $pane->configuration['name'];
+    }
+
+    $links['top']['edit_custom_content'] = array(
+      'title' => t('Edit custom content pane'),
+      'href' => url('admin/structure/ctools-content/list/' . $name_of_pane . '/edit', array('absolute' => TRUE)),
+      'attributes' => array('target' => array('_blank')),
+    );
   }
 }
 
@@ -53,7 +76,7 @@ function ctools_content_type_new($set_defaults) {
  */
 function ctools_custom_content_panels_dashboard_blocks(&$vars) {
   $vars['links']['ctools_custom_content'] = array(
-    'title' => l(t('Custom content'), 'admin/build/ctools-content/add'),
+    'title' => l(t('Custom content'), 'admin/structure/ctools-content/add'),
     'description' => t('Custom content panes are basic HTML you enter that can be reused in all of your panels.'),
   );
 
@@ -67,7 +90,7 @@ function ctools_custom_content_panels_dashboard_blocks(&$vars) {
     $rows[] = array(
       check_plain($item->admin_title),
       array(
-        'data' => l(t('Edit'), "admin/build/ctools-content/list/$item->name/edit"),
+        'data' => l(t('Edit'), "admin/structure/ctools-content/list/$item->name/edit"),
         'class' => 'links',
       ),
     );
@@ -79,7 +102,7 @@ function ctools_custom_content_panels_dashboard_blocks(&$vars) {
   }
 
   if ($rows) {
-    $content = theme('table', array(), $rows, array('class' => 'panels-manage'));
+    $content = theme('table', array('rows' => $rows, 'attributes' => array('class' => 'panels-manage')));
   }
   else {
     $content = '<p>' . t('There are no custom content panes.') . '</p>';
@@ -87,7 +110,7 @@ function ctools_custom_content_panels_dashboard_blocks(&$vars) {
 
   $vars['blocks']['ctools_custom_content'] = array(
     'title' => t('Manage custom content'),
-    'link' => l(t('Go to list'), 'admin/build/ctools-content'),
+    'link' => l(t('Go to list'), 'admin/structure/ctools-content'),
     'content' => $content,
     'class' => 'dashboard-content',
     'section' => 'right',

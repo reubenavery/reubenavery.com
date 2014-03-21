@@ -1,5 +1,4 @@
 <?php
-// $Id: nat_handler_argument_term_node_tid_depth_modifier.inc,v 1.1.2.3 2010/11/18 05:49:42 karthik Exp $
 
 /**
  * @file

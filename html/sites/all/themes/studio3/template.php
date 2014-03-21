@@ -1,123 +1,118 @@
-<?php // $Id: template.php,v 1.1.2.6 2009/12/24 01:47:01 jmburnz Exp $
-// adaptivethemes.com
+<?php
 
 /**
- * @file template.php
- */
-
-// Don't include custom functions if the database is inactive.
-if (db_is_active()) {
-  // Include base theme custom functions.
-  include_once(drupal_get_path('theme', 'adaptivetheme') .'/inc/template.custom-functions.inc');
-}
-
-/**
- * Add the color scheme stylesheet if color_enable_schemes is set to 'on'.
- * Note: you must have at minimum a color-default.css stylesheet in /css/theme/
- */
-if (theme_get_setting('color_enable_schemes') == 'on') {
-  drupal_add_css(drupal_get_path('theme', 'studio3') .'/css/theme/'. get_at_colors(), 'theme');
-}
-
-/**
- * USAGE
- * 1. Rename each function to match your subthemes name,
- *    e.g. if you name your theme "themeName" then the function
- *    name will be "themeName_preprocess_hook".
- * 2. Uncomment the required function to use. You can delete the
- *    "sample_variable".
- */
-
-/**
- * Override or insert variables into all templates.
+ * @file
+ * Process theme data.
  *
- * @param $vars
- *   An array of variables to pass to the theme template.
- * @param $hook
- *   The name of the template being rendered.
+ * Use this file to run your theme specific implimentations of theme functions,
+ * such preprocess, process, alters, and theme function overrides.
+ *
+ * Preprocess and process functions are used to modify or create variables for
+ * templates and theme functions. They are a common theming tool in Drupal, often
+ * used as an alternative to directly editing or adding code to templates. Its
+ * worth spending some time to learn more about these functions - they are a
+ * powerful way to easily modify the output of any template variable.
+ *
+ * Preprocess and Process Functions SEE: http://drupal.org/node/254940#variables-processor
+ * 1. Rename each function and instance of "adaptivetheme_subtheme" to match
+ *    your subthemes name, e.g. if your theme name is "footheme" then the function
+ *    name will be "footheme_preprocess_hook". Tip - you can search/replace
+ *    on "adaptivetheme_subtheme".
+ * 2. Uncomment the required function to use.
  */
-/*
-function studio3_preprocess(&$vars, $hook) {
-  $vars['sample_variable'] = t('Lorem ipsum.');
-}
-*/
+
 
 /**
- * Override or insert variables into the page templates.
- *
- * @param $vars
- *   An array of variables to pass to the theme template.
- * @param $hook
- *   The name of the template being rendered.
+ * Preprocess variables for the html template.
  */
-function studio3_preprocess_page(&$vars, $hook) {
-  // No title for front page
-  if ($vars['is_front']) {
-    unset($vars['title']);
-  }
-  
-  $vars['logo'] = url(path_to_theme() .'/images/logo-default.png');
-  
-  if (strstr($vars['classes'], 'section-webdev')) {
-    $vars['section_title'] = l(t('Web Development'), 'webdev');
-    $vars['logo'] = url(path_to_theme() .'/images/logo-webdev.png');
+/* -- Delete this line to enable.
+function adaptivetheme_subtheme_preprocess_html(&$vars) {
+  global $theme_key;
 
-  }
+  // Two examples of adding custom classes to the body.
 
-  if (strstr($vars['classes'], 'section-creative')) {
-    $vars['section_title'] = l(t('Selected Works'), 'creative');
-    $vars['logo'] = url(path_to_theme() .'/images/logo-creative.png');
-  }
-  
-  if (strstr($vars['classes'], 'section-contact')) {
-    $vars['logo'] = url(path_to_theme() .'/images/logo-contact.png');
-  }
-  
-  $vars['logo_img'] = $vars['logo'] ? '<img src="'. check_url($vars['logo']) .'" alt="'. $vars['logo_alt_text'] .'" title="'. t('Home page') .'"/>' : '';
-  $vars['linked_site_logo'] = $vars['logo_img'] ? l($vars['logo_img'], '<front>', array('attributes' => array('rel' => 'home'), 'title' => t('Home page'), 'html' => TRUE)) : '';
-  
+  // Add a body class for the active theme name.
+  // $vars['classes_array'][] = drupal_html_class($theme_key);
+
+  // Browser/platform sniff - adds body classes such as ipad, webkit, chrome etc.
+  // $vars['classes_array'][] = css_browser_selector();
 
 }
+// */
+
+
+/**
+ * Process variables for the html template.
+ */
+/* -- Delete this line if you want to use this function
+function adaptivetheme_subtheme_process_html(&$vars) {
+}
+// */
+
+
+/**
+ * Override or insert variables for the page templates.
+ */
+function adaptivetheme_subtheme_preprocess_page(&$vars) {
+}
+function studio3_process_page(&$vars) {
+    // No title for front page
+    if ($vars['is_front']) {
+        unset($vars['title']);
+    }
+
+    $vars['logo'] = url(path_to_theme() .'/images/logo-default.png');
+
+    if (strstr($vars['classes'], 'section-webdev')) {
+        $vars['section_title'] = l(t('Web Development'), 'webdev');
+        $vars['logo'] = url(path_to_theme() .'/images/logo-webdev.png');
+
+    }
+
+    if (strstr($vars['classes'], 'section-creative')) {
+        $vars['section_title'] = l(t('Selected Works'), 'creative');
+        $vars['logo'] = url(path_to_theme() .'/images/logo-creative.png');
+    }
+
+    if (strstr($vars['classes'], 'section-contact')) {
+        $vars['logo'] = url(path_to_theme() .'/images/logo-contact.png');
+    }
+
+    $vars['logo_img'] = $vars['logo'] ? '<img src="'. check_url($vars['logo']) .'" alt="'. $vars['logo_alt_text'] .'" title="'. t('Home page') .'"/>' : '';
+    $vars['linked_site_logo'] = $vars['logo_img'] ? l($vars['logo_img'], '<front>', array('attributes' => array('rel' => 'home'), 'title' => t('Home page'), 'html' => TRUE)) : '';
+
+}
+
 
 
 /**
  * Override or insert variables into the node templates.
- *
- * @param $vars
- *   An array of variables to pass to the theme template.
- * @param $hook
- *   The name of the template being rendered.
  */
-/*
-function studio3_preprocess_node(&$vars, $hook) {
-  $vars['sample_variable'] = t('Lorem ipsum.');
+/* -- Delete this line if you want to use these functions
+function adaptivetheme_subtheme_preprocess_node(&$vars) {
 }
-*/
+function adaptivetheme_subtheme_process_node(&$vars) {
+}
+// */
+
 
 /**
  * Override or insert variables into the comment templates.
- *
- * @param $vars
- *   An array of variables to pass to the theme template.
- * @param $hook
- *   The name of the template being rendered.
  */
-/*
-function studio3_preprocess_comment(&$vars, $hook) {
-  $vars['sample_variable'] = t('Lorem ipsum.');
+/* -- Delete this line if you want to use these functions
+function adaptivetheme_subtheme_preprocess_comment(&$vars) {
 }
-*/
+function adaptivetheme_subtheme_process_comment(&$vars) {
+}
+// */
+
 
 /**
  * Override or insert variables into the block templates.
- *
- * @param $vars
- *   An array of variables to pass to the theme template.
- * @param $hook
- *   The name of the template being rendered.
  */
-/*
-function studio3_preprocess_block(&$vars, $hook) {
-  $vars['sample_variable'] = t('Lorem ipsum.');
+/* -- Delete this line if you want to use these functions
+function adaptivetheme_subtheme_preprocess_block(&$vars) {
 }
-*/
+function adaptivetheme_subtheme_process_block(&$vars) {
+}
+// */

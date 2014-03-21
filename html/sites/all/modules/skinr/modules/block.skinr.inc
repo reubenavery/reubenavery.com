@@ -1,90 +1,194 @@
 <?php
-// $Id: block.skinr.inc,v 1.3.2.1 2009/12/29 08:26:27 moonray Exp $
 /**
  * @file
- * Provide skinr handling for block.module
+ * Implements Skinr hooks for block.module.
  */
 
 /**
- * @defgroup skinr_block_module block.module handlers
- *
- * @{
+ * Implements hook_skinr_config_info().
  */
-
-/**
- * Implementation of hook_skinr_data().
- */
-function block_skinr_data() {
-  $data['block']['form']['block_admin_configure'] = array(
-    'index_handler' => 'block_skinr_form_index_handler',
-    'preprocess_hook' => 'block',
-    'title' => t('block settings'),
-    'skinr_weight' => 0,
-    'collapsed' => FALSE,
-  );
-  $data['block']['form']['block_add_block_form'] = array(
-    'index_handler' => 'block_skinr_form_index_handler',
-    'preprocess_hook' => 'block',
-    'title' => t('block settings'),
-    'skinr_weight' => 0,
-    'collapsed' => FALSE,
-  );
-  $data['block']['preprocess']['block'] = array(
-    'index_handler' => 'block_skinr_preprocess_index_handler',
-  );
-
-  return $data;
+function block_skinr_config_info() {
+  return array('block');
 }
 
 /**
- * Skinr form index handler.
- *
- * @param $op
- *   What kind of action is being performed. Possible values:
- *   - "form": the form elements for Skinr are being inserted in a form
- *   - "submit": the form has been submitted.
- * @param &$form
- *   - For "form", passes in the $form parameter from hook_form_alter().
- *   - For "submit", passes in the $form parameter from hook_form_submit().
- * @param $form_state
- *   - For "form", passes in the $form_state parameter from hook_form_alter().
- *   - For "submit", passes in the $form_state parameter from hook_form_submit().
- * @return
- *   The index where we can find our values in Skinrs data structure.
+ * Implements hook_skinr_ui_element_options().
  */
-function block_skinr_form_index_handler($op, &$form, $form_state) {
-  switch ($op) {
-    case 'form':
-      return $form['module']['#value'] .'-'. $form['delta']['#value'];
+function block_skinr_ui_element_options($theme_name = NULL) {
+  $options = array('block' => array());
 
-    case 'submit':
-      $form_id = $form['form_id']['#value'];
-      if ($form_id == 'block_add_block_form') {
-        // This is a new block, so we need to fetch the delta from DB
-        if ($delta = db_result(db_query("SELECT delta FROM {blocks} WHERE bid = '%s'", db_last_insert_id('boxes', 'bid')))) {
-          return $form_state['values']['module'] .'-'. $delta;
-        }
+  $themes = list_themes();
+  $used_themes = array();
+  if ($theme_name) {
+    // Only process the given theme.
+    $used_themes[] = $theme_name;
+  }
+  else {
+    // Process all enabled themes.
+    $options = array();
+    foreach ($themes as $theme) {
+      if (!$theme->status) {
+        continue;
       }
-      else {
-        return $form_state['values']['module'] .'-'. $form_state['values']['delta'];
-      }
+      $used_themes[] = $theme->name;
+    }
+  }
+
+  // Load all enabled blocks.
+  foreach ($used_themes as $theme) {
+    $blocks = _block_skinr_load_blocks($theme);
+
+    $theme_title = isset($themes[$theme]->info['name']) ? $themes[$theme]->info['name'] : $theme;
+    $theme_key = t('@theme_name blocks', array('@theme_name' => $theme_title));
+
+    foreach ($blocks as $name => $block) {
+      $options['block'][$theme_key][$name] = $block->info;
+    }
+  }
+
+  return $options;
+}
+
+/**
+ * Implements hook_skinr_ui_element_title().
+ */
+function block_skinr_ui_element_title($module, $element, $theme_name) {
+  if ($module == 'block') {
+    //list($module, $delta) = explode('__', $element, 2);
+    $blocks = _block_skinr_load_blocks($theme_name);
+    if (!empty($blocks[$element]->info)) {
+      return $blocks[$element]->info;
+    }
   }
 }
 
 /**
- * Skinr preprocess index handler.
+ * Returns a list of enabled blocks for a given theme.
  *
- * @param &$vars
- *   Passes in the $vars parameter from module_preprocess().
+ * Based on _block_rehash(), but without the blocks table rebuild part.
+ *
  * @return
- *   The index where we can find our values in Skinrs data structure. If an
- *   array is returned, it will loop through each index in Skinr's data
- *   structure and merge the returned classes.
+ *   An array of blocks.
+ *
+ * @see _block_rehash()
  */
-function block_skinr_preprocess_index_handler(&$vars) {
-  return $vars['block']->module .'-'. $vars['block']->delta;
+function _block_skinr_load_blocks($theme) {
+  $cache = &drupal_static(__FUNCTION__, array());
+
+  if (!isset($cache['code_blocks'])) {
+    $cache['code_blocks'] = array();
+    // Gather the blocks defined by modules.
+    foreach (module_implements('block_info') as $module) {
+      $module_blocks = module_invoke($module, 'block_info');
+      foreach ($module_blocks as $delta => $block) {
+        // Add identifiers.
+        $block['module'] = $module;
+        $block['delta']  = $delta;
+        $block['theme']  = $theme;
+        $cache['code_blocks'][$module][$delta] = $block;
+      }
+    }
+  }
+
+  if (!isset($cache['blocks'][$theme])) {
+    $regions = system_region_list($theme);
+
+    $current_blocks = $cache['code_blocks'];
+    // These are {block}.bid values to be kept.
+    $bids = array();
+    $or = db_or();
+
+    foreach ($cache['code_blocks'] as $module => $module_blocks) {
+      foreach ($module_blocks as $delta => $block) {
+        // Compile a condition to retrieve this block from the database.
+        $condition = db_and()
+          ->condition('module', $module)
+          ->condition('delta', $delta);
+        $or->condition($condition);
+      }
+    }
+
+    $database_blocks = db_select('block', 'b')
+      ->fields('b')
+      ->condition($or)
+      ->condition('theme', $theme)
+      ->execute();
+    foreach ($database_blocks as $block) {
+      // Preserve info which is not in the database.
+      $block->info = $current_blocks[$block->module][$block->delta]['info'];
+      // The cache mode can only by set from hook_block_info(), so that has
+      // precedence over the database's value.
+      if (isset($current_blocks[$block->module][$block->delta]['cache'])) {
+        $block->cache = $current_blocks[$block->module][$block->delta]['cache'];
+      }
+      // Blocks stored in the database override the blocks defined in code.
+      $current_blocks[$block->module][$block->delta] = get_object_vars($block);
+      // Preserve this block.
+      $bids[$block->bid] = $block->bid;
+    }
+    drupal_alter('block_info', $current_blocks, $theme, $cache['code_blocks']);
+
+    foreach ($current_blocks as $module => $module_blocks) {
+      foreach ($module_blocks as $delta => $block) {
+        if (!empty($block['region']) && $block['region'] != BLOCK_REGION_NONE && !isset($regions[$block['region']])) {
+          // Disabled modules are moved into the BLOCK_REGION_NONE later so no
+          // need to move the block to another region.
+          $current_blocks[$module][$delta]['status'] = 0;
+        }
+        // Set region to none if not enabled and make sure status is set.
+        if (empty($block['status'])) {
+          $current_blocks[$module][$delta]['status'] = 0;
+          $current_blocks[$module][$delta]['region'] = BLOCK_REGION_NONE;
+        }
+      }
+    }
+
+    $cache['blocks'][$theme] = array();
+    foreach ($current_blocks as $module => $module_blocks) {
+      foreach ($module_blocks as $delta => $block) {
+        if (!$block['status']) {
+          continue;
+        }
+        $cache['blocks'][$theme][$block['module'] . '__' . $block['delta']] = (object) $block;
+      }
+    }
+    asort($cache['blocks'][$theme]);
+  }
+
+  return $cache['blocks'][$theme];
 }
 
 /**
- * @}
+ * Implements hook_skinr_theme_hooks().
  */
+function block_skinr_theme_hooks($module, $element) {
+  $theme_hooks = array();
+
+  if ($module == 'block') {
+    list($module, $delta) = explode('__', $element, 2);
+    $result = db_select('block', 'b')
+      ->fields('b')
+      ->distinct()
+      ->condition('b.module', $module)
+      ->condition('b.delta', $delta)
+      ->range(0, 1)
+      ->execute();
+    foreach ($result as $block) {
+      $theme_hooks[] = 'block__'. $block->module;
+    }
+    $theme_hooks[] = 'block';
+  }
+
+  return $theme_hooks;
+}
+
+/**
+ * Implements hook_skinr_elements().
+ */
+function block_skinr_elements($variables, $hook) {
+  $elements = array();
+  if ($hook == 'block') {
+    $elements['block'] = array($variables['block']->module . '__' . $variables['block']->delta);
+  }
+  return $elements;
+}

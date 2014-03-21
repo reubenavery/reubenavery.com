@@ -1,11 +1,14 @@
 name = Devel node access
-description = Developer block and page illustrating relevant node_access records.
+description = Developer blocks and page illustrating relevant node_access records.
 package = Development
-core = 6.x
+dependencies[] = menu
+core = 7.x
+configure = admin/config/development/devel
+tags[] = developer
 
 ; Information added by Drupal.org packaging script on 2014-02-05
-version = "6.x-1.28"
-core = "6.x"
+version = "7.x-1.4"
+core = "7.x"
 project = "devel"
-datestamp = "1391635706"
+datestamp = "1391635452"
 

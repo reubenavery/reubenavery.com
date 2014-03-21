@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * Drush integration for getID3.
@@ -21,7 +20,7 @@ function getid3_drush_command() {
 
 /**
  * Implements drush_MODULE_pre_COMMAND().
- * 
+ *
  * This automatically downloads the library when the module is being installed.
  */
 function drush_getid3_pre_pm_enable() {
@@ -30,6 +29,7 @@ function drush_getid3_pre_pm_enable() {
     drush_getid3_download();
   }
 }
+
 /**
  * Download the getID3 library from SourceForge.
  */
@@ -42,14 +42,17 @@ function drush_getid3_download() {
     $library_path = drush_get_context('DRUSH_DRUPAL_ROOT') . '/sites/all/libraries/getid3';
   }
 
-  $url = "http://downloads.sourceforge.net/project/getid3/getID3%28%29%201.x/1.7.9/getid3-1.7.9.zip";
-  $md5 = "76fe6d1213b20d59ae8a5c389d3a44e1";
+  // TODO: It would be great if we could use GETID3_RECOMMEND_VERSION.
+  $version = '1.8.2';
+  $filename = 'getid3-1.8.2-20101206.zip';
+  $md5 = "ddec632c8127f553faacafddd2e9df50";
+  $url = "http://downloads.sourceforge.net/project/getid3/getID3%28%29%201.x/{$version}/{$filename}";
 
   // Create the directory.
   if (!drush_shell_exec('mkdir -p  %s', $library_path)) {
     return drush_set_error('GETID3_MKDIR', dt('Drush was unable to create the getID3 directory at @path.', array('@path' => $library_path)));
   }
-  $zipfile_path = $library_path ."/getid3-1.7.9.zip";
+  $zipfile_path = $library_path . '/' . $filename;
   drush_register_file_for_deletion($zipfile_path);
   // Download the file.
   if (!drush_shell_exec('wget -O %s %s', $zipfile_path, $url)) {
@@ -69,5 +72,6 @@ function drush_getid3_download() {
   if (!drush_shell_exec('rm -r %s', $demos_path)) {
     return drush_set_error('GETID3_RM', dt("Drush was unable to remove getID3's demos directory. You should do so manually.", array('@path' => $demos_path)));
   }
+
   drush_log(dt('getID3 has been installed to @path.', array('@path' => $library_path)), 'success');
 }

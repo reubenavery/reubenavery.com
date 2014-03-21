@@ -1,4 +1,4 @@
-/* $Id: README.txt,v 1.1.4.3 2011/01/09 06:22:44 sun Exp $ */
+/* $Id: README.txt,v 1.4 2011/01/09 06:22:40 sun Exp $ */
 
 -- SUMMARY --
 
@@ -32,8 +32,8 @@ To submit bug reports and feature suggestions, or to track changes:
 
 -- CONFIGURATION --
 
-* Configure forms to display compact in Administer » Site configuration »
-  Compact Forms.
+* Configure forms to display compact in Administration » Configuration »
+  User interface » Compact Forms.
 
 
 -- CUSTOMIZATION --

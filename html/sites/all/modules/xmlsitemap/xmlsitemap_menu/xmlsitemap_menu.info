@@ -1,7 +1,0 @@
-; $Id: xmlsitemap_menu.info,v 1.1.4.2.2.3 2009/05/01 20:17:15 davereid Exp $
-name = XML Sitemap Menu
-description = "Adds menu items to the sitemap."
-core = 6.x
-package = XML Sitemap
-dependencies[] = xmlsitemap
-dependencies[] = menu

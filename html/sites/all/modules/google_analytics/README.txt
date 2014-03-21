@@ -30,7 +30,7 @@ your browser.
 New approach to page tracking in 5.x-1.5 and 6.x-1.1
 ====================================================
 With 5.x-1.5 and 6.x-1.1 there are new settings on the settings page at
-admin/settings/googleanalytics. The "Page specific tracking" area now
+admin/config/system/googleanalytics. The "Page specific tracking" area now
 comes with an interface that copies Drupal's block visibility settings.
 
 The default is set to "Add to every page except the listed pages". By
@@ -55,11 +55,11 @@ Custom variables
 =================
 One example for custom variables tracking is the "User roles" tracking. Enter
 the below configuration data into the custom variables settings form under
-admin/settings/googleanalytics.
+admin/config/system/googleanalytics.
 
 Slot: 1
 Name: User roles
-Value: [user-role-names]
+Value: [current-user:role-names]
 Scope: Visitor
 
 More details about Custom variables can be found in the Google API documentation at
@@ -73,5 +73,4 @@ and a few examples at http://drupal.org/node/248699. Support is not
 provided for any customisations you include.
 
 To speed up page loading you may also cache the Analytics ga.js
-file locally. You need to make sure the site file system is in public
-download mode.
+file locally.

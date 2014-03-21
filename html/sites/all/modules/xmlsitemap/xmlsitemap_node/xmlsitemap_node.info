@@ -1,6 +1,0 @@
-; $Id: xmlsitemap_node.info,v 1.2.4.3 2009/05/01 20:17:15 davereid Exp $
-name = XML Sitemap Node
-description = "Adds content links to the sitemap."
-core = 6.x
-package = XML Sitemap
-dependencies[] = xmlsitemap

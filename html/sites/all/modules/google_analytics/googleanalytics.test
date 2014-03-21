@@ -8,8 +8,8 @@ class GoogleAnalyticsBasicTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-      'name' => t('Google Analytics basic tests'),
-      'description' => t('Test basic functionality of Google Analytics module.'),
+      'name' => 'Google Analytics basic tests',
+      'description' => 'Test basic functionality of Google Analytics module.',
       'group' => 'Google Analytics',
     );
   }
@@ -17,7 +17,10 @@ class GoogleAnalyticsBasicTest extends DrupalWebTestCase {
   function setUp() {
     parent::setUp('googleanalytics');
 
-    $permissions = array('administer google analytics');
+    $permissions = array(
+      'access administration pages',
+      'administer google analytics',
+    );
 
     // User to set up google_analytics.
     $this->admin_user = $this->drupalCreateUser($permissions);
@@ -26,12 +29,12 @@ class GoogleAnalyticsBasicTest extends DrupalWebTestCase {
 
   function testGoogleAnalyticsConfiguration() {
     // Check for setting page's presence.
-    $this->drupalGet('admin/settings/googleanalytics');
+    $this->drupalGet('admin/config/system/googleanalytics');
     $this->assertRaw(t('Web Property ID'), '[testGoogleAnalyticsConfiguration]: Settings page displayed.');
 
     // Check for account code validation.
     $edit['googleanalytics_account'] = $this->randomName(2);
-    $this->drupalPost('admin/settings/googleanalytics', $edit, 'Save configuration');
+    $this->drupalPost('admin/config/system/googleanalytics', $edit, t('Save configuration'));
     $this->assertRaw(t('A valid Google Analytics Web Property ID is case sensitive and formatted like UA-xxxxxxx-yy.'), '[testGoogleAnalyticsConfiguration]: Invalid Web Property ID number validated.');
   }
 
@@ -40,7 +43,7 @@ class GoogleAnalyticsBasicTest extends DrupalWebTestCase {
     variable_set('googleanalytics_account', $ua_code);
 
     // Show tracking on "every page except the listed pages".
-    variable_set('googleanalytics_visibility', 0);
+    variable_set('googleanalytics_visibility_pages', 0);
     // Disable tracking one "admin*" pages only.
     variable_set('googleanalytics_pages', "admin\nadmin/*");
     // Enable tracking only for authenticated users only.
@@ -53,15 +56,15 @@ class GoogleAnalyticsBasicTest extends DrupalWebTestCase {
     // Test whether tracking code is not included on pages to omit.
     $this->drupalGet('admin');
     $this->assertNoRaw($ua_code, '[testGoogleAnalyticsPageVisibility]: Tracking code is not displayed on admin page.');
-    $this->drupalGet('admin/settings/googleanalytics');
+    $this->drupalGet('admin/config/system/googleanalytics');
     // Checking for tracking code URI here, as $ua_code is displayed in the form.
     $this->assertNoRaw('google-analytics.com/ga.js', '[testGoogleAnalyticsPageVisibility]: Tracking code is not displayed on admin subpage.');
 
     // Test whether tracking code display is properly flipped.
-    variable_set('googleanalytics_visibility', 1);
+    variable_set('googleanalytics_visibility_pages', 1);
     $this->drupalGet('admin');
     $this->assertRaw($ua_code, '[testGoogleAnalyticsPageVisibility]: Tracking code is displayed on admin page.');
-    $this->drupalGet('admin/settings/googleanalytics');
+    $this->drupalGet('admin/config/system/googleanalytics');
     // Checking for tracking code URI here, as $ua_code is displayed in the form.
     $this->assertRaw('google-analytics.com/ga.js', '[testGoogleAnalyticsPageVisibility]: Tracking code is displayed on admin subpage.');
     $this->drupalGet('');
@@ -73,9 +76,13 @@ class GoogleAnalyticsBasicTest extends DrupalWebTestCase {
     $this->assertNoRaw($ua_code, '[testGoogleAnalyticsPageVisibility]: Tracking code is NOT displayed for anonymous.');
 
     // Switch back to every page except the listed pages.
-    variable_set('googleanalytics_visibility', 0);
+    variable_set('googleanalytics_visibility_pages', 0);
     // Enable tracking code for all user roles.
     variable_set('googleanalytics_roles', array());
+
+    // Test whether 403 forbidden tracking code is shown if user has no access.
+    $this->drupalGet('admin');
+    $this->assertRaw('/403.html', '[testGoogleAnalyticsPageVisibility]: 403 Forbidden tracking code shown if user has no access.');
 
     // Test whether 404 not found tracking code is shown on non-existent pages.
     $this->drupalGet($this->randomName(64));
@@ -105,7 +112,7 @@ class GoogleAnalyticsBasicTest extends DrupalWebTestCase {
     variable_set('googleanalytics_account', $ua_code);
 
     // Show tracking code on every page except the listed pages.
-    variable_set('googleanalytics_visibility', 0);
+    variable_set('googleanalytics_visibility_pages', 0);
     // Enable tracking code for all user roles.
     variable_set('googleanalytics_roles', array());
 
@@ -142,6 +149,33 @@ class GoogleAnalyticsBasicTest extends DrupalWebTestCase {
     $this->drupalGet('');
     $this->assertRaw('_gaq.push(["_gat._anonymizeIp"]);', '[testGoogleAnalyticsTrackingCode]: Anonymize visitors IP address found on frontpage.');
 
+    // Test whether single domain tracking is active.
+    $this->drupalGet('');
+    $this->assertNoRaw('_gaq.push(["_setDomainName"', '[testGoogleAnalyticsTrackingCode]: Single domain tracking is active.');
+
+    // Enable "One domain with multiple subdomains".
+    variable_set('googleanalytics_domain_mode', 1);
+    $this->drupalGet('');
+
+    // Test may run on localhost, an ipaddress or real domain name.
+    // TODO: Workaround to run tests successfully. This feature cannot tested reliable.
+    global $cookie_domain;
+    if (count(explode('.', $cookie_domain)) > 2 && !is_numeric(str_replace('.', '', $cookie_domain))) {
+      $this->assertRaw('_gaq.push(["_setDomainName",', '[testGoogleAnalyticsTrackingCode]: One domain with multiple subdomains is active on real host.');
+    }
+    else {
+      // Special cases, Localhost and IP addresses don't show '_setDomainName'.
+      $this->assertNoRaw('_gaq.push(["_setDomainName",', '[testGoogleAnalyticsTrackingCode]: One domain with multiple subdomains may be active on localhost (test result is not reliable).');
+    }
+
+    // Enable "Multiple top-level domains" tracking.
+    variable_set('googleanalytics_domain_mode', 2);
+    variable_set('googleanalytics_cross_domains', "www.example.com\nwww.example.net");
+    $this->drupalGet('');
+    $this->assertRaw('_gaq.push(["_setDomainName", "none"]);', '[testGoogleAnalyticsTrackingCode]: _setDomainName: "none" found. Cross domain tracking is active.');
+    $this->assertRaw('_gaq.push(["_setAllowLinker", true]);', '[testGoogleAnalyticsTrackingCode]: _setAllowLinker: true found. Cross domain tracking is active.');
+    $this->assertRaw('"trackCrossDomains":["www.example.com","www.example.net"]', '[testGoogleAnalyticsTrackingCode]: Cross domain tracking with www.example.com and www.example.net is active.');
+
     // Test whether the BEFORE and AFTER code is added to the tracker.
     variable_set('googleanalytics_codesnippet_before', '_setDetectFlash(false);');
     variable_set('googleanalytics_codesnippet_after', '_gaq.push(["t2._setAccount", "UA-123456-3"]);_gaq.push(["t2._trackPageview"]);');
@@ -155,8 +189,8 @@ class GoogleAnalyticsCustomVariablesTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-      'name' => t('Google Analytics Custom Variables tests'),
-      'description' => t('Test custom variables functionality of Google Analytics module.'),
+      'name' => 'Google Analytics Custom Variables tests',
+      'description' => 'Test custom variables functionality of Google Analytics module.',
       'group' => 'Google Analytics',
       'dependencies' => array('token'),
     );
@@ -228,8 +262,8 @@ class GoogleAnalyticsCustomVariablesTest extends DrupalWebTestCase {
       'slots' => array(
         1 => array(
           'slot' => 1,
-          'name' => 'Name: [site-slogan]',
-          'value' => 'Value: [site-slogan]',
+          'name' => 'Name: [site:slogan]',
+          'value' => 'Value: [site:slogan]',
           'scope' => 3,
         ),
         2 => array(
@@ -270,12 +304,58 @@ class GoogleAnalyticsCustomVariablesTest extends DrupalWebTestCase {
   }
 }
 
+class GoogleAnalyticsStatusMessagesTest extends DrupalWebTestCase {
+
+  public static function getInfo() {
+    return array(
+      'name' => 'Google Analytics status messages tests',
+      'description' => 'Test status messages functionality of Google Analytics module.',
+      'group' => 'Google Analytics',
+    );
+  }
+
+  function setUp() {
+    parent::setUp('googleanalytics');
+
+    $permissions = array(
+      'access administration pages',
+      'administer google analytics',
+    );
+
+    // User to set up google_analytics.
+    $this->admin_user = $this->drupalCreateUser($permissions);
+  }
+
+  function testGoogleAnalyticsStatusMessages() {
+    $ua_code = 'UA-123456-4';
+    variable_set('googleanalytics_account', $ua_code);
+
+    // Enable logging of errors only.
+    variable_set('googleanalytics_trackmessages', array('error' => 'error'));
+
+    $this->drupalPost('user/login', array(), t('Log in'));
+    $this->assertRaw('_gaq.push(["_trackEvent", "Messages", "Error message", "Username field is required."]);', '[testGoogleAnalyticsStatusMessages]: _trackEvent "Username field is required." is shown.');
+    $this->assertRaw('_gaq.push(["_trackEvent", "Messages", "Error message", "Password field is required."]);', '[testGoogleAnalyticsStatusMessages]: _trackEvent "Password field is required." is shown.');
+
+    // @todo: investigate why drupal_set_message() fails.
+    //drupal_set_message('Example status message.', 'status');
+    //drupal_set_message('Example warning message.', 'warning');
+    //drupal_set_message('Example error message.', 'error');
+    //drupal_set_message('Example error <em>message</em> with html tags and <a href="http://example.com/">link</a>.', 'error');
+    //$this->drupalGet('');
+    //$this->assertNoRaw('_gaq.push(["_trackEvent", "Messages", "Status message", "Example status message."]);', '[testGoogleAnalyticsStatusMessages]: Example status message is not enabled for tracking.');
+    //$this->assertNoRaw('_gaq.push(["_trackEvent", "Messages", "Warning message", "Example warning message."]);', '[testGoogleAnalyticsStatusMessages]: Example warning message is not enabled for tracking.');
+    //$this->assertRaw('_gaq.push(["_trackEvent", "Messages", "Error message", "Example error message."]);', '[testGoogleAnalyticsStatusMessages]: Example error message is shown.');
+    //$this->assertRaw('_gaq.push(["_trackEvent", "Messages", "Error message", "Example error message with html tags and link."]);', '[testGoogleAnalyticsStatusMessages]: HTML has been stripped successful from Example error message with html tags and link.');
+  }
+}
+
 class GoogleAnalyticsRolesTest extends DrupalWebTestCase {
 
   public static function getInfo() {
     return array(
-      'name' => t('Google Analytics role tests'),
-      'description' => t('Test roles functionality of Google Analytics module.'),
+      'name' => 'Google Analytics role tests',
+      'description' => 'Test roles functionality of Google Analytics module.',
       'group' => 'Google Analytics',
     );
   }
@@ -306,6 +386,8 @@ class GoogleAnalyticsRolesTest extends DrupalWebTestCase {
     // Check tracking code visibility.
     $this->drupalGet('');
     $this->assertRaw($ua_code, '[testGoogleAnalyticsRoleVisibility]: Tracking code is displayed for anonymous users on frontpage with default settings.');
+    $this->drupalGet('admin');
+    $this->assertRaw('/403.html', '[testGoogleAnalyticsRoleVisibility]: 403 Forbidden tracking code is displayed for anonymous users in admin section with default settings.');
 
     $this->drupalLogin($this->admin_user);
 
@@ -334,6 +416,8 @@ class GoogleAnalyticsRolesTest extends DrupalWebTestCase {
     // Check tracking code visibility.
     $this->drupalGet('');
     $this->assertRaw($ua_code, '[testGoogleAnalyticsRoleVisibility]: Tracking code is added to every role and displayed for anonymous users.');
+    $this->drupalGet('admin');
+    $this->assertRaw('/403.html', '[testGoogleAnalyticsRoleVisibility]: 403 Forbidden tracking code is shown for anonymous users if every role except the selected ones is selected.');
 
     $this->drupalLogin($this->admin_user);
 

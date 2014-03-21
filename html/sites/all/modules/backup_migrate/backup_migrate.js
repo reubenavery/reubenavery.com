@@ -1,4 +1,5 @@
 
+(function ($) {
 Drupal.backup_migrate = {
   callbackURL : "",  
   autoAttach  : function() {
@@ -54,7 +55,5 @@ Drupal.backup_migrate = {
   }
 }
 
-// Global Killswitch
-if (Drupal.jsEnabled) {
-  $(document).ready(Drupal.backup_migrate.autoAttach);
-}
+$(document).ready(Drupal.backup_migrate.autoAttach);
+})(jQuery);

@@ -192,7 +192,7 @@ imce.recallDimensions = function() {
 //set row heights with respect to window height
 imce.recallHeights = function(bwFixedHeight) {
   //window & body dimensions
-  var winHeight = $.browser.opera ? window.innerHeight : $(window).height();
+  var winHeight = window.opera ? window.innerHeight : $(window).height();
   var bodyHeight = $(document.body).outerHeight(true);
   var diff = winHeight - bodyHeight;
   var bwHeight = $(imce.BW).height(), pwHeight = $(imce.PW).height();
@@ -226,7 +226,7 @@ imce.thumbRow = function (row) {
   if (!w) return;
   var h = row.cells[3].innerHTML * 1;
   if (imce.vars.tMaxW < w || imce.vars.tMaxH < h) {
-    if (!imce.vars.prvstyle || imce.conf.dir.indexOf('imagecache') == 0) return;
+    if (!imce.vars.prvstyle || imce.conf.dir.indexOf('styles') == 0) return;
     var img = new Image();
     img.src = imce.imagestyleURL(imce.getURL(row.id), imce.vars.prvstyle);
     img.className = 'imagestyle-' + imce.vars.prvstyle;
@@ -253,18 +253,18 @@ imce.thumbRow = function (row) {
 //convert a file URL returned by imce.getURL() to an image style(imagecache preset) URL
 imce.imagestyleURL = function (url, stylename) {
   var len = imce.conf.furl.length - 1;
-  return url.substr(0, len) + '/imagecache/' + stylename + url.substr(len);
+  return url.substr(0, len) + '/styles/' + stylename + '/' + imce.conf.scheme + url.substr(len);
 };
 
 // replace table view with box view for file list
 imce.boxView = function () {
   var w = imce.vars.boxW, h = imce.vars.boxH;
-  if (!w || !h || $.browser.msie && parseFloat($.browser.version) < 8) return;
+  if (!w || !h || imce.ie && imce.ie < 8) return;
   var $body = $(document.body);
   var toggle = function() {
     $body.toggleClass('box-view');
     // refresh dom. required by all except FF.
-    !$.browser.mozilla && $('#file-list').appendTo(imce.FW).appendTo(imce.FLW);
+    $('#file-list').appendTo(imce.FW).appendTo(imce.FLW);
   };
   $body.append('<style type="text/css">.box-view #file-list td.name {width: ' + w + 'px;height: ' + h + 'px;} .box-view #file-list td.name span {width: ' + w + 'px;word-wrap: normal;text-overflow: ellipsis;}</style>');
   imce.hooks.load.push(function() {

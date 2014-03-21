@@ -1,87 +1,170 @@
 <?php
 
 /**
+ * Provides the fancyBox jQuery plugin, a tool that offers a nice and elegant
+ * way to add zooming functionality for images, html content and multi-media
+ * on your webpages, and an extensive settings page for configuring fancyBox
+ * settings and how fancyBox interacts with your Drupal website.
+ *
+ * Commercial websites must obtain at least a single domain license in order
+ * to use the fancyBox plugin legally. (http://fancyapps.com/fancybox/#license).
+ *
+ * If you find this module useful and would like to donate towards further
+ * development and maintenance, please consider donating to the module
+ * maintainer(s):
+ *  - Daniel Imhoff (d.o: dwieeb, email: dwieeb@gmail.com)
+ *    http://www.danielimhoff.com/donations/
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under:
+ *  - Creative Commons Attribution-NonCommercial 3.0
+ *    http://creativecommons.org/licenses/by-nc/3.0/
+ *
+ * == END LICENSE ==
+ *
  * @file
- * Theme functions for Fancybox module.
+ * fancyBox theme functions.
  */
-
 
 /**
- * Theme ImageCache + Imagefield CCK field formatter.
+ * Formats and displays a fancyBox image field.
+ *
+ * @param $variables array
  */
-function theme_fancybox_formatter_imagefield($element) {
-  if (module_exists('imagecache') && module_exists('imagefield')) {
-    $node = node_load($element['#item']['nid']);
-    return fancybox_imagefield_image_imagecache($element['#field_name'], $element['#item'], $element['#formatter'], $node);
+function theme_fancybox_image_formatter($variables) {
+  $item = $variables['item'];
+  $entity = $variables['entity'];
+  $entity_type = $variables['entity_type'];
+  $field = $variables['field'];
+  $settings = $variables['display_settings'];
+
+  $image = array(
+    'path' => $item['uri'],
+    'alt' => $item['alt'],
+    'title' => $item['title'],
+    'style_name' => $settings['fancybox_image_style_content'],
+  );
+
+  if (isset($item['width']) && isset($item['height'])) {
+    $image['width'] = $item['width'];
+    $image['height'] = $item['height'];
   }
-}
 
-/**
- * Theme ImageCache + Imagefield CCK field.
- */
-function theme_imagefield_image_imagecache_fancybox($namespace, $field, $path, $title = '', $loop = '', $attributes = NULL) {
-  if (!empty($path)) {
-    $image = theme('imagecache', $namespace, $path, $title, $title, $attributes);
+  $caption = '';
 
-    $settings = variable_get('fancybox_settings', array());
+  // Default entity keys
+  $entity_key_label = 'title';
+  $entity_key_id = $entity_type == 'node' ? 'nid' : 'id';
 
-    if ($presetname = $settings['imagefield']['imagecache_preset']) {
-      $link_path = imagecache_create_url($presetname, $path);
-    }
-    else {
-      $link_path = file_create_url($path);
-    }
-
-    $options = array(
-      'html' => TRUE,
-      'attributes' => array(
-        'title' => $title,
-        'class' => "imagefield-fancybox",
-      )
-    );
-    if ($loop) {
-      $options['attributes']['rel'] = 'imagefield-fancybox-'. $loop;
-    }
-
-    return l($image, $link_path, $options);
+  // Prepare entity info if Entity API is available
+  if (module_exists('entity')) {
+    $entity_info = entity_get_info($entity_type);
+    $entity_key_label = isset($entity_info['entity keys']['label']) ? $entity_info['entity keys']['label'] : $entity_key_label;
+    $entity_key_id = isset($entity_info['entity keys']['id']) ? $entity_info['entity keys']['id'] : $entity_key_id;
   }
+
+  // Finally getting values of the content
+  $content_label = isset($entity->$entity_key_label)? $entity->$entity_key_label : '';
+  $content_id = isset($entity->$entity_key_id)? $entity->$entity_key_id : 'id';
+
+  switch ($settings['fancybox_caption']) {
+    case 'auto':
+      if (!empty($image['title'])) {
+        $caption = $image['title'];
+      }
+      elseif (!empty($image['alt'])) {
+        $caption = $image['alt'];
+      }
+      else {
+        $caption = $content_label;
+      }
+      break;
+    case 'title':
+      $caption = $image['title'];
+      break;
+    case 'alt':
+      $caption = $image['alt'];
+      break;
+    case 'content_title':
+      $caption = $content_label;
+      break;
+    case 'custom':
+      $caption = token_replace($settings['fancybox_caption_custom'], array('entity' => $entity, 'node' => node_load($entity->nid)));
+      break;
+  }
+
+  switch ($settings['fancybox_gallery']) {
+    case 'post':
+      $gid = 'gallery-post-' . $content_id;
+      break;
+    case 'page':
+      $gid = 'gallery-page';
+      break;
+    case 'field_post':
+      $gid = 'gallery-post-' . $content_id . '-field-' . $field['id'];
+      break;
+    case 'field_page':
+      $gid = 'gallery-page-field-' . $field['id'];
+      break;
+    case 'custom':
+      $gid = $settings['fancybox_gallery_custom'];
+      break;
+    default:
+      $gid = '';
+      break;
+  }
+
+  $path = $settings['fancybox_image_style_fancybox'] ? image_style_url($settings['fancybox_image_style_fancybox'], $image['path']) : file_create_url($image['path']);
+
+  return theme('fancybox_imagefield', array(
+    'image' => $image,
+    'path' => $path,
+    'caption' => $caption,
+    'group' => $gid,
+  ));
 }
 
 /**
- * Generate the HTML output to open a emvideo field in fancybox.
- * Use the generic modal output from emvideo.
+ * Returns HTML for a fancyBox image field.
  *
- * Note: if you are implementing a custom AJAX callback make sure that
- * you wrap the output into a div where you set its dimensions, fancybox sometimes
- * fails to detect the size of the embedded video if its wrapped into multiple divs.
- *
- * @param $field
- *   The CCK field the action is being performed on.
- * @param $item
- *   An array, keyed by column, of the data stored for this item in this field.
- * @param $formatter
- *   The formatter to use for the field.
- * @param $node
- *   The node object.
- * @return
- *   Themed modal dialogue of the embedded media field video.
+ * @param $variables array
  */
-function theme_fancybox_emvideo($field, $item, $formatter, $node) {
-  return theme('emvideo_modal_generic', $field, $item, $formatter, $node, array('modal' => 'fancybox'));
+function theme_fancybox_imagefield($variables) {
+  $image = $variables['image'];
+  $path = $variables['path'];
+  $caption = $variables['caption'];
+  $group = $variables['group'];
+
+  return l(theme(empty($image['style_name']) ? 'image' : 'image_style', $image), $path, array(
+    'html' => TRUE,
+    'attributes' => array(
+      'title' => $caption,
+      'class' => 'fancybox',
+      'data-fancybox-group' => $group,
+    ),
+  ));
 }
 
 /**
- * CCK formatter theme for the emfield. This will call theme_fancybox_emvideo.
- *
- * @param $element
- *   The CCK field element.
- * @return
- *   HTML output for displaying the video and link.
+ * Preprocess function for fancybox-insert-image.tpl.php.
  */
-function theme_fancybox_formatter_emvideo_fancybox_video($element) {
-  $field = content_fields($element['#field_name'], $element['#type_name']);
-  $item = $element['#item'];
-  $formatter = "emvideo";
-  $node = node_load($element['#node']->nid);
-  return module_invoke('emfield', 'emfield_field_formatter', $field, $item, $formatter, $node, 'fancybox');
+function template_preprocess_fancybox_insert_image(&$variables) {
+  $classes = array();
+  $file = file_load($variables['item']['fid']);
+
+  if (!empty($variables['widget']['settings']['insert_class'])) {
+    $classes = explode(' ', $variables['widget']['settings']['insert_class']);
+  }
+
+  $classes[] = 'image-' . $variables['item']['style_name'];
+
+  foreach ($classes as $i => $value) {
+    $classes[$i] = drupal_html_class($value);
+  }
+
+  $variables['image_path'] = image_style_url($variables['item']['style_name'], $file->uri);
+  $variables['link_path'] = file_create_url($file->uri);
+  $variables['class'] = implode(' ', $classes);
+  $variables['gid'] = 'gallery-all';
 }

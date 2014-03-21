@@ -1,5 +1,5 @@
 <?php
-// $Id: compact_forms.admin.inc,v 1.3.2.2 2011/01/09 06:22:44 sun Exp $
+// $Id: compact_forms.admin.inc,v 1.6 2011/01/09 06:22:40 sun Exp $
 
 /**
  * @file
@@ -9,7 +9,7 @@
 /**
  * Form constructor for Compact Forms settings.
  */
-function compact_forms_admin_form() {
+function compact_forms_admin_form($form, &$form_state) {
   $form['compact_forms_ids'] = array(
     '#type' => 'textarea',
     '#title' => t('Form CSS IDs'),
@@ -17,11 +17,6 @@ function compact_forms_admin_form() {
     '#cols' => 40,
     '#default_value' => variable_get('compact_forms_ids', 'user-login-form'),
     '#description' => t('Enter the CSS IDs of the forms to display compact. One per line.'),
-  );
-  $form['compact_forms_colons'] = array(
-    '#type' => 'checkbox',
-    '#title' => t('Keep trailing colons after field labels'),
-    '#default_value' => variable_get('compact_forms_colons', 0),
   );
   $form['compact_forms_descriptions'] = array(
     '#type' => 'checkbox',

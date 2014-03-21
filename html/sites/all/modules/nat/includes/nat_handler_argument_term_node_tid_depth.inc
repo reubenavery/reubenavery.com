@@ -1,5 +1,4 @@
 <?php
-// $Id: nat_handler_argument_term_node_tid_depth.inc,v 1.1.2.3 2010/11/18 05:49:42 karthik Exp $
 
 /**
  * @file
@@ -102,16 +101,16 @@ class nat_handler_argument_term_node_tid_depth extends views_handler_argument {
       $nat_tid = nat_get_term($this->argument);
       $tids = array($nat_tid->tid);
     }
-    $subquery = "\n  SELECT tn.vid FROM {term_node} tn\n";
+    $subquery = "\n  SELECT tn.vid FROM {taxonomy_term_data} tn\n";
     $where = "  WHERE tn.tid $placeholder\n";
     $args = $tids;
     $last = "tn";
 
     if ($this->options['depth'] > 0) {
-      $subquery .= "    LEFT JOIN {term_hierarchy} th ON th.tid = tn.tid\n";
+      $subquery .= "    LEFT JOIN {taxonomy_term_hierarchy} th ON th.tid = tn.tid\n";
       $last = "th";
       foreach (range(1, abs($this->options['depth'])) as $count) {
-        $subquery .= "    LEFT JOIN {term_hierarchy} th$count ON $last.parent = th$count.tid\n";
+        $subquery .= "    LEFT JOIN {taxonomy_term_hierarchy} th$count ON $last.parent = th$count.tid\n";
         $where .= "    OR th$count.tid $placeholder\n";
         $args = array_merge($args, $tids);
         $last = "th$count";
@@ -119,7 +118,7 @@ class nat_handler_argument_term_node_tid_depth extends views_handler_argument {
     }
     elseif ($this->options['depth'] < 0) {
       foreach (range(1, abs($this->options['depth'])) as $count) {
-        $subquery .= "    LEFT JOIN {term_hierarchy} th$count ON $last.tid = th$count.parent\n";
+        $subquery .= "    LEFT JOIN {taxonomy_term_hierarchy} th$count ON $last.tid = th$count.parent\n";
         $where .= "    OR th$count.tid $placeholder\n";
         $args = array_merge($args, $tids);
         $last = "th$count";
@@ -130,7 +129,7 @@ class nat_handler_argument_term_node_tid_depth extends views_handler_argument {
   }
 
   function title() {
-    $term = taxonomy_get_term($this->argument);
+    $term = taxonomy_term_load($this->argument);
     if (!empty($term)) {
       return check_plain($term->name);
     }

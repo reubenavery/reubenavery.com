@@ -1,11 +1,8 @@
 <?php
 
-/**
- * Implements hook_menu().
- */
 function extlink_menu() {
   $items = array();
-  $items['admin/settings/extlink'] = array(
+  $items['admin/config/user-interface/extlink'] = array(
     'title' => 'External links',
     'description' => 'Alter the display of external links on the site.',
     'page callback' => 'drupal_get_form',
@@ -17,32 +14,23 @@ function extlink_menu() {
 }
 
 /**
- * Implements hook_init().
+ * Implementation of hook_init().
  */
-function extlink_init() {
+function extlink_page_build() {
   $path = drupal_get_path('module', 'extlink');
-  $settings = array(
+  drupal_add_js($path .'/extlink.js', array('every_page' => TRUE));
+  drupal_add_js(array('extlink' => array(
     'extTarget'     => variable_get('extlink_target', 0),
     'extClass'      => variable_get('extlink_class', 'ext'),
     'extSubdomains' => variable_get('extlink_subdomains', 1),
     'extExclude'    => variable_get('extlink_exclude', ''),
     'extInclude'    => variable_get('extlink_include', ''),
-	'extCssExclude' => variable_get('extlink_css_exclude', ''),
+    'extCssExclude' => variable_get('extlink_css_exclude', ''),
     'extCssExplicit' => variable_get('extlink_css_explicit', ''),
     'extAlert'      => variable_get('extlink_alert', 0),
-    'extAlertText'  => variable_get('extlink_alert_text', NULL),
-    'mailtoClass'   => variable_get('extlink_mailto_class', 'mailto'),
+    'extAlertText'  => variable_get('extlink_alert_text', 'This link will take you to an external web site. We are not responsible for their content.'),
+    'mailtoClass'   => variable_get('extlink_mailto_class', 'mailto'))), 'setting'
   );
-  // The default alert text must be translated separately to avoid caching.
-  if ($settings['extAlertText'] === NULL) {
-    $settings['extAlertText'] = t('This link will take you to an external web site. We are not responsible for their content.');
-  }
-
-  drupal_add_js($path . '/extlink.js');
-  drupal_add_js(array('extlink' => $settings), 'setting');
-  if (variable_get('extlink_class', 'ext') == 'ext' || variable_get('extlink_mailto_class', 'mailto') == 'mailto') {
-    drupal_add_css($path . '/extlink.css');
-  }
 }
 
 function extlink_admin_settings() {
@@ -53,7 +41,7 @@ function extlink_admin_settings() {
     '#title' => t('Place an icon next to external links.'),
     '#return_value' => 'ext',
     '#default_value' => variable_get('extlink_class', 'ext'),
-    '#description' => t('Places an !icon icon next to external links.', array('!icon' => theme('image', drupal_get_path('module', 'extlink') .'/extlink.png'))),
+    '#description' => t('Places an !icon icon next to external links.', array('!icon' => theme('image', array('path' => drupal_get_path('module', 'extlink') . '/extlink.png', 'alt' => t('External Links icon'))))),
   );
 
   $form['extlink_mailto_class'] = array(
@@ -61,7 +49,7 @@ function extlink_admin_settings() {
     '#title' => t('Place an icon next to mailto links'),
     '#return_value' => 'mailto',
     '#default_value' => variable_get('extlink_mailto_class', 'mailto'),
-    '#description' => t('Places an !icon icon next to mailto links.', array('!icon' => theme('image', drupal_get_path('module', 'extlink') .'/mailto.png'))),
+    '#description' => t('Places an !icon icon next to mailto links.', array('!icon' => theme('image',array('path' => drupal_get_path('module', 'extlink') . '/mailto.png', 'alt' => t('Email links icon'))))),
   );
 
   $form['extlink_subdomains'] = array(
@@ -85,11 +73,6 @@ function extlink_admin_settings() {
     '#default_value' => variable_get('extlink_alert', 0),
   );
 
-  // The default alert text must be translated separately to avoid caching.
-  $extlink_alert_text = variable_get('extlink_alert_text', NULL);
-  if ($extlink_alert_text === NULL) {
-    $extlink_alert_text = t('This link will take you to an external web site. We are not responsible for their content.');
-  }
   $form['extlink_alert_text'] = array(
     '#type' => 'textarea',
     '#title' => t('Text to display in the pop-up warning box.'),
@@ -147,7 +130,7 @@ function extlink_admin_settings() {
     '#default_value' => variable_get('extlink_include', ''),
     '#description' => t('Enter a regular expression for internal links that you wish to be considered external.'),
   );
-  
+
   $form['css_matching'] = array(
     '#tree' => FALSE,
     '#type' => 'fieldset',
@@ -173,7 +156,6 @@ function extlink_admin_settings() {
     '#default_value' => variable_get('extlink_css_explicit', ''),
     '#description' => t('Enter a comma-separated list of CSS selectors (ie "#block-block-2 .content, ul.menu")'),
   );
-
 
   return system_settings_form($form);
 }

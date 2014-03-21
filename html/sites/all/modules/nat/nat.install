@@ -1,5 +1,4 @@
 <?php
-// $Id: nat.install,v 1.9.2.3 2010/11/21 19:10:01 karthik Exp $
 
 /*
  * @file
@@ -7,17 +6,15 @@
  */
 
 /**
- * Implementation of hook_install().
+ * Implements hook_install().
  */
 function nat_install() {
-  drupal_install_schema('nat');
-
   $t = get_t();
   drupal_set_message($t('NAT module: Installation script complete.'));
 }
 
 /**
- * Implementation of hook_install().
+ * Implements hook_install().
  */
 function nat_schema() {
   $schema['nat'] = array(
@@ -71,11 +68,10 @@ function nat_update_2() {
 }
 
 /**
- * Implementation of hook_uninstall().
+ * Implements hook_uninstall().
  */
 function nat_uninstall() {
   variable_del('nat_config');
-  drupal_uninstall_schema('nat');
 
   $t = get_t();
   drupal_set_message($t('NAT module: Uninstallation script complete.'));

@@ -4,11 +4,12 @@ to external websites or e-mail addresses. It is a purely JavaScript
 implementation, so the icons are only shown to users that have JavaScript
 enabled.
 
-Fivestar was written by Nathan Haug. Built by Robots: http://www.lullabot.com
+External Links was written by Nathan Haug.
+Built by Robots: http://www.lullabot.com
 
 Install
 -------
-Simply instal External Links like you would any other module.
+Simply install External Links like you would any other module.
 
 1) Copy the extlink folder to the modules folder in your installation.
 

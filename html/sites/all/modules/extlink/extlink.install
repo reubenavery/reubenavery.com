@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Implements hook_install().
+ * Implementation of hook_install().
  */
 function extlink_install() {
   // Weight needs to be 1 for compatibility with SpamSpan.
@@ -9,18 +9,9 @@ function extlink_install() {
 }
 
 /**
- * Implements hook_uninstall().
+ * Implementation of hook_uninstall().
  */
 function extlink_uninstall() {
   db_query("DELETE FROM {variable} WHERE name LIKE 'extlink_%'");
   cache()->deleteTags(array('variables' => TRUE));
-}
-
-/**
- * Set the weight of the module to 1 for compatibility with SpamSpan.
- */
-function extlink_update_6100() {
-  $ret = array();
-  $ret[] = update_sql("UPDATE {system} SET weight = 1 WHERE name = 'extlink'");
-  return $ret;
 }

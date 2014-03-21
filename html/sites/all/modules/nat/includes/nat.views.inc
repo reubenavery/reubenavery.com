@@ -1,5 +1,4 @@
 <?php
-// $Id: nat.views.inc,v 1.2.2.10 2010/11/18 05:49:42 karthik Exp $
 
 /**
  * @file
@@ -7,7 +6,7 @@
  */
 
 /**
- * Implementation of hook_views_handlers() to register all the basic handlers
+ * Implements hook_views_handlers() to register all the basic handlers
  * that Views uses.
  */
 function nat_views_handlers() {
@@ -27,7 +26,7 @@ function nat_views_handlers() {
 }
 
 /**
- * Implementation of hook_views_data().
+ * Implements hook_views_data().
  */
 function nat_views_data() {
   $data = array();
@@ -41,13 +40,13 @@ function nat_views_data() {
   );
 
   $data['nat_term_node']['table']['join']['node'] = array(
-    'table' => 'term_node',
+    'table' => 'taxonomy_index',
     'left_field' => 'nid',
     'field' => 'nid'
   );
 
   // Add NAT node to term view.
-  $data['nat']['table']['join']['term_data'] = array(
+  $data['nat']['table']['join']['taxonomy_term_data'] = array(
     'left_field' => 'tid',
     'field' => 'tid'
   );
@@ -130,7 +129,7 @@ function nat_views_data() {
 }
 
 /**
- * Implementation of hook_views_data_alter().
+ * Implements hook_views_data_alter().
  */
 function nat_views_data_alter(&$data) {
   $data['node']['nat_term_node_tid_depth'] = array(
