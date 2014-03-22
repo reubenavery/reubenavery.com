@@ -1,0 +1,19 @@
+diff --git a/editors/js/epiceditor.js b/editors/js/epiceditor.js
+index 03c4801..14638f6 100644
+--- a/editors/js/epiceditor.js
++++ b/editors/js/epiceditor.js
+@@ -30,9 +30,11 @@ Drupal.wysiwyg.editor.detach.epiceditor = function (context, params, trigger) {
+ 
+   $target.val(editor.exportFile());
+ 
+-  editor.unload(function () {
+-    $target.show();
+-  });
++  if (trigger === 'unload') {
++    editor.unload(function () {
++      $target.show();
++    });
++  }
+ };
+ 
+ })(jQuery);

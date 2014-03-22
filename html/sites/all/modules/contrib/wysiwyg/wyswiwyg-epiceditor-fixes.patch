@@ -1,0 +1,39 @@
+diff --git a/html/sites/all/modules/contrib/wysiwyg/editors/js/epiceditor.js b/html/sites/all/modules/contrib/wysiwyg/editors/js/epiceditor.js
+index 03c4801..f4f9a66 100644
+--- a/html/sites/all/modules/contrib/wysiwyg/editors/js/epiceditor.js
++++ b/html/sites/all/modules/contrib/wysiwyg/editors/js/epiceditor.js
+@@ -7,14 +7,14 @@ Drupal.wysiwyg.editor.attach.epiceditor = function (context, params, settings) {
+   var $target = $('#' + params.field);
+   var containerId = params.field + '-epiceditor';
+   var defaultContent = $target.val();
+-  $target.hide().after('<div id="' + containerId + '" />');
++  $target.hide().after('<div id="' + containerId + '" class="epiceditor-widget-wrapper" />');
+ 
+   settings.container = containerId;
+   settings.file = {
+     defaultContent: defaultContent
+   };
+   settings.theme = {
+-    preview: '/themes/preview/preview-dark.css',
++    preview: '/themes/preview/github.css',
+     editor: '/themes/editor/' + settings.theme + '.css'
+   }
+   var editor = new EpicEditor(settings).load();
+@@ -30,9 +30,14 @@ Drupal.wysiwyg.editor.detach.epiceditor = function (context, params, trigger) {
+ 
+   $target.val(editor.exportFile());
+ 
+-  editor.unload(function () {
+-    $target.show();
+-  });
++  // Clean-up after itself.
++  $target.closest('div.form-item').find('.epiceditor-widget-wrapper').remove();
++
++  if (trigger === 'unload') {
++    editor.unload(function () {
++      $target.show();
++    });
++  }
+ };
+ 
+ })(jQuery);
