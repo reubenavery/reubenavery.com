@@ -1,0 +1,144 @@
+/*******************************************************************************
+ * hero.layout.scss
+ *
+ * Styles for the Hero layout.
+ ******************************************************************************/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000313}}
+.l-constrained, .l-region--highlighted, .l-region--footer {
+  width: 95%;
+  margin: 0 auto;
+  *zoom: 1; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/compass-0\.12\.4\/frameworks\/compass\/stylesheets\/compass\/utilities\/general\/_clearfix\.scss}line{font-family:\0000338}}
+  .l-constrained:after, .l-region--highlighted:after, .l-region--footer:after {
+    content: "";
+    display: table;
+    clear: both; }
+
+/* Header */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000320}}
+.l-region--header {
+  padding: 18px 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000323}}
+  .l-region--header .block {
+    float: right; }
+
+/* Content Area */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000329}}
+.l-highlighted-wrapper {
+  padding: 18px 0; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000335}}
+.l-region--help {
+  margin-bottom: 18px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000338}}
+.l-main {
+  margin-top: 36px;
+  margin-bottom: 36px; }
+
+/* Sidebars */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000345}}
+.l-region--sidebar-first,
+.l-region--sidebar-second {
+  padding: 18px 1em; }
+
+/* Footer */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000350}}
+.l-footer-wrapper {
+  padding: 18px 0; }
+
+@media (min-width: 44em) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000358}}
+  .l-constrained, .l-region--highlighted, .l-region--footer {
+    width: 90%; }
+
+  /* Header */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000363}}
+  .l-branding {
+    width: 23.40426%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 0%;
+    clear: none; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000366}}
+  .l-region--navigation {
+    width: 48.93617%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 25.53191%;
+    clear: none; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000369}}
+  .l-region--header {
+    width: 23.40426%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none; }
+
+  /* Sidebars */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000376}}
+  .has-two-sidebars .l-content,
+  .has-one-sidebar .l-content {
+    width: 65.95745%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 0%;
+    clear: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000380}}
+  .has-two-sidebars .l-region--sidebar-first,
+  .has-two-sidebars .l-region--sidebar-second,
+  .has-one-sidebar .l-region--sidebar-first,
+  .has-one-sidebar .l-region--sidebar-second {
+    width: 31.91489%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none;
+    clear: right; } }
+@media (min-width: 70em) {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000388}}
+  .l-constrained, .l-region--highlighted, .l-region--footer {
+    width: 80%; }
+
+  /* Sidebars */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000394}}
+  .has-one-sidebar .l-content {
+    width: 65.95745%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 0%;
+    clear: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\0000397}}
+  .has-one-sidebar .l-region--sidebar-first {
+    width: 31.91489%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none;
+    clear: none; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\00003103}}
+  .has-two-sidebars .l-content {
+    width: 48.93617%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 0%;
+    clear: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\00003107}}
+  .has-two-sidebars .l-region--sidebar-first,
+  .has-two-sidebars .l-region--sidebar-second {
+    width: 23.40426%;
+    float: left;
+    margin-right: -100%;
+    margin-left: 51.06383%;
+    clear: none;
+    clear: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/hero\.layout\.scss}line{font-family:\00003111}}
+  .has-two-sidebars .l-region--sidebar-second {
+    width: 23.40426%;
+    float: right;
+    margin-left: 0;
+    margin-right: 0;
+    clear: none; } }

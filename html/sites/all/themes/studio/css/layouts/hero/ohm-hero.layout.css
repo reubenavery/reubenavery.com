@@ -1,0 +1,29 @@
+/*******************************************************************************
+ * ohm-hero.layout.scss
+ *
+ * Additional, theme specific styles for the Hero layout.
+ ******************************************************************************/
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/ohm-hero\.layout\.scss}line{font-family:\0000310}}
+body {
+  background: transparent url('../../../images/diagonal.png?1395501813') left top repeat; }
+
+/* Header */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/ohm-hero\.layout\.scss}line{font-family:\0000315}}
+.l-header {
+  background-color: #52b1ea; }
+
+/* Content Area */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/ohm-hero\.layout\.scss}line{font-family:\0000320}}
+.l-highlighted-wrapper {
+  background: #fff; }
+
+/* Sidebars */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/ohm-hero\.layout\.scss}line{font-family:\0000326}}
+.l-region--sidebar-first,
+.l-region--sidebar-second {
+  background-color: #fff; }
+
+/* Footer */
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/layouts\/hero\/ohm-hero\.layout\.scss}line{font-family:\0000331}}
+.l-footer-wrapper {
+  background: #fff; }
