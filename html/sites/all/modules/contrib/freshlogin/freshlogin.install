@@ -1,0 +1,17 @@
+<?php
+
+/**
+ * Implements hook_enable().
+ */
+function freshlogin_enable() {
+  cache_clear_all();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function freshlogin_uninstall() {
+  variable_del('freshlogin_user_login_header');
+  variable_del('freshlogin_user_register_header');
+  variable_del('freshlogin_user_password_header');
+}

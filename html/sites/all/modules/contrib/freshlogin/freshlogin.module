@@ -1,0 +1,140 @@
+<?php
+
+/**
+ * Implements hook_menu().
+ * @return array
+ */
+function freshlogin_menu() {
+  $items = array();
+
+  $items['admin/config/user-interface/freshlogin'] = array(
+    'title' => 'FreshLogin Configuration',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('freshlogin_admin_settings_form'),
+    'access arguments' => array('administer freshlogin'),
+    'description' => 'Change the appearance of the login.',
+    'file' => 'freshlogin.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function freshlogin_menu_alter(&$items) {
+  $items['user']['page callback'] = 'freshlogin_route_user';
+  $items['user/login']['type'] = MENU_LOCAL_TASK;
+  $items['user/login']['page arguments'] = array('user_login', 'login');
+  $items['user/login']['page callback'] = 'freshlogin_user_page';
+  $items['user/register']['page arguments'] = array('user_register_form', 'register');
+  $items['user/register']['page callback'] = 'freshlogin_user_page';
+  $items['user/password']['page arguments'] = array('user_pass', 'forgot_password');
+  $items['user/password']['page callback'] = 'freshlogin_user_page';
+}
+
+/**
+ * Menu callback - override the normal user router so we avoid the login page on /user and redirect to user/login.
+ * @return array|int|mixed
+ */
+function freshlogin_route_user() {
+  if (user_is_anonymous() && current_path() === 'user') {
+    drupal_goto('user/login');
+  }
+
+  if (!user_is_anonymous()) {
+    return user_page();
+  }
+}
+
+/**
+ * Implements hook_permission().
+ * @return array
+ */
+function freshlogin_permission() {
+  return array(
+    'administer freshlogin' => array(
+      'title' => t('Administer FreshLogin Settings'),
+      'description' => t('Administer and change the settings for FreshLogin.'),
+    )
+  );
+}
+
+/**
+ * Implements hook_theme().
+ * @return array
+ */
+function freshlogin_theme() {
+  return array(
+    'freshlogin' => array(
+      'variables' => array('page' => array()),
+      'template' => 'freshlogin',
+    ),
+  );
+}
+
+/**
+ * Generate the user login/register/password page.
+ */
+function freshlogin_user_page($form_id, $variable_type) {
+  $variables = _freshlogin_page_variables($variable_type);
+  $form = drupal_get_form($form_id);
+  $variables['message'] = theme('status_messages', array());
+  $variables['form'] = drupal_render($form);
+
+  // prepare html in freshlogin.tpl.php
+  $html = theme('freshlogin', array('page' => $variables));
+
+  drupal_add_http_header('Content-Type', 'text/html; charset=utf-8');
+  drupal_send_headers();
+  print $html;
+}
+
+/**
+ * Provide common page variables for the freshlogin.tpl.php template.
+ * @param $type
+ * @return array
+ */
+function _freshlogin_page_variables($type) {
+  global $language;
+
+  $variables = array();
+  $variables['language'] = $language->language;
+  $variables['head'] = drupal_get_html_head();
+  $variables['scripts'] = drupal_get_js();
+  // default site theme favicon should be called here
+  $variables['favicon']    = '';
+  $variables['site_name'] = l(variable_get('site_name', ''), '<front>');
+
+  // secure pages exists and enabled check
+  // it won't show the message otherwise
+  // TRUE for now as we are developing
+  $variables['site_secure'] = TRUE; // module_enabled('securepages') or $_SERVER vars check
+
+  switch ($type) {
+    case 'login':
+      $variables['title'] = t('Login') . ' | ' . variable_get('site_name', '');
+      $variables['header_message'] = variable_get('freshlogin_user_login_header', 'Log in to your account below.');
+      break;
+    case 'register':
+      $variables['title'] = t('Register an account') . ' | ' . variable_get('site_name', '');
+      $variables['header_message'] = variable_get('freshlogin_user_register_header', 'Register an account!');
+      break;
+    case 'forgot_password':
+      $page['title'] = t('Request new password') . ' | ' . variable_get('site_name', '');
+      $variables['header_message'] = variable_get('freshlogin_user_password_header', 'Request new password.');
+      break;
+    default:
+      break;
+  }
+
+  drupal_static_reset('drupal_add_css');
+  drupal_add_css(drupal_get_path('module', 'freshlogin') . '/css/freshlogin.css');
+
+  // provide a method for themes or other custom modules to add their own CSS file here because we've cleared the variable above
+
+  $variables['css'] = drupal_get_css();
+  $variables['message'] = theme('status_messages');
+  $variables['footer_scripts'] = drupal_get_js('footer');
+  return $variables;
+}

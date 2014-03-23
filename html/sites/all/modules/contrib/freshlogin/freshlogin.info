@@ -1,0 +1,10 @@
+name = FreshLogin
+description = Freshen up your average Drupal login experience for a better UX for the end user.
+core = 7.x
+
+; Information added by drupal.org packaging script on 2013-09-30
+version = "7.x-1.x-dev"
+core = "7.x"
+project = "freshlogin"
+datestamp = "1380580225"
+

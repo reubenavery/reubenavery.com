@@ -1,0 +1,16 @@
+name = OpenID Connect
+description = A pluggable client implementation for the OpenID Connect protocol.
+core = 7.x
+package = "OAuth2"
+configure = admin/config/services/openid-connect
+dependencies[] = entity
+dependencies[] = ctools
+
+files[] = includes/OpenIDConnectClientInterface.class.php
+
+; Information added by Drupal.org packaging script on 2014-02-27
+version = "7.x-1.0-alpha1"
+core = "7.x"
+project = "openid_connect"
+datestamp = "1393529013"
+
