@@ -17,7 +17,19 @@
 // directly. Variables-, function- or mixin providing partials should never
 // output any styles themselves: Importing them multiple times to resolve
 // dependencies shouldn't be a problem.
-@import "variables/**/*";
+@import "variables";
 @import "abstractions/**/*";
 @import "base/**/*";
 @import "components/**/*";
+
+html {
+  background-color: $base-background-color;
+}
+
+h1.page-title {
+  border-bottom: 2px solid $mid-grey;
+  padding-bottom: 0.5em;
+  margin-bottom: 1em;
+}
+//@import "development";
+

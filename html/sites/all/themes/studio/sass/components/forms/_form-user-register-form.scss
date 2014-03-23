@@ -1,0 +1,15 @@
+.user-register-form {
+  .form-type-password-confirm {
+    @include clearfix;
+
+    .form-type-password {
+
+    }
+
+    .password-strength, div.password-confirm {
+      width: 73%;
+      padding-right: 50%;
+
+    }
+  }
+}

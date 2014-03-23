@@ -74,6 +74,8 @@ GEM
     sass (3.2.17)
     sass-globbing (1.1.0)
       sass (>= 3.1)
+    sassy-buttons (0.2.6)
+      compass (>= 0.12.2)
     sassy-strings (1.0.0)
       compass (>= 0.12.2)
     singularitygs (1.1.2)
@@ -114,6 +116,7 @@ DEPENDENCIES
   rb-inotify (~> 0.9)
   sass
   sass-globbing
+  sassy-buttons
   singularitygs
   susy
   toolkit

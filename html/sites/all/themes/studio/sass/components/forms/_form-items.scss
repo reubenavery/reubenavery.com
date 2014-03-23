@@ -1,3 +1,15 @@
+@import "sassy-buttons";
+
+select,
+input,
+textarea {
+  &:focus {
+    @include box-shadow(0 0 4px 1px rgba(lighten($orange, 15%), 0.3));
+    outline: 1px solid $light-blue;
+  }
+  background-color: tint($base-background-color, 50%);
+}
+
 /**
  * $FORM-ITEM
  */
@@ -9,8 +21,7 @@
   .form-text,
   .form-textarea {
     padding: 0.6em;
-    background-color: #fff;
-    border: 1px solid $mid-grey;
+    border: 1px solid $dark-grey;
     vertical-align: middle;
   }
   .description {
@@ -18,6 +29,19 @@
     font-style: italic;
   }
 }
+
+/**
+ * Sexy, sassy buttons.
+ */
+input[type='submit'] {
+  @include sassy-button("matte", 15px, font-size(18px), $mid-blue);
+  min-width: 10em;
+}
+input[type='button'] {
+  @include sassy-button("matte", 15px, font-size(18px), $light-grey);
+  min-width: 10em;
+}
+
 
 .container-inline {
   .form-select,
@@ -47,4 +71,8 @@
 
 .cke .cke_contents {
   padding: 0.5em;
+}
+
+.form-required {
+  color: $error-color;
 }
