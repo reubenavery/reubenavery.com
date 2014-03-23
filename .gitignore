@@ -1,5 +1,5 @@
 .DS_Store
 .idea
-html/sites/default/files
-html/sites/default/settings.php
+sites/default/files
+sites/default/settings.php
 
