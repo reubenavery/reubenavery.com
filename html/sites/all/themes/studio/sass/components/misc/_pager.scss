@@ -2,7 +2,7 @@
  * $PAGER
  */
 .pager {
-  @include clearfix(true);
+  @include clearfix;
 }
 
 .pager__item {

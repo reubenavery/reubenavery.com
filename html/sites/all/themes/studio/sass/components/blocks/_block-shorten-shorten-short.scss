@@ -1,0 +1,26 @@
+.block--shorten-shorten-short {
+  border-top: 1px solid $mid-grey;
+  margin-top: 1em;
+  padding-top: 0.5em;
+
+  .block__title {
+    float: left;
+    font-size: inherit;
+    color: inherit;
+    font-weight: inherit;
+    &:after {
+      content: ':';
+      padding-right: $horz-spacing-unit;
+    }
+  }
+  .block__content {
+    float: left;
+    .form-item-this-shortened input {
+      color: inherit;
+      padding: 0;
+      background: transparent none;
+      border: 0;
+      vertical-align: baseline;
+    }
+  }
+}

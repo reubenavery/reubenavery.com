@@ -2,19 +2,15 @@
  * $FORM-ITEM
  */
 .form-item {
-  color: $mid-grey;
-
   label {
     margin-bottom: 0.4em;
   }
   .form-select,
   .form-text,
   .form-textarea {
-    width: 100%;
     padding: 0.6em;
     background-color: #fff;
-    border: 1px solid $light-grey;
-    color: $mid-grey;
+    border: 1px solid $mid-grey;
     vertical-align: middle;
   }
   .description {
@@ -29,4 +25,26 @@
   .form-textarea {
     width: auto;
   }
+}
+
+.epiceditor-widget-wrapper {
+  border: 1px solid #e5e5e5;
+}
+
+.wysiwyg-toggle-wrapper {
+  margin: 1em 0;
+  float: left;
+}
+
+.form-type-select {
+  margin: 1em 0;
+  float: right;
+}
+
+.form-wrapper {
+  overflow: hidden;
+}
+
+.cke .cke_contents {
+  padding: 0.5em;
 }

@@ -1,0 +1,44 @@
+
+.l-header {
+  /**
+   * $SITE-BRANDING
+   */
+  .l-branding {
+    //background: transparent image-url('logos/reuben_avery_studio_logo_large.png') no-repeat -14px -15px;
+    position: relative;
+
+    padding: 0;
+    margin: 5em 0;
+
+    @include clearfix;
+
+    .site-logo {
+      display: block;
+      float: left;
+      img {
+        content: image-url('logos/logo_black_trans.svg');
+        width: 4.688em;
+        height: 4.688em;
+      }
+    }
+    .site-name {
+
+      @include font-size(44px);
+      padding-left: 2.230em;
+      padding-top: 0.854em;
+
+      a {
+        @include link-colors(#000, #000, #000, #000, #000);
+
+        &:hover, &:focus {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+/* Hiding logintoboggan logged-in menu block for when the admin-menu is present as its redundant */
+body.admin-menu .l-region--header .block--logintoboggan-logintoboggan-logged-in {
+  display: none;
+}

@@ -3,7 +3,7 @@
  */
 .field--type-taxonomy-term-reference {
   .field__items {
-    @include clearfix(true);
+    @include clearfix;
   }
   .field__item {
     float: left;

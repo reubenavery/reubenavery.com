@@ -1,8 +1,9 @@
 name = Studio
-description = Please provide a description for your theme.
-base theme = ohm
+description = Reuben Avery Studio base theme
+base theme = omega
 screenshot = screenshot.png
 engine = phptemplate
+version = 1.0
 core = 7.x
 
 ; ========================================
@@ -17,6 +18,7 @@ stylesheets[all][] = css/studio.no-query.css
 ; Scripts
 ; ========================================
 scripts[] = js/studio.behaviors.js
+scripts[] = libraries/elastic/jquery.elastic.source.js
 
 ; ========================================
 ; Regions

@@ -1,0 +1,14 @@
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/studio\.epiceditor\.scss}line{font-family:\000031}}
+html {
+  padding: 10px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/studio\.epiceditor\.scss}line{font-family:\000033}}
+body {
+  border: 1px solid black;
+  background: #ff0000;
+  font-family: monospace;
+  font-size: 14px;
+  padding: 10px;
+  line-height: 1.35em;
+  margin: 0;
+  padding: 0; }
