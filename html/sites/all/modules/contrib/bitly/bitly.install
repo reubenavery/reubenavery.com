@@ -1,0 +1,86 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the bitly module.
+ *
+ */
+
+
+/**
+ * Implements hook_schema().
+ */
+function bitly_schema() {
+  $schema['bitly_auth'] = array(
+    'description' => 'Stores bit.ly authentication tokens for each user.',
+    'fields' => array(
+      'uid' => array(
+        'description' => 'User ID.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE),
+      'login' => array(
+        'description' => "The user's bit.ly login.",
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => ''),
+      'token' => array(
+        'description' => "The user's bit.ly token.",
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => ''),
+      'apikey' => array(
+        'description' => "The user's bit.ly api key.",
+        'type' => 'varchar',
+        'length' => 64,
+        'not null' => TRUE,
+        'default' => ''),
+      ),
+    'primary key' => array('uid'),
+    );
+  $schema['bitly_hash'] = array(
+    'description' => 'Storage for bitly',
+    'fields' => array(
+      'hid' => array(
+        'description' => 'The primary identifier for a hash.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE),
+      'uid' => array(
+        'description' => 'ID of user who created this hash.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0),
+      'hash' => array(
+        'description' => 'Hash provided by bit.ly.',
+        'type' => 'varchar',
+        'length' => 32,
+        'not null' => TRUE,
+        'default' => ''),
+      'url' => array(
+        'description' => 'The full url of the link before hashing.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => ''),
+      ),
+    'unique keys' => array(
+      'hash'     => array('hash'),
+      ),
+    'primary key' => array('hid'),
+    );
+
+  return $schema;
+}
+
+/**
+ * Implements hook_schema().
+ */
+function bitly_uninstall() {
+  variable_del('bitly_login');
+  variable_del('bitly_key');
+  variable_del('bitly_client_id');
+  variable_del('bitly_client_secret');
+}

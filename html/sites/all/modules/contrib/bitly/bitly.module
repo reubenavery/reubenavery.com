@@ -1,0 +1,276 @@
+<?php
+
+/**
+ * @file
+ *   Basic module to provide access and storage of bit.ly shortened URLs.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function bitly_help($path, $arg) {
+  switch ($path) {
+    case "admin/help#shorten":
+      return '<p>' . t("This module provides a framework for other Drupal " .
+                      "modules to shorten URLs and display statistics using " .
+                      "the bit.ly service.") . '</p>';
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function bitly_menu() {
+  $items = array();
+  $items['admin/config/search/bitly'] = array(
+    'title' => 'Bit.ly',
+    'description' => 'Provide global options for the bit.ly module.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('bitly_admin'),
+    'access arguments' => array('access administration pages'),
+  );
+  $items['user/%user/bitly'] = array(
+    'title' => 'Bit.ly',
+    'page callback' => 'bitly_preferences',
+    'page arguments' => array(1),
+    'access callback' => 'user_edit_access',
+    'access arguments' => array(1),
+    'type' => MENU_LOCAL_TASK,
+  );
+  $items['bitly_oauth'] = array(
+    'title' => 'Validate bit.ly credentials',
+    'page callback' => '_bitly_oauth',
+    'access arguments' => array('use own bit.ly login'),
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function bitly_permission() {
+  return array(
+    'use own bit.ly login' => array(
+      'title' => t('use own bit.ly login'),
+      'description' => t('User may enter their own bit.ly credentials for generating short links.'),
+    ),
+    'use bit.ly' => array(
+      'title' => t('use bit.ly'),
+      'description' => t('User may use the global bit.ly credentials for generating short links.'),
+    ),
+  );
+}
+
+/**
+ * Admin settings page.
+ */
+function bitly_admin($form, $form_state) {
+  $form['bitly_keys'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Bit.ly API Credentials'),
+    '#description' => t('Please supply the bit.ly API credentials that will be used globally. These API credentials will be used in any case where a user either does not or cannot supply their own credentials. !here.', array('!here' => l('Find your credentials', 'http://bit.ly/a/your_api_key'))),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $form['bitly_keys']['bitly_login'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Bit.ly Login'),
+    '#required' => TRUE,
+    '#default_value' => variable_get('bitly_login', ''),
+    '#description' => t('This field is case-sensitive.'),
+  );
+  $form['bitly_keys']['bitly_key'] = array(
+    '#type' => 'textfield',
+    '#required' => TRUE,
+    '#title' => t('Bit.ly API Key'),
+    '#default_value' => variable_get('bitly_key', ''),
+    '#description' => t('This field is case-sensitive.'),
+  );
+  $form['bitly_oauth'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Bit.ly OAuth Credentials'),
+    '#description' => t('Please supply OAuth to allow users to log into their bit.ly accounts by clicking a sign-in link rather than needing to enter an API key. Currently you must !request directly from bit.ly.', array('!request' => l('request OAuth access', 'http://code.google.com/p/bitly-api/wiki/ApiDocumentation#OAuth'))),
+    '#collapsible' => TRUE,
+    '#collapsed' => FALSE,
+  );
+  $form['bitly_oauth']['bitly_client_id'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Bit.ly OAuth client_id'),
+    '#default_value' => variable_get('bitly_client_id', ''),
+    '#description' => t('This field is case-sensitive.'),
+  );
+  $form['bitly_oauth']['bitly_client_secret'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Bit.ly OAuth client_secret'),
+    '#default_value' => variable_get('bitly_client_secret', ''),
+    '#description' => t('This field is case-sensitive.'),
+  );
+  $form['bitly_url'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Bit.ly Base URL'),
+    '#description' => t('You can optionally select for bit.ly to shorten URLs to the j.mp domain instead.'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['bitly_url']['bitly_custom_url'] = array(
+    '#type' => 'radios',
+    '#title' => t('Bit.ly Base URL'),
+    '#default_value' => variable_get('bitly_custom_url', 'bit.ly'),
+    '#options' => array('bit.ly' => 'bit.ly', 'j.mp' => 'j.mp'),
+  );
+
+  return system_settings_form($form);
+}
+
+/**
+ * Provides a preferences and management page for bit.ly users.
+ */
+function bitly_preferences($account) {
+  $search = db_query("SELECT login FROM {bitly_auth} WHERE uid = :uid", array(':uid' => $account->uid));
+  $build = array();
+  if ($result = $search->fetchField()) {
+    $build['header']['#markup'] = t("You're currently linked to the %login bit.ly account.", array('%login' => $result));
+    $build['form'] = drupal_get_form("_bitly_preferences_unlink", $account->uid);
+  }
+  else {
+    $build['header']['#markup'] = t("You currently do not have a !bitly account configured. A bit.ly account is required for tracking statistics of shortened URLs.", array('!bitly' => l('bit.ly', 'http://bit.ly')));
+    $build['form'] = drupal_get_form("_bitly_preferences_link");
+  }
+  return $build;
+}
+
+/**
+ * Provide the "Link bit.ly account" button.
+ */
+function _bitly_preferences_link($form, $form_state) {
+  $form = array();
+  $form['bitly_link'] = array(
+    '#type' => 'submit',
+    '#value' => t('Link my bit.ly account')
+  );
+  return $form;
+}
+
+function _bitly_preferences_link_submit($form, &$form_state) {
+  _bitly_oauth();
+}
+
+/**
+ * Provide the "Un-link bit.ly account" button.
+ */
+function _bitly_preferences_unlink($form, $form_state, $uid) {
+  $form = array();
+  $form['bitly_link'] = array(
+    '#type' => 'submit',
+    '#value' => t('Un-link this account')
+  );
+  $form['bitly_uid'] = array(
+    '#type' => 'value',
+    '#value' => $uid
+  );
+  return $form;
+}
+
+function _bitly_preferences_unlink_submit($form, &$form_state) {
+  $uid = $form_state['values']['bitly_uid'];
+  @db_query("DELETE FROM {bitly_auth} WHERE uid = :uid", array(':uid' => $uid));
+  drupal_goto('user/' . $uid . '/bitly');
+}
+
+
+/**
+ * Handles user OAuth interaction.
+ */
+function _bitly_oauth() {
+  global $user;
+
+  // Determine if the user already has a key stored.
+  $search = db_query("SELECT token FROM {bitly_auth} WHERE uid = :uid", array(':uid' => $user->uid));
+  if ($search->fetchField()) {
+    drupal_set_message(t("Your user account already has an active bit.ly account definated, please visit your !user_page to change it.", array('!user_page' => l('user page', 'user/' . $user->uid . '/bitly'))));
+    drupal_goto('user/' . $user->uid . '/bitly');
+  }
+
+  $client_id = variable_get('bitly_client_id', '');
+  global $base_root;
+  $redirect_uri = $base_root . base_path() . 'bitly_oauth';
+  if (empty($_REQUEST['code'])) {
+    drupal_goto("https://bit.ly/oauth/authorize?client_id=$client_id&redirect_uri=$redirect_uri");
+  }
+  else {
+    _bitly_inc();
+    $results = bitly_oauth_access_token($_REQUEST['code'], $redirect_uri);
+    if (!empty($results)) {
+      $array = array(
+        'uid' => $user->uid,
+        'login' => $results['login'],
+        'token' => $results['access_token'],
+        'apikey' => $results['apiKey'],
+      );
+      if (empty($array['token'])) {
+        drupal_set_message(t("We were unable to link to your bit.ly account, please try again later."));
+      }
+      else {
+        drupal_write_record('bitly_auth', $array);
+        drupal_set_message(t("Your user account has been sucessfully linked to bit.ly!"));
+      }
+    }
+  }
+  drupal_goto('user/' . $user->uid . '/bitly');
+}
+
+/**
+ * Helper function to create proper defines before loading bitly.inc.
+ * Call this function before any of the other bitly_* functions in bitly.inc.
+ */
+function _bitly_inc() {
+  if (!function_exists('bitly_v3_shorten')) {
+    define('bitlyKey', variable_get('bitly_key', ''));
+    define('bitlyLogin', variable_get('bitly_login', ''));
+    define('bitly_clientid', variable_get('bitly_client_id', ''));
+    define('bitly_secret', variable_get('bitly_client_secret', ''));
+    module_load_include('inc', 'bitly');
+  }
+}
+
+/**
+ * Wrapper function to prefill bitly_v3_shorten with current user's login.
+ */
+function bitly_user_shorten($longUrl, $domain = NULL, $account = NULL) {
+  _bitly_inc();
+  
+  if(empty($domain)) {
+    $domain = variable_get('bitly_custom_url', 'bit.ly');
+  }
+  
+  if (empty($account)) {
+    global $user;
+    if (empty($user->uid)) { // Anonymous user, 0 is also considered empty.
+      $response = bitly_v3_shorten($longUrl, $domain);
+      return $response['url'];
+    }
+    $account = $user->uid;
+  }
+
+  $query = db_query("SELECT * FROM {bitly_auth} WHERE uid = :uid", array(':uid' => $user->uid));
+  if ($auth = $query->fetchObject()) {
+    $response = bitly_v3_shorten($longUrl, $domain, $auth->login, $auth->apikey);
+    return $response['url'];
+  }
+  
+  //  User doesn't have their own details, use site-wide.
+  $response = bitly_v3_shorten($longUrl, $domain);
+  return $response['url'];
+}
+
+/**
+ * Basic shorten integration.
+ */
+function bitly_shorten_service() {
+  $services = array();
+  $services['Bit.ly for Drupal'] = array(
+    'custom' => 'bitly_user_shorten'
+  );
+  return $services;
+}

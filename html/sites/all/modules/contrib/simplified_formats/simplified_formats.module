@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * Implements hook_element_info_alter().
+ *
+ * Attach our simplified_formats_filter_process_format() to run after core's.
+ */
+function simplified_formats_element_info_alter(&$type) {
+  $filter_process_format_location = array_search('filter_process_format', $type['text_format']['#process']);
+  $replacement = array('filter_process_format', 'simplified_formats_filter_process_format');
+  array_splice($type['text_format']['#process'], $filter_process_format_location, 1, $replacement);
+}
+
+/**
+ * Process callback for form elements that have a text format selector.
+ *
+ * Called after filter_process_format().
+ */
+function simplified_formats_filter_process_format($element) {
+  // Remove JS from filter_process_format() as we use our own.
+  // We have to do this before checking #access as the attached will still
+  // attach for the page, which will affect other fields.
+  $index = array_search('modules/filter/filter.js', $element['#attached']['js']);
+  if ($index !== FALSE) {
+    unset($element['#attached']['js'][$index]);
+  }
+  unset($index);
+
+  // If the user is not allowed to see the format selection at all we are done.
+  if (isset($element['format']['#access']) && !$element['format']['#access']) {
+    return $element;
+  }
+
+  // Attach our CSS and JS.
+  $path = drupal_get_path('module', 'simplified_formats');
+  $element['#attached']['js'][] = $path . '/js/format-field.js';
+  $element['#attached']['css'][] = $path . '/css/format-field.css';
+
+  // Remove fieldset to allow moving the select field separately from the
+  // guidelines and help text.
+  unset($element['format']['#type'], $element['format']['#attributes']['class']);
+
+  // Hide the "text formats" title and add a wrapper class to the select field.
+  $element['format']['format']['#title_display'] = 'invisible';
+  $element['format']['format']['#attributes']['class'][] = 'simplified-formats-select';
+
+  // Create a fieldset to house the guidelines and help text.
+  $element['simplified_formats_help'] = array(
+    '#type' => 'fieldset',
+    '#attributes' => array(
+      'class' => array('filter-wrapper', 'element-invisible'),
+    ),
+  );
+  $element['#columns'][] = 'simplified_formats_help';
+  // Hide the help link (screen reader friendly) and move into help fieldset.
+  $element['format']['help']['#attributes']['class'][] = 'element-invisible';
+  $element['simplified_formats_help']['help'] = $element['format']['help'];
+  unset($element['format']['help']);
+  // Move guidelines into help fieldset.
+  $element['simplified_formats_help']['guidelines'] = $element['format']['guidelines'];
+  unset($element['format']['guidelines']);
+
+  return $element;
+}
+

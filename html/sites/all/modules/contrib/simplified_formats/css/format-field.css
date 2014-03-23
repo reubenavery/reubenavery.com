@@ -1,0 +1,9 @@
+.text-format-wrapper .form-item .filter-help {
+  float: none;
+  padding: 0px;
+  display: inline-block;
+}
+.text-format-wrapper .form-item .filter-help a {
+  cursor: pointer;
+  padding: 0px 10px;
+}

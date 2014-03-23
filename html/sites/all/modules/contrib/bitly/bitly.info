@@ -1,0 +1,15 @@
+name = "bit.ly"
+description = "Provides API access to bit.ly to other modules.  Enable this module only if required by another."
+core = 7.x
+package = bit.ly
+configure = admin/config/search/bitly
+files[] = bitly.inc
+files[] = bitly.install
+files[] = bitly.module
+
+; Information added by drupal.org packaging script on 2011-03-11
+version = "7.x-1.0"
+core = "7.x"
+project = "bitly"
+datestamp = "1299819667"
+
