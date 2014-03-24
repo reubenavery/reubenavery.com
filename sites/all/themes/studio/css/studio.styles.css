@@ -55,7 +55,7 @@
 /**
  * $HLIST
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/abstractions\/_hlist\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/abstractions\/_hlist\.scss}line{font-family:\000034}}
 .block--system-user-menu .menu, .block--nav-bar .menu, .action-links, .breadcrumb {
   margin: 0;
   padding: 0;
@@ -85,33 +85,33 @@
 /**
  * $ISLAND
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/abstractions\/_island\.scss}line{font-family:\000035}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/abstractions\/_island\.scss}line{font-family:\000035}}
 .comment__content {
   display: block;
   margin-bottom: 1.5em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/abstractions\/_island\.scss}line{font-family:\0000311}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/abstractions\/_island\.scss}line{font-family:\0000311}}
   .comment__content > :last-child, .comment__content > :last-child {
     margin-bottom: 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/abstractions\/_island\.scss}line{font-family:\0000316}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/abstractions\/_island\.scss}line{font-family:\0000316}}
 .comment__content {
   padding: 20px 1em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_forms\.scss}line{font-family:\000032}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_forms\.scss}line{font-family:\000032}}
 fieldset {
   margin-left: 0;
   margin-right: 0;
   padding: 10px 1em 20px 1em;
   border-color: #5f6163; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_forms\.scss}line{font-family:\0000310}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_forms\.scss}line{font-family:\0000310}}
 legend {
   font-size: 18px;
   font-size: 1.125rem;
   padding: 0 0.8em;
   color: #8e8e8e; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_media\.scss}line{font-family:\000031}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_media\.scss}line{font-family:\000031}}
 img, media {
   max-width: 100%;
   height: auto;
@@ -120,34 +120,34 @@ img, media {
 /**
  * $TABLES
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_tables\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_tables\.scss}line{font-family:\000034}}
 table {
   width: 100%;
   margin-bottom: 20px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_tables\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_tables\.scss}line{font-family:\000039}}
 th {
   padding: 0.5em 1em;
   background-color: #8c92ac;
   color: #fff; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_tables\.scss}line{font-family:\0000315}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_tables\.scss}line{font-family:\0000315}}
   th a,
   th a.active {
     color: #fff; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_tables\.scss}line{font-family:\0000318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_tables\.scss}line{font-family:\0000318}}
     th a img,
     th a.active img {
       margin: 2px 3px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_tables\.scss}line{font-family:\0000323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_tables\.scss}line{font-family:\0000323}}
 td {
   padding: 0.5em 1em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_tables\.scss}line{font-family:\0000327}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_tables\.scss}line{font-family:\0000327}}
 tr.odd {
   background: #c5cadd; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_tables\.scss}line{font-family:\0000330}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_tables\.scss}line{font-family:\0000330}}
 tr.even {
   background: #d2d6e5; }
 
@@ -166,7 +166,7 @@ html {
 /**
  * $BASE-TYPOGRAPHY
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000314}}
 body {
   font-family: "Helvetica Neue", HelveticaNeue, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arimo, Helvetica, Arial, sans-serif;
   color: black; }
@@ -174,7 +174,7 @@ body {
 /**
  * $LINKS
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000322}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000322}}
 a {
   /* link-colors($normal, $hover, $active, $visited, $focus) */
   color: #2e3b70; }
@@ -194,7 +194,8 @@ a {
 /**
  * $HEADINGS
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000335}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000336}}
+.site-name,
 h1, .alpha,
 h2, .beta,
 h3, .gamma,
@@ -208,46 +209,47 @@ h6, .zeta {
   font-weight: 700;
   letter-spacing: -0.0189em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000343}}
+.site-name,
 h1, .alpha {
   font-size: 28px;
   font-size: 1.75rem; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000344}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000346}}
 h2, .beta {
   font-size: 24px;
   font-size: 1.5rem; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000347}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000349}}
 .node--content h2, .node h2 {
   padding-bottom: 0.25em;
   border-bottom: 2px solid #5f6163; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000351}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000353}}
 h3, .gamma {
   font-size: 20px;
   font-size: 1.25rem; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000354}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000356}}
 h4, .delta, caption {
   font-size: 18px;
   font-size: 1.125rem; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000357}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000359}}
 h5, .epsilon {
   font-size: 16px;
   font-size: 1rem; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000360}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000362}}
 h6, .zeta {
   font-size: 16px;
   font-size: 1rem; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000363}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000365}}
 .node--content h6 {
   color: #8e8e8e; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000367}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000369}}
 h1.page-title {
   font-size: 36px;
   font-size: 2.25rem; }
@@ -255,7 +257,7 @@ h1.page-title {
 /**
  * $PARAGRAPHS
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000375}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000377}}
 p,
 blockquote {
   margin: 0;
@@ -264,7 +266,7 @@ blockquote {
   padding-bottom: 0em;
   margin-bottom: 1.5em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000379}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000381}}
 p + img {
   float: left;
   margin-right: 1em; }
@@ -272,7 +274,7 @@ p + img {
 /**
  * $QUOTES
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000387}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000389}}
 blockquote {
   margin-top: 0em;
   padding-top: 1.5em;
@@ -287,18 +289,18 @@ blockquote {
   padding-left: 0.875em;
   font-style: italic;
   color: #2e3b70; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000397}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\0000399}}
   blockquote p {
     margin: 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\00003102}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\00003104}}
 q {
   font-style: italic; }
 
 /**
  * $MARKS
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\00003110}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/base\/_typography\.scss}line{font-family:\00003112}}
 mark,
 .marker {
   padding: 0.1em 0.5em;
@@ -313,25 +315,25 @@ mark,
   -o-border-radius: 10px;
   border-radius: 10px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-shorten-shorten-short\.scss}line{font-family:\000031}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-shorten-shorten-short\.scss}line{font-family:\000031}}
 .block--shorten-shorten-short {
   border-top: 1px solid #8e8e8e;
   margin-top: 1em;
   padding-top: 0.5em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-shorten-shorten-short\.scss}line{font-family:\000036}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-shorten-shorten-short\.scss}line{font-family:\000036}}
   .block--shorten-shorten-short .block__title {
     float: left;
     font-size: inherit;
     color: inherit;
     font-weight: inherit; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-shorten-shorten-short\.scss}line{font-family:\0000311}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-shorten-shorten-short\.scss}line{font-family:\0000311}}
     .block--shorten-shorten-short .block__title:after {
       content: ':';
       padding-right: 1em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-shorten-shorten-short\.scss}line{font-family:\0000316}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-shorten-shorten-short\.scss}line{font-family:\0000316}}
   .block--shorten-shorten-short .block__content {
     float: left; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-shorten-shorten-short\.scss}line{font-family:\0000318}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-shorten-shorten-short\.scss}line{font-family:\0000318}}
     .block--shorten-shorten-short .block__content .form-item-this-shortened input {
       color: inherit;
       padding: 0;
@@ -342,14 +344,38 @@ mark,
 /**
  * $USER-MENU
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-user-menu\.scss}line{font-family:\000038}}
-.block--system-user-menu a {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-user-menu\.scss}line{font-family:\000035}}
+.block--system-user-menu .menu {
+  float: right;
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzMzMzMzMyIvPjxzdG9wIG9mZnNldD0iNTAlIiBzdG9wLWNvbG9yPSIjNGM0YzRjIi8+PHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMDAwMDAwIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background-size: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(50%, #4c4c4c), color-stop(100%, #000000));
+  background-image: -webkit-linear-gradient(#333333, #4c4c4c, #000000);
+  background-image: -moz-linear-gradient(#333333, #4c4c4c, #000000);
+  background-image: -o-linear-gradient(#333333, #4c4c4c, #000000);
+  background-image: linear-gradient(#333333, #4c4c4c, #000000);
+  -moz-border-radius-bottomleft: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  padding: 0.125em 1em 0.25em 1.5em;
+  font-size: 14px;
+  font-size: 0.875rem; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-user-menu\.scss}line{font-family:\0000316}}
+.block--system-user-menu a, .block--system-user-menu a:link, .block--system-user-menu a:visited {
+  color: #e0dfdb;
+  text-decoration: none;
   padding: 0 0.6em;
-  border-right: 1px solid #fd8e18; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-user-menu\.scss}line{font-family:\0000312}}
+  border-right: 1px solid #938e81; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-user-menu\.scss}line{font-family:\0000321}}
+  .block--system-user-menu a:hover, .block--system-user-menu a:link:hover, .block--system-user-menu a:visited:hover {
+    color: #efefed; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-user-menu\.scss}line{font-family:\0000325}}
+.block--system-user-menu li {
+  float: left; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-user-menu\.scss}line{font-family:\0000328}}
 .block--system-user-menu li:first-child a {
   padding-left: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-user-menu\.scss}line{font-family:\0000315}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_block-user-menu\.scss}line{font-family:\0000331}}
 .block--system-user-menu li:last-child a {
   padding-right: 0;
   border-right: 0; }
@@ -357,7 +383,7 @@ mark,
 /**
  * $NAV-BAR
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_nav-bar\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_nav-bar\.scss}line{font-family:\000039}}
 .block--nav-bar a {
   display: block;
   padding: 1.2em 1em;
@@ -366,23 +392,23 @@ mark,
   text-transform: uppercase;
   text-decoration: none;
   color: #fff; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_nav-bar\.scss}line{font-family:\0000319}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_nav-bar\.scss}line{font-family:\0000319}}
   .block--nav-bar a:hover, .block--nav-bar a:focus {
     color: #2e3b70; }
 @media (min-width: 600px) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_nav-bar\.scss}line{font-family:\0000325}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_nav-bar\.scss}line{font-family:\0000325}}
   .block--nav-bar a {
     font-size: 18px;
     font-size: 1.125rem;
     border-left: 1px solid #fff; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_nav-bar\.scss}line{font-family:\0000329}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/blocks\/_nav-bar\.scss}line{font-family:\0000329}}
   .block--nav-bar li:last-child a {
     border-right: 1px solid #fff; } }
 
 /**
  * $COMMENT-WRAPPER
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment-wrapper\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment-wrapper\.scss}line{font-family:\000034}}
 .comment-wrapper {
   padding: 20px 1em;
   background-color: #b8bed6; }
@@ -390,50 +416,50 @@ mark,
 /**
  * $COMMENT
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\000034}}
 .comment__info {
   margin-top: 20px;
   margin-bottom: 20px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\000038}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\000038}}
   .comment__info .username {
     margin-bottom: 10px;
     color: #b8bed6;
     text-transform: uppercase;
     text-decoration: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000315}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000315}}
     .comment__info .username:hover {
       text-decoration: underline; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000321}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000321}}
 .comment__content {
   background-color: #fff; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000327}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000327}}
 .comment__submitted {
   display: inline; }
 
 @media (min-width: 12) and (max-width: 44em) {
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000332}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000332}}
   .comment__info {
     float: left;
     width: 25%;
     text-align: center; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000338}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000338}}
     .comment__info .user-picture {
       width: 70%;
       margin: 0 auto 10px auto; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000342}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000342}}
     .comment__info .username {
       display: block; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000347}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000347}}
   .comment__content {
     float: right;
     width: 70%;
     margin-left: 5%;
     position: relative;
     background: white; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/abstractions\/_arrow\.scss}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/abstractions\/_arrow\.scss}line{font-family:\0000328}}
     .comment__content:after, .comment__content:before {
       right: 100%;
       border: solid transparent;
@@ -442,29 +468,29 @@ mark,
       width: 0;
       position: absolute;
       pointer-events: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/abstractions\/_arrow\.scss}line{font-family:\0000350}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/abstractions\/_arrow\.scss}line{font-family:\0000350}}
     .comment__content:after {
       border-color: transparent;
       border-right-color: white;
       border-width: 20px;
       top: 50%;
       margin-left: -20px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000354}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000354}}
     .comment__content:after {
       top: 20px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000359}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/comments\/_comment\.scss}line{font-family:\0000359}}
   .comment__submitted {
     display: block;
     margin-bottom: 10px; } }
 /**
  * $FIELD-TAXONOMY-TERM
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/fields\/_field-taxonomy-term\.scss}line{font-family:\000035}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/fields\/_field-taxonomy-term\.scss}line{font-family:\000035}}
 .field--type-taxonomy-term-reference .field__items {
   overflow: hidden;
   *zoom: 1; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/fields\/_field-taxonomy-term\.scss}line{font-family:\000038}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/fields\/_field-taxonomy-term\.scss}line{font-family:\000038}}
 .field--type-taxonomy-term-reference .field__item {
   float: left;
   margin-right: 0.5em; }
@@ -472,109 +498,117 @@ mark,
 /**
  * $FIELD
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/fields\/_field\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/fields\/_field\.scss}line{font-family:\000034}}
 .field {
   margin-bottom: 1.5em; }
 
 /**
- * $COLLAPSIBLE
- */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_collapsible\.scss}line{font-family:\000034}}
-html.js fieldset.collapsible {
-  padding: 0;
-  border: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_collapsible\.scss}line{font-family:\000038}}
-  html.js fieldset.collapsible legend {
-    width: 100%;
-    padding: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_collapsible\.scss}line{font-family:\0000312}}
-  html.js fieldset.collapsible .fieldset-legend {
-    padding: 0;
-    background: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_collapsible\.scss}line{font-family:\0000316}}
-    html.js fieldset.collapsible .fieldset-legend .summary {
-      float: right; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_collapsible\.scss}line{font-family:\0000320}}
-  html.js fieldset.collapsible .fieldset-title {
-    display: block;
-    padding: 1em;
-    background-color: #d0d3d5;
-    color: #8c92ac;
-    text-decoration: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_collapsible\.scss}line{font-family:\0000329}}
-    html.js fieldset.collapsible .fieldset-title:hover {
-      background-color: #b8bed6;
-      color: #2e3b70; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_collapsible\.scss}line{font-family:\0000334}}
-  html.js fieldset.collapsible .fieldset-wrapper {
-    padding: 20px 1em;
-    border: 1px solid #d0d3d5; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_collapsible\.scss}line{font-family:\0000340}}
-html.js fieldset.collapsed {
-  height: 3.7em; }
-
-/**
  * $FIELDSETS
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_fieldsets\.scss}line{font-family:\000034}}
-.form-wrapper {
-  margin-bottom: 20px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_fieldsets\.scss}line{font-family:\000036}}
+fieldset legend {
+  font-style: normal; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_fieldsets\.scss}line{font-family:\000038}}
+  fieldset legend a, fieldset legend a:visited {
+    color: black; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_fieldsets\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_fieldsets\.scss}line{font-family:\0000313}}
+html.js fieldset.collapsed {
+  height: 3.1em;
+  border-width: 1px solid #5f6163; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_fieldsets\.scss}line{font-family:\0000320}}
+html.js fieldset.collapsible .fieldset-title {
+  padding: 0.5em; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_fieldsets\.scss}line{font-family:\0000322}}
+  html.js fieldset.collapsible .fieldset-title, html.js fieldset.collapsible .fieldset-title:visited {
+    color: #2e3b70; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_fieldsets\.scss}line{font-family:\0000329}}
+.form-item .description fieldset {
+  margin-top: 0.75em; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_fieldsets\.scss}line{font-family:\0000333}}
 .fieldset-description {
   margin-bottom: 10px;
   color: #8e8e8e;
   font-style: italic; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_fieldsets\.scss}line{font-family:\0000315}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_fieldsets\.scss}line{font-family:\0000339}}
+.vertical-tabs {
+  background-color: #e0dfdb; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_fieldsets\.scss}line{font-family:\0000343}}
+.vertical-tabs ul.vertical-tabs-list li {
+  background-color: #aaa69d;
+  height: 100%; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_fieldsets\.scss}line{font-family:\0000347}}
+.vertical-tabs ul.vertical-tabs-list li.selected {
+  background-color: #e0dfdb; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_fieldsets\.scss}line{font-family:\0000351}}
 .vertical-tabs fieldset.vertical-tabs-pane {
+  background-color: #e0dfdb;
   padding: 20px 1em; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_fieldsets\.scss}line{font-family:\0000357}}
+  .vertical-tabs fieldset.vertical-tabs-pane select,
+  .vertical-tabs fieldset.vertical-tabs-pane input,
+  .vertical-tabs fieldset.vertical-tabs-pane textarea {
+    background-color: #efefed; }
 
 /**
  * $FILTER-TIPS
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_filter-tips\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_filter-tips\.scss}line{font-family:\000034}}
 .filter-wrapper {
   background-color: #fff; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\000035}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\000034}}
+.form-wrapper {
+  margin-bottom: 20px; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000311}}
 select,
 input,
 textarea {
   background-color: #e0dfdb; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\000036}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000312}}
   select:focus,
   input:focus,
   textarea:focus {
-    -webkit-box-shadow: 0 0 4px 1px rgba(254, 179, 100, 0.3);
-    -moz-box-shadow: 0 0 4px 1px rgba(254, 179, 100, 0.3);
-    box-shadow: 0 0 4px 1px rgba(254, 179, 100, 0.3);
+    -webkit-box-shadow: 0 0 4px 1px rgba(255, 201, 77, 0.3);
+    -moz-box-shadow: 0 0 4px 1px rgba(255, 201, 77, 0.3);
+    box-shadow: 0 0 4px 1px rgba(255, 201, 77, 0.3);
     outline: 1px solid #b8bed6; }
 
 /**
  * $FORM-ITEM
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000323}}
 .form-item label {
   margin-bottom: 0.4em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000322}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000328}}
 .form-item .form-select,
 .form-item .form-text,
 .form-item .form-textarea {
   padding: 0.6em;
   border: 1px solid #5f6163;
   vertical-align: middle; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000327}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000333}}
 .form-item .description {
   margin-top: 0.2em;
   font-style: italic; }
 
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000339}}
+.form-actions input {
+  margin-right: 1em; }
+
 /**
  * Sexy, sassy buttons.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000336}}
-input[type='submit'] {
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000346}}
+input[type="submit"], input[type="button"] {
   font-size: font-size(18px);
   padding: 0.5em 1.5em;
   display: inline-block;
@@ -585,145 +619,146 @@ input[type='submit'] {
   -o-border-radius: 15px;
   border-radius: 15px;
   *zoom: 1;
-  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF8C92AC', endColorstr='#FF585E7A');
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2I4YmNjYyIvPjxzdG9wIG9mZnNldD0iNzAlIiBzdG9wLWNvbG9yPSIjOGM5MmFjIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b8bccc), color-stop(70%, #8c92ac));
-  background: -webkit-linear-gradient(#b8bccc, #8c92ac 70%);
-  background: -moz-linear-gradient(#b8bccc, #8c92ac 70%);
-  background: -o-linear-gradient(#b8bccc, #8c92ac 70%);
-  background: linear-gradient(#b8bccc, #8c92ac 70%);
-  -webkit-box-shadow: #e5e6ec 0 1px 0 inset;
-  -moz-box-shadow: #e5e6ec 0 1px 0 inset;
-  box-shadow: #e5e6ec 0 1px 0 inset;
-  border: 1px solid #7d84a1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF8E8E8E', endColorstr='#FF5B5B5B');
+  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2I1YjViNSIvPjxzdG9wIG9mZnNldD0iNzAlIiBzdG9wLWNvbG9yPSIjOGU4ZThlIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b5b5b5), color-stop(70%, #8e8e8e));
+  background: -webkit-linear-gradient(#b5b5b5, #8e8e8e 70%);
+  background: -moz-linear-gradient(#b5b5b5, #8e8e8e 70%);
+  background: -o-linear-gradient(#b5b5b5, #8e8e8e 70%);
+  background: linear-gradient(#b5b5b5, #8e8e8e 70%);
+  -webkit-box-shadow: #dbdbdb 0 1px 0 inset;
+  -moz-box-shadow: #dbdbdb 0 1px 0 inset;
+  box-shadow: #dbdbdb 0 1px 0 inset;
+  border: 1px solid #828282;
   color: white;
-  text-shadow: #6a7293 0 -1px 0;
+  text-shadow: #717171 0 -1px 0;
   min-width: 10em; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/sassy-buttons-0\.2\.6\/stylesheets\/sassy-buttons\/_sassy-button-pseudo-states\.sass}line{font-family:\0000315}}
-  input[type='submit']:hover {
+  input[type="submit"]:hover, input[type="button"]:hover {
     text-decoration: none; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/sassy-buttons-0\.2\.6\/stylesheets\/sassy-buttons\/_sassy-button-pseudo-states\.sass}line{font-family:\0000318}}
-  input[type='submit']:hover {
-    background-color: #7d84a1;
-    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIzJSIgc3RvcC1jb2xvcj0iI2FhYWVjMSIvPjxzdG9wIG9mZnNldD0iNzUlIiBzdG9wLWNvbG9yPSIjN2Q4NGExIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
-    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(3%, #aaaec1), color-stop(75%, #7d84a1));
-    background: -webkit-linear-gradient(#aaaec1 3%, #7d84a1 75%);
-    background: -moz-linear-gradient(#aaaec1 3%, #7d84a1 75%);
-    background: -o-linear-gradient(#aaaec1 3%, #7d84a1 75%);
-    background: linear-gradient(#aaaec1 3%, #7d84a1 75%); }
+  input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #828282;
+    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIzJSIgc3RvcC1jb2xvcj0iI2E4YThhOCIvPjxzdG9wIG9mZnNldD0iNzUlIiBzdG9wLWNvbG9yPSIjODI4MjgyIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(3%, #a8a8a8), color-stop(75%, #828282));
+    background: -webkit-linear-gradient(#a8a8a8 3%, #828282 75%);
+    background: -moz-linear-gradient(#a8a8a8 3%, #828282 75%);
+    background: -o-linear-gradient(#a8a8a8 3%, #828282 75%);
+    background: linear-gradient(#a8a8a8 3%, #828282 75%); }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/sassy-buttons-0\.2\.6\/stylesheets\/sassy-buttons\/_sassy-button-pseudo-states\.sass}line{font-family:\0000321}}
-  input[type='submit']:active {
-    -webkit-box-shadow: #747c9b 0 1px 2px inset;
-    -moz-box-shadow: #747c9b 0 1px 2px inset;
-    box-shadow: #747c9b 0 1px 2px inset; }
+  input[type="submit"]:active, input[type="button"]:active {
+    -webkit-box-shadow: #7a7a7a 0 1px 2px inset;
+    -moz-box-shadow: #7a7a7a 0 1px 2px inset;
+    box-shadow: #7a7a7a 0 1px 2px inset; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/sassy-buttons-0\.2\.6\/stylesheets\/sassy-buttons\/_sassy-button-pseudo-states\.sass}line{font-family:\000036}}
-  input[type='submit'].disabled, input[type='submit'][disabled] {
+  input[type="submit"].disabled, input[type="submit"][disabled], input[type="button"].disabled, input[type="button"][disabled] {
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
     opacity: 0.6;
-    background: #8c92ac;
+    background: #8e8e8e;
     cursor: default;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/sassy-buttons-0\.2\.6\/stylesheets\/_sassy-buttons\.sass}line{font-family:\0000374}}
-  input[type='submit']::-moz-focus-inner {
+  input[type="submit"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner {
     padding: 0 !important;
     margin: -1px !important; }
-
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000340}}
-input[type='button'] {
-  font-size: font-size(18px);
-  padding: 0.5em 1.5em;
-  display: inline-block;
-  cursor: pointer;
-  -webkit-border-radius: 15px;
-  -moz-border-radius: 15px;
-  -ms-border-radius: 15px;
-  -o-border-radius: 15px;
-  border-radius: 15px;
-  *zoom: 1;
-  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFD0D3D5', endColorstr='#FF9AA1A5');
-  background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y4ZjlmOSIvPjxzdG9wIG9mZnNldD0iNzAlIiBzdG9wLWNvbG9yPSIjZDBkM2Q1Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
-  background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f8f9f9), color-stop(70%, #d0d3d5));
-  background: -webkit-linear-gradient(#f8f9f9, #d0d3d5 70%);
-  background: -moz-linear-gradient(#f8f9f9, #d0d3d5 70%);
-  background: -o-linear-gradient(#f8f9f9, #d0d3d5 70%);
-  background: linear-gradient(#f8f9f9, #d0d3d5 70%);
-  -webkit-box-shadow: white 0 1px 0 inset;
-  -moz-box-shadow: white 0 1px 0 inset;
-  box-shadow: white 0 1px 0 inset;
-  border: 1px solid #c3c6c9;
-  color: white;
-  text-shadow: #b1b6b9 0 -1px 0;
-  min-width: 10em; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000350}}
+  input[type="submit"]#edit-submit, input[type="submit"]#edit-actions-submit, input[type="button"]#edit-submit, input[type="button"]#edit-actions-submit {
+    font-size: font-size(18px);
+    padding: 0.5em 1.5em;
+    display: inline-block;
+    cursor: pointer;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    border-radius: 15px;
+    *zoom: 1;
+    filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF8C92AC', endColorstr='#FF585E7A');
+    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2I4YmNjYyIvPjxzdG9wIG9mZnNldD0iNzAlIiBzdG9wLWNvbG9yPSIjOGM5MmFjIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #b8bccc), color-stop(70%, #8c92ac));
+    background: -webkit-linear-gradient(#b8bccc, #8c92ac 70%);
+    background: -moz-linear-gradient(#b8bccc, #8c92ac 70%);
+    background: -o-linear-gradient(#b8bccc, #8c92ac 70%);
+    background: linear-gradient(#b8bccc, #8c92ac 70%);
+    -webkit-box-shadow: #e5e6ec 0 1px 0 inset;
+    -moz-box-shadow: #e5e6ec 0 1px 0 inset;
+    box-shadow: #e5e6ec 0 1px 0 inset;
+    border: 1px solid #7d84a1;
+    color: white;
+    text-shadow: #6a7293 0 -1px 0; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/sassy-buttons-0\.2\.6\/stylesheets\/sassy-buttons\/_sassy-button-pseudo-states\.sass}line{font-family:\0000315}}
-  input[type='button']:hover {
-    text-decoration: none; }
+    input[type="submit"]#edit-submit:hover, input[type="submit"]#edit-actions-submit:hover, input[type="button"]#edit-submit:hover, input[type="button"]#edit-actions-submit:hover {
+      text-decoration: none; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/sassy-buttons-0\.2\.6\/stylesheets\/sassy-buttons\/_sassy-button-pseudo-states\.sass}line{font-family:\0000318}}
-  input[type='button']:hover {
-    background-color: #c3c6c9;
-    background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIzJSIgc3RvcC1jb2xvcj0iI2ViZWNlZCIvPjxzdG9wIG9mZnNldD0iNzUlIiBzdG9wLWNvbG9yPSIjYzNjNmM5Ii8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
-    background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(3%, #ebeced), color-stop(75%, #c3c6c9));
-    background: -webkit-linear-gradient(#ebeced 3%, #c3c6c9 75%);
-    background: -moz-linear-gradient(#ebeced 3%, #c3c6c9 75%);
-    background: -o-linear-gradient(#ebeced 3%, #c3c6c9 75%);
-    background: linear-gradient(#ebeced 3%, #c3c6c9 75%); }
+    input[type="submit"]#edit-submit:hover, input[type="submit"]#edit-actions-submit:hover, input[type="button"]#edit-submit:hover, input[type="button"]#edit-actions-submit:hover {
+      background-color: #7d84a1;
+      background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIzJSIgc3RvcC1jb2xvcj0iI2FhYWVjMSIvPjxzdG9wIG9mZnNldD0iNzUlIiBzdG9wLWNvbG9yPSIjN2Q4NGExIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+      background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(3%, #aaaec1), color-stop(75%, #7d84a1));
+      background: -webkit-linear-gradient(#aaaec1 3%, #7d84a1 75%);
+      background: -moz-linear-gradient(#aaaec1 3%, #7d84a1 75%);
+      background: -o-linear-gradient(#aaaec1 3%, #7d84a1 75%);
+      background: linear-gradient(#aaaec1 3%, #7d84a1 75%); }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/sassy-buttons-0\.2\.6\/stylesheets\/sassy-buttons\/_sassy-button-pseudo-states\.sass}line{font-family:\0000321}}
-  input[type='button']:active {
-    -webkit-box-shadow: #babfc2 0 1px 2px inset;
-    -moz-box-shadow: #babfc2 0 1px 2px inset;
-    box-shadow: #babfc2 0 1px 2px inset; }
+    input[type="submit"]#edit-submit:active, input[type="submit"]#edit-actions-submit:active, input[type="button"]#edit-submit:active, input[type="button"]#edit-actions-submit:active {
+      -webkit-box-shadow: #747c9b 0 1px 2px inset;
+      -moz-box-shadow: #747c9b 0 1px 2px inset;
+      box-shadow: #747c9b 0 1px 2px inset; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/sassy-buttons-0\.2\.6\/stylesheets\/sassy-buttons\/_sassy-button-pseudo-states\.sass}line{font-family:\000036}}
-  input[type='button'].disabled, input[type='button'][disabled] {
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
-    opacity: 0.6;
-    background: #d0d3d5;
-    cursor: default;
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none; }
+    input[type="submit"]#edit-submit.disabled, input[type="submit"]#edit-submit[disabled], input[type="submit"]#edit-actions-submit.disabled, input[type="submit"]#edit-actions-submit[disabled], input[type="button"]#edit-submit.disabled, input[type="button"]#edit-submit[disabled], input[type="button"]#edit-actions-submit.disabled, input[type="button"]#edit-actions-submit[disabled] {
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+      opacity: 0.6;
+      background: #8c92ac;
+      cursor: default;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/sassy-buttons-0\.2\.6\/stylesheets\/_sassy-buttons\.sass}line{font-family:\0000374}}
-  input[type='button']::-moz-focus-inner {
-    padding: 0 !important;
-    margin: -1px !important; }
+    input[type="submit"]#edit-submit::-moz-focus-inner, input[type="submit"]#edit-actions-submit::-moz-focus-inner, input[type="button"]#edit-submit::-moz-focus-inner, input[type="button"]#edit-actions-submit::-moz-focus-inner {
+      padding: 0 !important;
+      margin: -1px !important; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000349}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000359}}
 .container-inline .form-select,
 .container-inline .form-text,
 .container-inline .form-textarea {
   width: auto; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000354}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000364}}
 .epiceditor-widget-wrapper {
   border: 1px solid #e5e5e5; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000358}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000368}}
 .wysiwyg-toggle-wrapper {
   margin: 1em 0;
   float: left; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000363}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000373}}
 .form-type-select {
-  margin: 1em 0;
+  margin: 1em 0; }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000377}}
+.field-widget-text-textarea-with-summary .form-type-select {
   float: right; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000368}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000381}}
 .form-wrapper {
   overflow: hidden; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000372}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000385}}
 .cke .cke_contents {
   padding: 0.5em; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000376}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-items\.scss}line{font-family:\0000389}}
 .form-required {
-  color: #a47441; }
+  color: #9978e5; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-user-register-form\.scss}line{font-family:\000032}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-user-register-form\.scss}line{font-family:\000032}}
 .user-register-form .form-type-password-confirm {
   overflow: hidden;
   *zoom: 1; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-user-register-form\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_form-user-register-form\.scss}line{font-family:\000039}}
   .user-register-form .form-type-password-confirm .password-strength, .user-register-form .form-type-password-confirm div.password-confirm {
     width: 73%;
     padding-right: 50%; }
@@ -731,35 +766,35 @@ input[type='button'] {
 /**
  * $PASSWORD-CONFIRM
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_password-confirm\.scss}line{font-family:\000035}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_password-confirm\.scss}line{font-family:\000035}}
 div.password-indicator,
 div.password-confirm {
   margin-top: 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_password-confirm\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_password-confirm\.scss}line{font-family:\000039}}
 div.password-indicator {
   margin-bottom: 0.4em; }
 
 /**
  * $PASSWORD-INDICATOR
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_password-indicator\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_password-indicator\.scss}line{font-family:\000034}}
 .password-indicator {
   height: 0.8em;
   background: none;
   border: 1px solid #8e8e8e; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_password-indicator\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_password-indicator\.scss}line{font-family:\000039}}
   .password-indicator .indicator {
     background: #8c92ac; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_password-indicator\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_password-indicator\.scss}line{font-family:\0000314}}
 .password-strength-title {
   margin-bottom: 0.2em; }
 
 /**
  * $SEARCH-FORM
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/forms\/_search-form\.scss}line{font-family:\000035}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/forms\/_search-form\.scss}line{font-family:\000035}}
 .search-block-form .form-text {
   width: auto;
   padding: 0.4em; }
@@ -767,55 +802,55 @@ div.password-indicator {
 /**
  * $ACTION-LINKS
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/menus\/_action-links\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/menus\/_action-links\.scss}line{font-family:\000034}}
 .action-links {
   margin-bottom: 20px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/menus\/_action-links\.scss}line{font-family:\000038}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/menus\/_action-links\.scss}line{font-family:\000038}}
   .action-links li {
     padding-left: 16px;
     background: transparent url('../images/../images/plus-blue.png?1395501813') left center no-repeat; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/menus\/_action-links\.scss}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/menus\/_action-links\.scss}line{font-family:\0000313}}
     .action-links li a {
       color: #8c92ac;
       text-decoration: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/menus\/_action-links\.scss}line{font-family:\0000317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/menus\/_action-links\.scss}line{font-family:\0000317}}
       .action-links li a:hover {
         font-weight: 700; }
 
 /**
  * $BREADCRUMB
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/menus\/_breadcrumb\.scss}line{font-family:\000037}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/menus\/_breadcrumb\.scss}line{font-family:\000037}}
 .breadcrumb li {
   padding-right: 0.4em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/menus\/_breadcrumb\.scss}line{font-family:\0000310}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/menus\/_breadcrumb\.scss}line{font-family:\0000310}}
   .breadcrumb li:after {
     content: "»";
     padding-left: 0.4em;
     vertical-align: baseline; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/menus\/_breadcrumb\.scss}line{font-family:\0000315}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/menus\/_breadcrumb\.scss}line{font-family:\0000315}}
   .breadcrumb li:last-child:after {
     content: ""; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/menus\/_breadcrumb\.scss}line{font-family:\0000320}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/menus\/_breadcrumb\.scss}line{font-family:\0000320}}
 .breadcrumb a {
   text-decoration: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/menus\/_breadcrumb\.scss}line{font-family:\0000323}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/menus\/_breadcrumb\.scss}line{font-family:\0000323}}
   .breadcrumb a:hover {
     text-decoration: underline; }
 
 /**
  * $BORDER-LIST
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_border-list\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_border-list\.scss}line{font-family:\000034}}
 .border-list {
   padding: 0;
   list-style: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_border-list\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_border-list\.scss}line{font-family:\000039}}
   .border-list li {
     padding-bottom: 1.5em;
     margin-bottom: 1.5em;
     border-bottom: 1px solid #d0d3d5; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_border-list\.scss}line{font-family:\0000314}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_border-list\.scss}line{font-family:\0000314}}
     .border-list li:last-child {
       padding-bottom: 0;
       margin-bottom: 0;
@@ -825,7 +860,7 @@ div.password-indicator {
  * $BUTTONS
  */
 /* Base Button */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\000035}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\000035}}
 .button {
   display: inline-block;
   height: 2.2em;
@@ -844,23 +879,23 @@ div.password-indicator {
   white-space: nowrap;
   overflow: visible;
   cursor: pointer; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000332}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000332}}
   .button, .button:hover, .button:active, .button:focus, .button:visited {
     text-decoration: none; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000336}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000336}}
   .button:hover {
     background-color: #8e8e8e; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000341}}
   .button:active, .button:focus {
     outline: none;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.5) inset; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000346}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000346}}
   .button::-moz-focus-inner {
     border: 0;
     padding: 0; }
 
 /* Fill width of container */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000353}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000353}}
 .button--full {
   width: 100%;
   padding-right: 0;
@@ -868,7 +903,7 @@ div.password-indicator {
   text-align: center; }
 
 /* Inherit sizing from parent  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000361}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000361}}
 .button--natural {
   vertical-align: baseline;
   font-size: inherit;
@@ -878,11 +913,11 @@ div.password-indicator {
   padding-left: 0.5em; }
 
 /* Button Functions */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000371}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000371}}
 .button--primary {
-  background-color: #fd8e18; }
+  background-color: #ffb200; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000375}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000375}}
 .button--secondary {
   background-color: transparent;
   border-color: #b8bed6;
@@ -890,27 +925,27 @@ div.password-indicator {
   border-width: 0.0625em;
   padding: 1.4375em;
   color: #b8bed6; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000381}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000381}}
   .button--secondary:hover {
     border-color: #8e8e8e;
     background-color: transparent;
     color: #8e8e8e; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000388}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000388}}
 .button--positive {
-  background-color: #a49641; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000390}}
+  background-color: #28eb9e; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000390}}
   .button--positive:hover {
-    background-color: #7f7533; }
+    background-color: #13cd84; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000395}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000395}}
 .button--negative {
-  background-color: #a47441; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000397}}
+  background-color: #9978e5; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\0000397}}
   .button--negative:hover {
-    background-color: #7f5a33; }
+    background-color: #794ddd; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\00003105}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\00003105}}
 .button--disabled,
 .button--disabled:hover,
 .button--disabled:active,
@@ -921,7 +956,7 @@ div.password-indicator {
   box-shadow: none; }
 
 /* Adjacent buttons should have some space between them. */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\00003114}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_buttons\.scss}line{font-family:\00003114}}
 .button + .button,
 .button + a {
   margin-left: 1em; }
@@ -933,13 +968,13 @@ div.password-indicator {
 /**
  * Contextual links behaviour.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_contextual-links\.scss}line{font-family:\0000311}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_contextual-links\.scss}line{font-family:\0000311}}
 .contextual-links-wrapper,
 .contextual-links-trigger,
 .contextual-links {
   display: none !important; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_contextual-links\.scss}line{font-family:\0000317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_contextual-links\.scss}line{font-family:\0000317}}
 html.js .contextual-links-wrapper,
 .contextual-links-region:hover .contextual-links-trigger,
 .contextual-links-active .contextual-links-trigger,
@@ -949,12 +984,12 @@ html.js .contextual-links-wrapper,
 /**
  * Contextual links structure.
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_contextual-links\.scss}line{font-family:\0000324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_contextual-links\.scss}line{font-family:\0000324}}
 .contextual-links-region {
   outline: none;
   position: relative; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_contextual-links\.scss}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_contextual-links\.scss}line{font-family:\0000328}}
 .contextual-links-wrapper {
   position: absolute;
   z-index: 999;
@@ -962,21 +997,25 @@ html.js .contextual-links-wrapper,
   /* LTR */
   top: 2px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_contextual-links\.scss}line{font-family:\0000334}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_contextual-links\.scss}line{font-family:\0000334}}
 .contextual-links-trigger {
   overflow: hidden;
   text-align: right;
   /* LTR */ }
+
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_facebook\.scss}line{font-family:\000031}}
+.fb_connected, .fb_not_connected {
+  margin: 1em 0; }
 
 /**
  * @file
  * Theme styles for markup generated by theme_menu_local_tasks().
  */
 /* Tabs */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\000039}}
 .tabs li.active, .tabs li a.active {
   border-bottom-color: #c2bfb8; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000313}}
 .tabs li a {
   font-size: font-size(16px);
   padding: 0.5em 1.5em;
@@ -1043,14 +1082,14 @@ html.js .contextual-links-wrapper,
   .tabs li a::-moz-focus-inner {
     padding: 0 !important;
     margin: -1px !important; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000324}}
   .tabs li a.active {
     font-weight: 700;
     color: black;
     border-width: 2px;
     border-color: #8e8e8e;
     background: #c2bfb8; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000333}}
   .tabs li a:hover, .tabs li a:focus {
     -moz-border-radius-bottomleft: 0;
     -webkit-border-bottom-left-radius: 0;
@@ -1060,71 +1099,150 @@ html.js .contextual-links-wrapper,
     border-bottom-right-radius: 0; }
 
 /* Primary Tabs */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000341}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000341}}
 .tabs--primary {
   margin-bottom: 1em;
   border-bottom: 2px solid #8e8e8e; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000345}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000345}}
   .tabs--primary li {
     margin-bottom: -2px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000349}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000349}}
     .tabs--primary li a, .tabs--primary li a.active, .tabs--primary li a:hover, .tabs--primary li a:focus {
       padding: 0.25em 1em 0.125em; }
 
 /* Secondary Tabs */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000357}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000357}}
 .tabs--secondary {
   margin-bottom: 1em;
   border-bottom: 1px solid #8e8e8e; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000361}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000361}}
   .tabs--secondary li {
-    margin-bottom: -1px; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000365}}
-    .tabs--secondary li a, .tabs--secondary li a.active, .tabs--secondary li a:hover, .tabs--secondary li a:focus {
-      padding: 0.25em 1em 0.125em; }
+    margin-bottom: 0px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000364}}
+    .tabs--secondary li.active, .tabs--secondary li a.active {
+      border-bottom-color: #c2bfb8; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000368}}
+    .tabs--secondary li a {
+      font-size: font-size(14px);
+      padding: 0.5em 1.5em;
+      display: inline-block;
+      cursor: pointer;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+      border-radius: 10px;
+      *zoom: 1;
+      filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF938E81', endColorstr='#FF5E5A50');
+      background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzkzOGU4MSIvPjxzdG9wIG9mZnNldD0iNzAlIiBzdG9wLWNvbG9yPSIjOWY5YThmIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+      background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #938e81), color-stop(70%, #9f9a8f));
+      background: -webkit-linear-gradient(#938e81, #9f9a8f 70%);
+      background: -moz-linear-gradient(#938e81, #9f9a8f 70%);
+      background: -o-linear-gradient(#938e81, #9f9a8f 70%);
+      background: linear-gradient(#938e81, #9f9a8f 70%);
+      -webkit-box-shadow: #b6b3aa 0 1px 0 inset;
+      -moz-box-shadow: #b6b3aa 0 1px 0 inset;
+      box-shadow: #b6b3aa 0 1px 0 inset;
+      border: 1px solid #938e81;
+      color: #e6e5e2;
+      -webkit-box-shadow: 0 0 0 0 black;
+      -moz-box-shadow: 0 0 0 0 black;
+      box-shadow: 0 0 0 0 black;
+      -moz-border-radius-bottomleft: 0;
+      -webkit-border-bottom-left-radius: 0;
+      border-bottom-left-radius: 0;
+      -moz-border-radius-bottomright: 0;
+      -webkit-border-bottom-right-radius: 0;
+      border-bottom-right-radius: 0;
+      margin: 0; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/sassy-buttons-0\.2\.6\/stylesheets\/sassy-buttons\/_sassy-button-pseudo-states\.sass}line{font-family:\0000315}}
+      .tabs--secondary li a:hover {
+        text-decoration: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/sassy-buttons-0\.2\.6\/stylesheets\/sassy-buttons\/_sassy-button-pseudo-states\.sass}line{font-family:\0000318}}
+      .tabs--secondary li a:hover {
+        background-color: #938e81;
+        background: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIzJSIgc3RvcC1jb2xvcj0iIzg3ODE3NCIvPjxzdG9wIG9mZnNldD0iNzUlIiBzdG9wLWNvbG9yPSIjOTM4ZTgxIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNncmFkKSIgLz48L3N2Zz4g');
+        background: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(3%, #878174), color-stop(75%, #938e81));
+        background: -webkit-linear-gradient(#878174 3%, #938e81 75%);
+        background: -moz-linear-gradient(#878174 3%, #938e81 75%);
+        background: -o-linear-gradient(#878174 3%, #938e81 75%);
+        background: linear-gradient(#878174 3%, #938e81 75%); }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/sassy-buttons-0\.2\.6\/stylesheets\/sassy-buttons\/_sassy-button-pseudo-states\.sass}line{font-family:\0000321}}
+      .tabs--secondary li a:active {
+        -webkit-box-shadow: #8c8679 0 1px 2px inset;
+        -moz-box-shadow: #8c8679 0 1px 2px inset;
+        box-shadow: #8c8679 0 1px 2px inset; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/sassy-buttons-0\.2\.6\/stylesheets\/sassy-buttons\/_sassy-button-pseudo-states\.sass}line{font-family:\000036}}
+      .tabs--secondary li a.disabled, .tabs--secondary li a[disabled] {
+        filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+        opacity: 0.6;
+        background: #9f9a8f;
+        cursor: default;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/sassy-buttons-0\.2\.6\/stylesheets\/_sassy-buttons\.sass}line{font-family:\0000374}}
+      .tabs--secondary li a::-moz-focus-inner {
+        padding: 0 !important;
+        margin: -1px !important; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000375}}
+      .tabs--secondary li a.active {
+        border-width: 1px; }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_localtasks\.scss}line{font-family:\0000378}}
+      .tabs--secondary li a, .tabs--secondary li a.active, .tabs--secondary li a:hover, .tabs--secondary li a:focus {
+        padding: 0.175em 0.75em 0.1em; }
 
 /**
  * $MESSAGES
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_messages\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_messages\.scss}line{font-family:\000034}}
 .messages {
   padding-left: 10px;
-  margin-bottom: 20px; }
+  margin-bottom: 20px;
+  margin-top: -20px;
+  border: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_messages\.scss}line{font-family:\000039}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_messages\.scss}line{font-family:\0000311}}
 .messages--status {
-  color: #8c92ac;
+  color: #585e7a;
   background: #c5c8d5;
-  border-color: #a3a7bc; }
+  border-color: #585e7a;
+  -webkit-box-shadow: rgba(163, 167, 188, 0.4) 0 0 8px 4px, rgba(88, 94, 122, 0.4) 0 0 0 2px inset;
+  -moz-box-shadow: rgba(163, 167, 188, 0.4) 0 0 8px 4px, rgba(88, 94, 122, 0.4) 0 0 0 2px inset;
+  box-shadow: rgba(163, 167, 188, 0.4) 0 0 8px 4px, rgba(88, 94, 122, 0.4) 0 0 0 2px inset; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_messages\.scss}line{font-family:\0000315}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_messages\.scss}line{font-family:\0000318}}
 .messages--warning {
-  color: #fd8e18;
-  background: #fec68b;
-  border-color: #fda446; }
+  color: #996b00;
+  background: #ffd87f;
+  -webkit-box-shadow: rgba(255, 193, 51, 0.4) 0 0 8px 4px, rgba(153, 107, 0, 0.4) 0 0 0 2px inset;
+  -moz-box-shadow: rgba(255, 193, 51, 0.4) 0 0 8px 4px, rgba(153, 107, 0, 0.4) 0 0 0 2px inset;
+  box-shadow: rgba(255, 193, 51, 0.4) 0 0 8px 4px, rgba(153, 107, 0, 0.4) 0 0 0 2px inset; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_messages\.scss}line{font-family:\0000321}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_messages\.scss}line{font-family:\0000324}}
 .messages--error {
-  color: #a47441;
-  background: #d1b9a0;
-  border-color: #b68f67; }
+  color: #5b28cf;
+  background: #ccbbf2;
+  -webkit-box-shadow: rgba(173, 147, 234, 0.4) 0 0 8px 4px, rgba(91, 40, 207, 0.4) 0 0 0 2px inset;
+  -moz-box-shadow: rgba(173, 147, 234, 0.4) 0 0 8px 4px, rgba(91, 40, 207, 0.4) 0 0 0 2px inset;
+  box-shadow: rgba(173, 147, 234, 0.4) 0 0 8px 4px, rgba(91, 40, 207, 0.4) 0 0 0 2px inset; }
 
 /**
  * $PAGER
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_pager\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_pager\.scss}line{font-family:\000034}}
 .pager {
   overflow: hidden;
   *zoom: 1; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_pager\.scss}line{font-family:\000038}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_pager\.scss}line{font-family:\000038}}
 .pager__item {
   display: block;
   float: left;
   margin: 0.1em;
   padding: 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_pager\.scss}line{font-family:\0000317}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_pager\.scss}line{font-family:\0000317}}
 .pager__item a,
 .pager__item--current,
 .pager__item--ellipsis {
@@ -1134,25 +1252,25 @@ html.js .contextual-links-wrapper,
   color: #8e8e8e;
   text-decoration: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_pager\.scss}line{font-family:\0000324}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_pager\.scss}line{font-family:\0000324}}
 .pager__item a:hover {
-  background-color: #fd8e18;
-  border-color: #fd8e18;
+  background-color: #ffb200;
+  border-color: #ffb200;
   color: #fff; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_pager\.scss}line{font-family:\0000329}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_pager\.scss}line{font-family:\0000329}}
 .pager__item--current {
-  border-color: #fd8e18;
-  color: #fd8e18; }
+  border-color: #ffb200;
+  color: #ffb200; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_pager\.scss}line{font-family:\0000333}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_pager\.scss}line{font-family:\0000333}}
 .pager__item--ellipsis {
   border: none; }
 
 /**
  * $PROGRESS
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_progress\.scss}line{font-family:\000035}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_progress\.scss}line{font-family:\000035}}
 .progress .bar {
   background-color: #d0d3d5;
   border-color: #8e8e8e;
@@ -1161,14 +1279,14 @@ html.js .contextual-links-wrapper,
   -ms-border-radius: 0;
   -o-border-radius: 0;
   border-radius: 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_progress\.scss}line{font-family:\0000310}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_progress\.scss}line{font-family:\0000310}}
 .progress .filled {
   background: #8c92ac; }
 
 /**
  * $SECTION-TITLE
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/misc\/_section-title\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/misc\/_section-title\.scss}line{font-family:\000034}}
 .section-title {
   padding-bottom: 0.75em;
   margin-bottom: 1.5em;
@@ -1177,7 +1295,7 @@ html.js .contextual-links-wrapper,
 /**
  * $NODE-BASIC-PAGE
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/node\/_node-article\.scss}line{font-family:\000035}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/node\/_node-article\.scss}line{font-family:\000035}}
 .node--article .field--name-field-image {
   float: left;
   margin: 0 2em 1em 0; }
@@ -1185,40 +1303,41 @@ html.js .contextual-links-wrapper,
 /**
  * $NODE
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/node\/_node\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/node\/_node\.scss}line{font-family:\000034}}
 .node--teaser {
   margin-bottom: 20px; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/node\/_node\.scss}line{font-family:\000038}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/node\/_node\.scss}line{font-family:\000038}}
 .node__links {
   margin-bottom: 20px; }
 
 /**
  * $SITE-BRANDING
  */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-branding\.scss}line{font-family:\000034}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-branding\.scss}line{font-family:\000034}}
 .l-branding {
   position: relative;
   padding: 0;
   margin: 5em 0;
   overflow: hidden;
   *zoom: 1; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-branding\.scss}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-branding\.scss}line{font-family:\0000313}}
   .l-branding .site-logo {
     display: block;
     float: left; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-branding\.scss}line{font-family:\0000316}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-branding\.scss}line{font-family:\0000316}}
     .l-branding .site-logo img {
       content: url('../images/logos/logo_black_trans.svg?1395531694');
       width: 4.688em;
       height: 4.688em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-branding\.scss}line{font-family:\0000322}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-branding\.scss}line{font-family:\0000322}}
   .l-branding .site-name {
+    display: block;
     font-size: 44px;
     font-size: 2.75rem;
     padding-left: 2.230em;
     padding-top: 0.854em; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-branding\.scss}line{font-family:\0000328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-branding\.scss}line{font-family:\0000328}}
     .l-branding .site-name a {
       color: black; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/compass-0\.12\.4\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000318}}
@@ -1233,7 +1352,7 @@ html.js .contextual-links-wrapper,
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/compass-0\.12\.4\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_link-colors\.scss}line{font-family:\0000327}}
       .l-branding .site-name a:active {
         color: black; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-branding\.scss}line{font-family:\0000331}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-branding\.scss}line{font-family:\0000331}}
       .l-branding .site-name a, .l-branding .site-name a:hover, .l-branding .site-name a:focus {
         text-decoration: none; }
 
@@ -1241,24 +1360,26 @@ html.js .contextual-links-wrapper,
  * Header region
  */
 /* Hiding logintoboggan logged-in menu block for when the admin-menu is present as its redundant */
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-header\.scss}line{font-family:\000036}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-header\.scss}line{font-family:\000036}}
 body.admin-menu .l-region--header .block--logintoboggan-logintoboggan-logged-in {
   display: none; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-header\.scss}line{font-family:\0000310}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-header\.scss}line{font-family:\0000310}}
 .l-header {
   position: relative; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-header\.scss}line{font-family:\0000313}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/components\/regions\/_region-header\.scss}line{font-family:\0000313}}
 .l-region--header {
+  overflow: hidden;
+  *zoom: 1;
   position: absolute;
   right: 0; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/studio\.styles\.scss}line{font-family:\0000325}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/studio\.styles\.scss}line{font-family:\0000325}}
 html {
   background-color: #c2bfb8; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/html\/sites\/all\/themes\/studio\/sass\/studio\.styles\.scss}line{font-family:\0000329}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/studio\.styles\.scss}line{font-family:\0000329}}
 h1.page-title {
   border-bottom: 2px solid #8e8e8e;
   padding-bottom: 0.5em;

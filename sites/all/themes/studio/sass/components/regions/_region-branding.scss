@@ -20,7 +20,7 @@
     }
   }
   .site-name {
-
+    display: block;
     @include font-size(44px);
     padding-left: 2.230em;
     padding-top: 0.854em;

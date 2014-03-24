@@ -59,11 +59,24 @@
   border-bottom: 1px solid $mid-grey;
 
   li {
-    margin-bottom: -1px;
+    margin-bottom: 0px;
+
+    &.active, a.active {
+      border-bottom-color: $base-background-color;
+    }
 
     a {
+      @include sassy-button("matte", 10px, font-size(14px), darken($base-background-color, 20%), darken($base-background-color, 15%), tint($base-background-color, 60%), 'normal');
+      @include single-box-shadow($base-foreground-color, 0, 0, 0, 0, false);
+      @include border-bottom-radius(0);
+
+      margin: 0;
+
+      &.active {
+        border-width: 1px;
+      }
       &, &.active, &:hover, &:focus {
-        padding: 0.25em 1em 0.125em;
+        padding: 0.175em 0.75em 0.1em;
       }
     }
   }

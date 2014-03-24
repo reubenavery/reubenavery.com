@@ -11,6 +11,7 @@ body.admin-menu .l-region--header .block--logintoboggan-logintoboggan-logged-in 
   position: relative;
 }
 .l-region--header {
+  @include clearfix;
   position: absolute;
   right: 0;
 }

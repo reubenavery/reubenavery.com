@@ -4,10 +4,26 @@
 .block--system-user-menu {
   .menu {
     @extend %hlist;
+    float: right;
+
+    @include background-image(linear-gradient(tint($base-foreground-color, 20%), tint($base-foreground-color, 30%), $base-foreground-color));
+    @include border-bottom-left-radius(20px);
+
+    padding: 0.125em 1em 0.25em 1.5em;
+
+    @include font-size(14px);
   }
-  a {
+  a, a:link, a:visited {
+    color: tint($base-background-color, 50%);
+    text-decoration: none;
     padding: 0 0.6em;
-    border-right: 1px solid $orange;
+    border-right: 1px solid darken($base-background-color, 20%);
+    &:hover {
+      color: tint($base-background-color, 75%);
+    }
+  }
+  li {
+    float: left;
   }
   li:first-child a {
     padding-left: 0;

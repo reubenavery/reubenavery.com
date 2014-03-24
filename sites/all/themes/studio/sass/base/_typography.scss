@@ -27,6 +27,7 @@ a {
 /**
  * $HEADINGS
  */
+.site-name,
 h1, .alpha,
 h2, .beta,
 h3, .gamma,
@@ -38,6 +39,7 @@ h6, .zeta {
   letter-spacing: -0.0189em;
 }
 
+.site-name,
 h1, .alpha {
   @include font-size(28px);
 }

@@ -4,22 +4,25 @@
 .messages {
   padding-left: 10px;
   margin-bottom: $vert-spacing-unit;
+  margin-top: -$vert-spacing-unit;
+  border: none;
 }
 
 .messages--status {
-  color: $notice-color;
+  color: darken($notice-color, 20%);
   background: tint($notice-color, 50%);
-  border-color: tint($notice-color, 20%);
+  border-color: darken($notice-color, 20%);
+  @include box-shadow(rgba(tint($notice-color, 20%), 0.4) 0 0 8px 4px, rgba(darken($notice-color, 20%), 0.4) 0 0 0 2px inset);
 }
 
 .messages--warning {
-  color: $warning-color;
+  color: darken($warning-color, 20%);
   background: tint($warning-color, 50%);
-  border-color: tint($warning-color, 20%);
+  @include box-shadow(rgba(tint($warning-color, 20%), 0.4) 0 0 8px 4px, rgba(darken($warning-color, 20%), 0.4) 0 0 0 2px inset);
 }
 
 .messages--error {
-  color: $error-color;
+  color: darken($error-color, 20%);
   background: tint($error-color, 50%);
-  border-color: tint($error-color, 20%);
+  @include box-shadow(rgba(tint($error-color, 20%), 0.4) 0 0 8px 4px, rgba(darken($error-color, 20%), 0.4) 0 0 0 2px inset);
 }

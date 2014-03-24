@@ -1,10 +1,34 @@
 /**
  * $FIELDSETS
  */
-.form-wrapper {
-  margin-bottom: $vert-spacing-unit;
-}
+fieldset {
 
+  legend {
+    font-style: normal;
+    a, a:visited {
+      color: $base-foreground-color;
+    }
+  }
+}
+html.js fieldset.collapsed {
+  height: 3.1em;
+  border-width: 1px solid $dark-grey;
+}
+html.js fieldset.collapsible {
+
+}
+html.js fieldset.collapsible .fieldset-title {
+  padding: 0.5em;
+  &, &:visited {
+    color: $dark-blue;
+  }
+}
+html.js fieldset.collapsible div.fieldset-wrapper {
+
+}
+.form-item .description fieldset {
+  margin-top: 0.75em;
+}
 
 .fieldset-description {
   margin-bottom: $vert-spacing-unit / 2;
@@ -12,6 +36,25 @@
   font-style: italic;
 }
 
+.vertical-tabs {
+  background-color: tint($base-background-color, 50%);
+}
+
+.vertical-tabs ul.vertical-tabs-list li {
+  background-color: darken($base-background-color, 10%);
+  height: 100%;
+}
+.vertical-tabs ul.vertical-tabs-list li.selected {
+  background-color: tint($base-background-color, 50%);
+}
+
 .vertical-tabs fieldset.vertical-tabs-pane {
+  background-color: tint($base-background-color, 50%);
   padding: $vert-spacing-unit $horz-spacing-unit;
+
+  select,
+  input,
+  textarea {
+    background-color: tint($base-background-color, 75%);
+  }
 }

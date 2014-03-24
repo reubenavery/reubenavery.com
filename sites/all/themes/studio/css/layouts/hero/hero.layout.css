@@ -2,16 +2,16 @@
 Syntax error: Undefined operation: "12 lt 44em 12".
         on line 45 of /Users/ravery/.rvm/gems/ruby-1.9.3-p545@omega.studio/gems/singularitygs-1.1.2/stylesheets/singularitygs/helpers/_find.scss, in `output-isolation'
         from line 7 of /Users/ravery/.rvm/gems/ruby-1.9.3-p545@omega.studio/gems/singularitygs-1.1.2/stylesheets/singularitygs/_api.scss, in `grid-span'
-        from line 64 of /Users/ravery/Sites/reubenavery.com/html/sites/all/themes/studio/sass/layouts/hero/hero.layout.scss, in `@content'
+        from line 64 of /Users/ravery/Sites/reubenavery.com/sites/all/themes/studio/sass/layouts/hero/hero.layout.scss, in `@content'
         from line 88 of /Users/ravery/.rvm/gems/ruby-1.9.3-p545@omega.studio/gems/breakpoint-2.0.7/stylesheets/_breakpoint.scss, in `breakpoint'
-        from line 57 of /Users/ravery/Sites/reubenavery.com/html/sites/all/themes/studio/sass/layouts/hero/hero.layout.scss
+        from line 57 of /Users/ravery/Sites/reubenavery.com/sites/all/themes/studio/sass/layouts/hero/hero.layout.scss
 
 Backtrace:
 /Users/ravery/.rvm/gems/ruby-1.9.3-p545@omega.studio/gems/singularitygs-1.1.2/stylesheets/singularitygs/helpers/_find.scss:45:in `output-isolation'
 /Users/ravery/.rvm/gems/ruby-1.9.3-p545@omega.studio/gems/singularitygs-1.1.2/stylesheets/singularitygs/_api.scss:7:in `grid-span'
-/Users/ravery/Sites/reubenavery.com/html/sites/all/themes/studio/sass/layouts/hero/hero.layout.scss:64:in `@content'
+/Users/ravery/Sites/reubenavery.com/sites/all/themes/studio/sass/layouts/hero/hero.layout.scss:64:in `@content'
 /Users/ravery/.rvm/gems/ruby-1.9.3-p545@omega.studio/gems/breakpoint-2.0.7/stylesheets/_breakpoint.scss:88:in `breakpoint'
-/Users/ravery/Sites/reubenavery.com/html/sites/all/themes/studio/sass/layouts/hero/hero.layout.scss:57
+/Users/ravery/Sites/reubenavery.com/sites/all/themes/studio/sass/layouts/hero/hero.layout.scss:57
 /Users/ravery/.rvm/gems/ruby-1.9.3-p545@omega.studio/gems/sass-3.2.17/lib/sass/script/operation.rb:92:in `rescue in _perform'
 /Users/ravery/.rvm/gems/ruby-1.9.3-p545@omega.studio/gems/sass-3.2.17/lib/sass/script/operation.rb:88:in `_perform'
 /Users/ravery/.rvm/gems/ruby-1.9.3-p545@omega.studio/gems/sass-3.2.17/lib/sass/script/node.rb:40:in `perform'
@@ -227,4 +227,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined operation: \"12 lt 44em 12\".\A         on line 45 of /Users/ravery/.rvm/gems/ruby-1.9.3-p545@omega.studio/gems/singularitygs-1.1.2/stylesheets/singularitygs/helpers/_find.scss, in `output-isolation'\A         from line 7 of /Users/ravery/.rvm/gems/ruby-1.9.3-p545@omega.studio/gems/singularitygs-1.1.2/stylesheets/singularitygs/_api.scss, in `grid-span'\A         from line 64 of /Users/ravery/Sites/reubenavery.com/html/sites/all/themes/studio/sass/layouts/hero/hero.layout.scss, in `@content'\A         from line 88 of /Users/ravery/.rvm/gems/ruby-1.9.3-p545@omega.studio/gems/breakpoint-2.0.7/stylesheets/_breakpoint.scss, in `breakpoint'\A         from line 57 of /Users/ravery/Sites/reubenavery.com/html/sites/all/themes/studio/sass/layouts/hero/hero.layout.scss"; }
+  content: "Syntax error: Undefined operation: \"12 lt 44em 12\".\A         on line 45 of /Users/ravery/.rvm/gems/ruby-1.9.3-p545@omega.studio/gems/singularitygs-1.1.2/stylesheets/singularitygs/helpers/_find.scss, in `output-isolation'\A         from line 7 of /Users/ravery/.rvm/gems/ruby-1.9.3-p545@omega.studio/gems/singularitygs-1.1.2/stylesheets/singularitygs/_api.scss, in `grid-span'\A         from line 64 of /Users/ravery/Sites/reubenavery.com/sites/all/themes/studio/sass/layouts/hero/hero.layout.scss, in `@content'\A         from line 88 of /Users/ravery/.rvm/gems/ruby-1.9.3-p545@omega.studio/gems/breakpoint-2.0.7/stylesheets/_breakpoint.scss, in `breakpoint'\A         from line 57 of /Users/ravery/Sites/reubenavery.com/sites/all/themes/studio/sass/layouts/hero/hero.layout.scss"; }
