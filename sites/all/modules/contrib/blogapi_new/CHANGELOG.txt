@@ -1,0 +1,3 @@
+BlogAPI Alternative 7.x-1.0-beta1, 2012-12-23
+---------------------------------------------
+Initial version of the code, as taken from http://www.xmldocs.info/.

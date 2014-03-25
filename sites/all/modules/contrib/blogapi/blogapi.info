@@ -1,0 +1,13 @@
+name = BlogAPI
+description = Allow users to post content using applications that support Blog APIs. Requires one or more provider modules to be enabled.
+package = Services
+core = 7.x
+dependencies[] = services
+
+files[] = blogapi.test
+; Information added by drupal.org packaging script on 2013-08-01
+version = "7.x-2.0-rc1"
+core = "7.x"
+project = "blogapi"
+datestamp = "1375331176"
+
