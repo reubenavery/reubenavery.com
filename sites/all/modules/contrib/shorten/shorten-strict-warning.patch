@@ -1,0 +1,14 @@
+diff --git a/docroot/sites/all/modules/contrib/shorten/shorten.module b/docroot/sites/all/modules/contrib/shorten/shorten.module
+index 0238982..cf56aca 100644
+--- a/docroot/sites/all/modules/contrib/shorten/shorten.module
++++ b/docroot/sites/all/modules/contrib/shorten/shorten.module
+@@ -648,7 +648,8 @@ function _shorten_service_form($last_service = NULL) {
+  * Returns HTML representing the short URL form.
+  */
+ function shorten_current_form() {
+-  return drupal_render(drupal_get_form('shorten_current'));
++  $form = drupal_get_form('shorten_current');
++  return drupal_render($form);
+ }
+ 
+ /**

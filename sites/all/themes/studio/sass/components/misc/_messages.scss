@@ -2,27 +2,41 @@
  * $MESSAGES
  */
 .messages {
-  padding-left: 10px;
-  margin-bottom: $vert-spacing-unit;
-  margin-top: -$vert-spacing-unit;
-  border: none;
+  padding: 1px;
+  margin: $vert-spacing-unit 0;
+  &.first {
+    margin-top: -20px;
+  }
+  .inner {
+    @include clearfix;
+    padding: $vert-spacing-unit/2 $horz-spacing-unit;
+  }
 }
-
 .messages--status {
   color: darken($notice-color, 20%);
   background: tint($notice-color, 50%);
   border-color: darken($notice-color, 20%);
   @include box-shadow(rgba(tint($notice-color, 20%), 0.4) 0 0 8px 4px, rgba(darken($notice-color, 20%), 0.4) 0 0 0 2px inset);
+  .inner {
+    border: 2px solid $notice-color;
+  }
 }
 
 .messages--warning {
   color: darken($warning-color, 20%);
   background: tint($warning-color, 50%);
   @include box-shadow(rgba(tint($warning-color, 20%), 0.4) 0 0 8px 4px, rgba(darken($warning-color, 20%), 0.4) 0 0 0 2px inset);
+  .inner {
+    border: 2px solid $warning-color;
+  }
 }
 
 .messages--error {
   color: darken($error-color, 20%);
   background: tint($error-color, 50%);
   @include box-shadow(rgba(tint($error-color, 20%), 0.4) 0 0 8px 4px, rgba(darken($error-color, 20%), 0.4) 0 0 0 2px inset);
+  .inner {
+    border: 2px solid $error-color;
+  }
 }
+

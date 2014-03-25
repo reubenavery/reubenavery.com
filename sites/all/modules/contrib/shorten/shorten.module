@@ -648,7 +648,8 @@ function _shorten_service_form($last_service = NULL) {
  * Returns HTML representing the short URL form.
  */
 function shorten_current_form() {
-  return drupal_render(drupal_get_form('shorten_current'));
+  $form = drupal_get_form('shorten_current');
+  return drupal_render($form);
 }
 
 /**
