@@ -14,9 +14,9 @@
     display: block;
     float: left;
     img {
-      content: image-url('logos/logo_black_trans.svg');
-      width: 4.688em;
-      height: 4.688em;
+//      content: image-url('logos/logo_black_trans.svg');
+//      width: 4.688em;
+//      height: 4.688em;
     }
   }
   .site-name {
@@ -32,5 +32,8 @@
         text-decoration: none;
       }
     }
+  }
+  .site-slogan {
+
   }
 }
