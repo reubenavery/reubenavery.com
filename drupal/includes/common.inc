@@ -5946,16 +5946,14 @@ function drupal_render(&$elements) {
 /**
  * Renders children of an element and concatenates them.
  *
- * @param array $element
- *   The structured array whose children shall be rendered.
- * @param array $children_keys
- *   (optional) If the keys of the element's children are already known, they
- *   can be passed in to save another run of element_children().
+ * This renders all children of an element using drupal_render() and then
+ * joins them together into a single string.
  *
- * @return string
- *   The rendered HTML of all children of the element.
-
- * @see drupal_render()
+ * @param $element
+ *   The structured array whose children shall be rendered.
+ * @param $children_keys
+ *   If the keys of the element's children are already known, they can be passed
+ *   in to save another run of element_children().
  */
 function drupal_render_children(&$element, $children_keys = NULL) {
   if ($children_keys === NULL) {

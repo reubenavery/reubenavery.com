@@ -1402,9 +1402,8 @@ function file_space_used($uid = NULL, $status = FILE_STATUS_PERMANENT) {
  * Temporary files are periodically cleaned. To make the file a permanent file,
  * assign the status and use file_save() to save the changes.
  *
- * @param $form_field_name
- *   A string that is the associative array key of the upload form element in
- *   the form array.
+ * @param $source
+ *   A string specifying the filepath or URI of the uploaded file to save.
  * @param $validators
  *   An optional, associative array of callback functions used to validate the
  *   file. See file_validate() for a full discussion of the array format.
@@ -1415,9 +1414,9 @@ function file_space_used($uid = NULL, $status = FILE_STATUS_PERMANENT) {
  *   (Beware: this is not safe and should only be allowed for trusted users, if
  *   at all).
  * @param $destination
- *   A string containing the URI that the file should be copied to. This must
- *   be a stream wrapper URI. If this value is omitted, Drupal's temporary
- *   files scheme will be used ("temporary://").
+ *   A string containing the URI $source should be copied to.
+ *   This must be a stream wrapper URI. If this value is omitted, Drupal's
+ *   temporary files scheme will be used ("temporary://").
  * @param $replace
  *   Replace behavior when the destination file already exists:
  *   - FILE_EXISTS_REPLACE: Replace the existing file.
@@ -1435,45 +1434,45 @@ function file_space_used($uid = NULL, $status = FILE_STATUS_PERMANENT) {
  *   - source: Path to the file before it is moved.
  *   - destination: Path to the file after it is moved (same as 'uri').
  */
-function file_save_upload($form_field_name, $validators = array(), $destination = FALSE, $replace = FILE_EXISTS_RENAME) {
+function file_save_upload($source, $validators = array(), $destination = FALSE, $replace = FILE_EXISTS_RENAME) {
   global $user;
   static $upload_cache;
 
   // Return cached objects without processing since the file will have
   // already been processed and the paths in _FILES will be invalid.
-  if (isset($upload_cache[$form_field_name])) {
-    return $upload_cache[$form_field_name];
+  if (isset($upload_cache[$source])) {
+    return $upload_cache[$source];
   }
 
   // Make sure there's an upload to process.
-  if (empty($_FILES['files']['name'][$form_field_name])) {
+  if (empty($_FILES['files']['name'][$source])) {
     return NULL;
   }
 
   // Check for file upload errors and return FALSE if a lower level system
   // error occurred. For a complete list of errors:
   // See http://php.net/manual/features.file-upload.errors.php.
-  switch ($_FILES['files']['error'][$form_field_name]) {
+  switch ($_FILES['files']['error'][$source]) {
     case UPLOAD_ERR_INI_SIZE:
     case UPLOAD_ERR_FORM_SIZE:
-      drupal_set_message(t('The file %file could not be saved, because it exceeds %maxsize, the maximum allowed size for uploads.', array('%file' => $_FILES['files']['name'][$form_field_name], '%maxsize' => format_size(file_upload_max_size()))), 'error');
+      drupal_set_message(t('The file %file could not be saved, because it exceeds %maxsize, the maximum allowed size for uploads.', array('%file' => $_FILES['files']['name'][$source], '%maxsize' => format_size(file_upload_max_size()))), 'error');
       return FALSE;
 
     case UPLOAD_ERR_PARTIAL:
     case UPLOAD_ERR_NO_FILE:
-      drupal_set_message(t('The file %file could not be saved, because the upload did not complete.', array('%file' => $_FILES['files']['name'][$form_field_name])), 'error');
+      drupal_set_message(t('The file %file could not be saved, because the upload did not complete.', array('%file' => $_FILES['files']['name'][$source])), 'error');
       return FALSE;
 
     case UPLOAD_ERR_OK:
       // Final check that this is a valid upload, if it isn't, use the
       // default error handler.
-      if (is_uploaded_file($_FILES['files']['tmp_name'][$form_field_name])) {
+      if (is_uploaded_file($_FILES['files']['tmp_name'][$source])) {
         break;
       }
 
     // Unknown error
     default:
-      drupal_set_message(t('The file %file could not be saved. An unknown error has occurred.', array('%file' => $_FILES['files']['name'][$form_field_name])), 'error');
+      drupal_set_message(t('The file %file could not be saved. An unknown error has occurred.', array('%file' => $_FILES['files']['name'][$source])), 'error');
       return FALSE;
   }
 
@@ -1481,10 +1480,10 @@ function file_save_upload($form_field_name, $validators = array(), $destination 
   $file = new stdClass();
   $file->uid      = $user->uid;
   $file->status   = 0;
-  $file->filename = trim(drupal_basename($_FILES['files']['name'][$form_field_name]), '.');
-  $file->uri      = $_FILES['files']['tmp_name'][$form_field_name];
+  $file->filename = trim(drupal_basename($_FILES['files']['name'][$source]), '.');
+  $file->uri      = $_FILES['files']['tmp_name'][$source];
   $file->filemime = file_get_mimetype($file->filename);
-  $file->filesize = $_FILES['files']['size'][$form_field_name];
+  $file->filesize = $_FILES['files']['size'][$source];
 
   $extensions = '';
   if (isset($validators['file_validate_extensions'])) {
@@ -1541,7 +1540,7 @@ function file_save_upload($form_field_name, $validators = array(), $destination 
     return FALSE;
   }
 
-  $file->source = $form_field_name;
+  $file->source = $source;
   // A URI may already have a trailing slash or look like "public://".
   if (substr($destination, -1) != '/') {
     $destination .= '/';
@@ -1550,7 +1549,7 @@ function file_save_upload($form_field_name, $validators = array(), $destination 
   // If file_destination() returns FALSE then $replace == FILE_EXISTS_ERROR and
   // there's an existing file so we need to bail.
   if ($file->destination === FALSE) {
-    drupal_set_message(t('The file %source could not be uploaded because a file by that name already exists in the destination %directory.', array('%source' => $form_field_name, '%directory' => $destination)), 'error');
+    drupal_set_message(t('The file %source could not be uploaded because a file by that name already exists in the destination %directory.', array('%source' => $source, '%directory' => $destination)), 'error');
     return FALSE;
   }
 
@@ -1569,7 +1568,7 @@ function file_save_upload($form_field_name, $validators = array(), $destination 
     else {
       $message .= ' ' . array_pop($errors);
     }
-    form_set_error($form_field_name, $message);
+    form_set_error($source, $message);
     return FALSE;
   }
 
@@ -1577,8 +1576,8 @@ function file_save_upload($form_field_name, $validators = array(), $destination 
   // directory. This overcomes open_basedir restrictions for future file
   // operations.
   $file->uri = $file->destination;
-  if (!drupal_move_uploaded_file($_FILES['files']['tmp_name'][$form_field_name], $file->uri)) {
-    form_set_error($form_field_name, t('File upload error. Could not move uploaded file.'));
+  if (!drupal_move_uploaded_file($_FILES['files']['tmp_name'][$source], $file->uri)) {
+    form_set_error($source, t('File upload error. Could not move uploaded file.'));
     watchdog('file', 'Upload error. Could not move uploaded file %file to destination %destination.', array('%file' => $file->filename, '%destination' => $file->uri));
     return FALSE;
   }
@@ -1598,7 +1597,7 @@ function file_save_upload($form_field_name, $validators = array(), $destination 
   // If we made it this far it's safe to record this file in the database.
   if ($file = file_save($file)) {
     // Add file to the cache.
-    $upload_cache[$form_field_name] = $file;
+    $upload_cache[$source] = $file;
     return $file;
   }
   return FALSE;
@@ -1625,18 +1624,7 @@ function file_save_upload($form_field_name, $validators = array(), $destination 
  * @ingroup php_wrappers
  */
 function drupal_move_uploaded_file($filename, $uri) {
-  // move_uploaded_file() does not support moving a file between two different
-  // stream wrappers. Other file handling functions like rename() have the same
-  // problem, but copy() works since it explicitely sends the contents to the
-  // new source. As such move_uploaded_file() is replaced by is_uploaded_file(),
-  // copy(), and unlink() the old file.
-  //
-  // This is necessary since $filename will start with gs:// since the form
-  // will have been redirected through the GCS upload proxy. The destination
-  // $uri will contain something like public://, private://, etc which will end
-  // up translating to a gs:// location, but PHP is not aware of that.
-  $result = is_uploaded_file($filename) &&
-    copy($filename, $uri) && unlink($filename);
+  $result = @move_uploaded_file($filename, $uri);
   // PHP's move_uploaded_file() does not properly support streams if safe_mode
   // or open_basedir are enabled so if the move failed, try finding a real path
   // and retry the move operation.
@@ -2121,10 +2109,15 @@ function file_upload_max_size() {
   static $max_size = -1;
 
   if ($max_size < 0) {
-    // Since uploads are proxied through GCS they are not limited by
-    // 'post_max_size'. As such, use the 'upload_max_filesize' ini setting which
-    // should provide the GCS limit instead of the normal core logic.
-    $max_size = parse_size(ini_get('upload_max_filesize'));
+    // Start with post_max_size.
+    $max_size = parse_size(ini_get('post_max_size'));
+
+    // If upload_max_size is less, then reduce. Except if upload_max_size is
+    // zero, which indicates no limit.
+    $upload_max = parse_size(ini_get('upload_max_filesize'));
+    if ($upload_max > 0 && $upload_max < $max_size) {
+      $max_size = $upload_max;
+    }
   }
   return $max_size;
 }
@@ -2429,15 +2422,22 @@ function drupal_rmdir($uri, $context = NULL) {
  * @ingroup php_wrappers
  */
 function drupal_tempnam($directory, $prefix) {
-  // TODO Revert once tempnam() is properly supported.
   $scheme = file_uri_scheme($directory);
-  if (!$scheme) {
-    $directory = 'temporary://' . $directory;
-  }
 
-  $name = $directory . '/' . $prefix . mt_rand(100000, 10000000);
-  file_put_contents($name, '');
-  return $name;
+  if ($scheme && file_stream_wrapper_valid_scheme($scheme)) {
+    $wrapper = file_stream_wrapper_get_instance_by_scheme($scheme);
+
+    if ($filename = tempnam($wrapper->getDirectoryPath(), $prefix)) {
+      return $scheme . '://' . drupal_basename($filename);
+    }
+    else {
+      return FALSE;
+    }
+  }
+  else {
+    // Handle as a normal tempnam() call.
+    return tempnam($directory, $prefix);
+  }
 }
 
 /**

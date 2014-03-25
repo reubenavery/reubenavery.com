@@ -259,6 +259,8 @@ function image_gd_save(stdClass $image, $destination) {
       $permanent_destination = $destination;
       $destination = drupal_tempnam('temporary://', 'gd_');
     }
+    // Convert stream wrapper URI to normal path.
+    $destination = drupal_realpath($destination);
   }
 
   $extension = str_replace('jpg', 'jpeg', $image->info['extension']);
