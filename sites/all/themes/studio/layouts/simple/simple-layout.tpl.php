@@ -15,7 +15,7 @@
           <span class="site-name">
             <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
           </span>
-          <?endif; ?>
+          <?php endif; ?>
         <?php endif; ?>
 
         <?php if ($site_slogan): ?>
