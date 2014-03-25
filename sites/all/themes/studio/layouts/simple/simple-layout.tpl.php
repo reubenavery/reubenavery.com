@@ -14,7 +14,7 @@
           <?php else: ?>
           <span class="site-name">
             <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
-          </span1>
+          </span>
           <?endif; ?>
         <?php endif; ?>
 
