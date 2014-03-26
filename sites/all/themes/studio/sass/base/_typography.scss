@@ -21,7 +21,8 @@ body {
  */
 a {
   /* link-colors($normal, $hover, $active, $visited, $focus) */
-  @include link-colors($dark-blue, #000, darken($dark-blue, 15%), darken($dark-blue, 15%), #000);
+  @include link-colors($dark-blue, $mid-blue, $mid-blue, darken($dark-blue, 10%), $mid-blue);
+  background: transparent none;
 }
 
 /**
@@ -40,13 +41,13 @@ h6, .zeta {
 }
 
 .site-name,
-h1, .alpha {
+h1, .alpha, body.front .node--teaser .node__title {
   @include font-size(28px);
 }
 h2, .beta {
   @include font-size(24px);
 }
-.node--content h2, .node h2 {
+.node--content h2, .node h2, body.cke_editable h2 {
   padding-bottom: 0.25em;
   border-bottom: 2px solid $dark-grey;
 }
@@ -119,4 +120,13 @@ mark,
   text-transform: capitalize;
 
   @include border-radius(10px);
+}
+
+code, pre, samp, var {
+  font-family: $monospace;
+}
+pre.codeblock {
+  background-color: tint($base-background-color, 20%);
+  border: 1px solid $dark-grey;
+  padding: 0.5em;
 }

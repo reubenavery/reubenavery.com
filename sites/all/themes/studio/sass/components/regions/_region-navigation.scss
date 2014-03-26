@@ -1,0 +1,26 @@
+.l-region--navigation {
+  border-top: 2px solid $base-foreground-color;
+//  border-bottom: 2px solid $base-foreground-color;
+  padding: 0.5em 0;
+  margin-bottom: 1.5em;
+
+  @include clearfix;
+
+  ul.menu {
+    font-size: 1.25em;
+    li {
+      margin-right: 3em;
+      font-weight: 700;
+
+      a, a:visited {
+        color: $dark-blue;
+        text-decoration: none;
+      }
+      a.active, a:hover, a:focus {
+        color: $mid-blue;
+        text-decoration: underline;
+      }
+    }
+
+  }
+}

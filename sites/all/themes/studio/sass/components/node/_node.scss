@@ -3,8 +3,35 @@
  */
 .node--teaser {
   margin-bottom: $vert-spacing-unit;
+  .node__submitted {
+    display: none;
+  }
+  .node__title {
+    a {
+      text-decoration: none;
+      &:link, &:visited {
+        color: $base-foreground-color;
+      }
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .field--name-field-tags {
+    float: right;
+    .field__item {
+      float: left;
+    }
+  }
 }
 
 .node__links {
   margin-bottom: $vert-spacing-unit;
+
+  .node-readmore a {
+    background: transparent image-url('right-circular-xs.png') right 7px no-repeat;
+    padding-right: 1.1em;
+  }
 }
+

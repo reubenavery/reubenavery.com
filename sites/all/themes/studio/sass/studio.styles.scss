@@ -22,9 +22,19 @@
 @import "base/**/*";
 @import "components/**/*";
 
-html {
+body {
   background-color: $base-background-color;
 }
+
+/* styling a ckeditor iframe: */
+
+.cke_contents {
+  border: 1px solid $mid-grey!important;
+}
+.cke_contents, .cke_wysiwyg_frame, .cke_wysiwyg_frame, body.cke_editable {
+  background-color: tint($base-background-color, 20%)!important;
+}
+
 
 h1.page-title {
   border-bottom: 2px solid $mid-grey;

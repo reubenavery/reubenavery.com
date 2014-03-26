@@ -1,0 +1,19 @@
+
+span.ext {
+  background: image-url('extlink.png') right center no-repeat;
+  padding-right: 1em;
+  height: 12px;
+  @include inline-block;
+}
+span.mailto {
+  background: image-url('mailto.png') right center no-repeat;
+  padding-right: 1em;
+  height: 12px;
+  @include inline-block;
+}
+/* hiding extlink and mailto icons when they're inside of a heading tag */
+h1,h2,h3,h4,h5,h6 {
+  span.ext, span.mailto {
+    display: none!important;
+  }
+}

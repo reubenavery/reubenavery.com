@@ -46,7 +46,6 @@
         <ul class="action-links"><?php print render($action_links); ?></ul>
       <?php endif; ?>
       <?php print render($page['content']); ?>
-      <?php print $feed_icons; ?>
     </div>
 
     <?php print render($page['sidebar_first']); ?>
@@ -55,5 +54,10 @@
 
   <footer class="l-footer" role="contentinfo">
     <?php print render($page['footer']); ?>
+    <?php if ($feed_icons): ?>
+      <div class="feed-icons-wrapper">
+        <?php print $feed_icons; ?>
+      </div>
+    <?php endif; ?>
   </footer>
 </div>
