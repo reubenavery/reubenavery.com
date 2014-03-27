@@ -1,5 +1,5 @@
 @import "sassy-buttons";
-
+@import "compass/reset/utilities";
 
 .form-wrapper {
   margin-bottom: $vert-spacing-unit;
@@ -17,7 +17,7 @@ textarea {
 }
 
 /**
- * $FORM-ITEM
+ * $FORM-ITEMS
  */
 .form-item {
   label {
@@ -25,7 +25,8 @@ textarea {
   }
   .form-select,
   .form-text,
-  .form-textarea {
+  .form-textarea,
+  .form-file {
     padding: 0.6em;
     border: 1px solid $dark-grey;
     vertical-align: middle;
@@ -51,7 +52,6 @@ input[type="submit"], input[type="button"] {
     @include sassy-button("matte", 15px, font-size(18px), $mid-blue);
   }
 }
-
 
 .container-inline {
   .form-select,
@@ -88,4 +88,9 @@ input[type="submit"], input[type="button"] {
 
 .form-required {
   color: $error-color;
+}
+
+/* date fields */
+.form-item-date .form-item {
+  margin-right: 1em;
 }

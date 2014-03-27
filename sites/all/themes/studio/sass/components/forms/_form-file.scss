@@ -1,0 +1,46 @@
+/**
+ * @file
+ * Admin stylesheet for file module.
+ */
+
+/**
+ * Managed file element.
+ */
+.form-managed-file {
+  .progress-disabled {
+    float: none;
+    display: inline;
+  }
+
+  .ajax-progress .throbber {
+    float: none;
+    background-image: image-url('icons/file-ajax-throbber.gif');
+    background-position: 100% 4px; /* LTR */
+    background-repeat: no-repeat;
+    height: 19px;
+    width: 21px;
+  }
+
+  .ajax-progress-bar {
+    display: none;
+    width: 28em;
+    margin-top: 4px;
+    padding: 0;
+
+    .bar {
+      margin: 0;
+    }
+  }
+
+  input[type="submit"] {
+    @include sassy-button('simple', 10px, 1em, $mid-grey);
+
+    margin-left: 0.5em;
+    min-width: inherit;
+
+    &.disabled, &[disabled] {
+      @include sassy-button('simple', 10px, 1em, darken($base-background-color, 10%));
+    }
+  }
+}
+

@@ -38,8 +38,8 @@ $dark-orange: #7F6526;
 $orange     : #FFB200;
 $pale-orange: #FFC94C;
 
-$green      : #28EB9E;
-$red        : #9978E5;
+$green      : #519600;
+$red        : #FF3500;
 $yellow     : #FFE70D;
 
 $light-grey : #D0D3D5;
@@ -53,9 +53,9 @@ $base-background-color: #C2BFB8;
 /**
  * Messaging and alert colors
  */
+$notice-color: $green;
 $warning-color: $orange;
 $error-color: $red;
-$notice-color: $mid-blue;
 
 
 
