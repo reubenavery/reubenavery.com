@@ -1,0 +1,23 @@
+CHANGELOG for Filter Check module
+=================================
+
+Contact for commercial support and custom development: http://www.netgenius.co.uk/contact
+
+
+
+Fri 16 Dec 2011 12:15:00 PM CEST 
+Minor changes to prevent warnings from Coder module.
+
+--- To be released as 7.x-1.2 ---
+
+
+Tue 11 Oct 2011 12:07:16 AM CEST 
+
+Changed filtercheck.install - format are now renamed automatically when enabling or disabling the module. No longer need to manually edit/save formats. Addresses [1183036]
+
+--- To be released as 7.x-1.1 ---
+
+Wed 07 Apr 2010 11:33:46 CEST 
+
+Initial release.
+

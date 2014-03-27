@@ -1,0 +1,113 @@
+<?php
+
+/**
+ * @file
+ * Generate Drpual.org project links
+ */
+
+/**
+ * Implementation of hook_help().
+ */
+function dopl_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#dopl':
+      $output = file_get_contents(drupal_get_path('module', 'dopl') .'/README.txt');
+      return '<pre>'. check_plain($output) .'</pre>';
+  }
+}
+
+/**
+ * Implementation of hook_filter_info()
+ */
+function dopl_filter_info() {
+  $filters['filter_dopl'] = array(
+    'title' => t('Drupal.org project link filter'),
+    'description' =>  t('Facilitate linking to Drupal.org projects and nodes.'),
+    'process callback' => '_dopl_filter',
+    'tips callback' => '_dopl_filter_tips',
+  );
+  
+  return $filters;
+}
+
+
+function _dopl_filter_tips($delta, $format, $long = FALSE) {
+  return t('Use one of the forms <em>name.module</em>, <em>name.theme</em>, <em>name.translation</em>, <em>name.installprofile</em> or <em>name.project</em>, in order to link to <em>http://drupal.org/project/name</em> - Note that a link will be generated even if the project or node does not exist.<br />Use <em>[nid].do</em> to link to <em>http://drupal.org/node/[nid]</em>, and <em>[nid].gdo</em> to link to <em>http://groups.drupal.org/node/[nid]</em> - Links will only be generated for valid node IDs using this format.');
+}
+
+function _dopl_filter($text) {
+  $pattern = '/(\b)(\w+)(\.(module|theme|translation|installprofile|project))(\b)(\|"([^"]*)")?/';
+  $text = preg_replace_callback($pattern, 'dopl_get_link', $text);
+  
+  // Link drupal.org nodes by nid
+  $pattern = '/(\b)([a-z0-9#\-]*)(\.(do))(\b)(\|"([^"]*)")?/';
+  $text = preg_replace_callback($pattern, 'dopl_get_link', $text);
+
+  // Link groups.drupal.org nodes by nid
+  $pattern = '/(\b)([a-z0-9#\-]*)(\.(gdo))(\b)(\|"([^"]*)")?/';
+  $text = preg_replace_callback($pattern, 'dopl_get_link', $text);
+  
+  // Link drupal.org users by uid
+  $pattern = '/(\b)([a-z0-9#\-]*)(\.(user))(\b)(\|"([^"]*)")?/';
+  $text = preg_replace_callback($pattern, 'dopl_get_link', $text);
+  
+  return $text;
+}
+
+/**
+ * 
+ */
+function dopl_get_link($matches = array()) {
+  switch ($matches[4]) {
+    case 'module' :
+    case 'theme' :
+    case 'translation' :
+    case 'installprofile' :
+    case 'project' :
+      $url = 'http://drupal.org/project/' . $matches[2];
+      break;
+    case 'do' :
+      $url = 'http://drupal.org/node/' . $matches[2];
+      break;
+    case 'gdo' :
+      $url = 'http://groups.drupal.org/node/' . $matches[2];
+      break;
+    case 'user' :
+      $url = 'http://drupal.org/user/' . $matches[2];
+      break;
+  }
+  
+  $title = '';
+  if ($data = cache_get('dopl:' . $matches[2])) {
+    $title = (array_key_exists(7, $matches)) ? $matches[7] : $data->data;
+  }
+  elseif ($page_title = substr(dopl_get_page_title($url), 0, -13)) {
+    //if url returns a project page, we assume a project / node exists
+    cache_set('dopl:' . $matches[2], $page_title);
+    $title = (array_key_exists(7, $matches)) ? $matches[7] : $page_title;
+  }
+  if ($title) {
+    return l($title, $url);
+  }
+  return $matches[0];
+}
+
+
+/**
+ * @param string a valid url
+ * 
+ * @return string the title of the page
+ */
+function dopl_get_page_title($url) {
+  $data = @file_get_contents($url);
+  if ( FALSE === $data ) {
+    return FALSE;
+    dpm('boom!');
+  }
+  elseif (preg_match("#<title>(.+)<\/title>#iU", $data, $t)) {
+    return trim($t[1]);
+  }
+  else {
+    return FALSE;
+  }
+}

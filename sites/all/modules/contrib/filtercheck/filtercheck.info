@@ -1,0 +1,16 @@
+; $Id$
+name = "Filter Check"
+description = A utility to check whether input formats are cacheable.
+package = "Input filters"
+
+; --- Drupal 7.x ---
+dependencies[] = filter
+core = 7.x
+
+
+; Information added by drupal.org packaging script on 2011-12-16
+version = "7.x-1.2"
+core = "7.x"
+project = "filtercheck"
+datestamp = "1324035639"
+

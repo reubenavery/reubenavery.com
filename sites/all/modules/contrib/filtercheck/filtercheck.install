@@ -1,0 +1,71 @@
+<?php
+
+/**
+ * @file
+ * Install, enable, update, disable and uninstall functions for Filter Check module.
+ * Contact for commercial support and custom development: http://www.netgenius.co.uk/contact
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function filtercheck_enable() {
+  // Set markers on names of non-cacheable formats...
+  _filtercheck_set_all_format_names(TRUE);
+
+  $msg = 'Filter Check enabled - '
+       . 'Formats and Filters which cannot be cached have been marked. '
+       . 'You can go to !link to view them.';
+  $tvars['!link'] = l('Text formats', 'admin/config/content/formats');
+  drupal_set_message(filter_xss(t($msg, $tvars)));
+}
+
+/**
+ * Implements hook_disable().
+ */
+function filtercheck_disable() {
+  // Remove markers from all format names...
+  _filtercheck_set_all_format_names(FALSE);
+  $msg = 'Filter Check disabled - markers have been removed from the names of all Formats and Filters.';
+  drupal_set_message(filter_xss(t($msg)));
+}
+
+/*
+ * Utility function to update format names when module is enabled/disabled.
+ */
+function _filtercheck_set_all_format_names($enabled) {
+  // Loop through all formats, updating format name if required.
+  foreach (filter_formats() as $format) {
+    // Work-around for what *seems* to be a bug somewhere in Drupal filter format loading/saving.
+    // See: http://drupal.org/node/1304930
+    // There's probably a better way, but this seems to work.
+    if (empty($format->filters)) {
+      // Get the filters used by this format.
+      $filters = filter_list_format($format->format);
+      // Build the $format->filters array...
+      $format->filters = array();
+      foreach ($filters as $name => $filter) {
+        foreach ($filter as $k => $v) {
+          $format->filters[$name][$k] = $v;
+        }
+      }
+    }
+    // --- end of work-around ---
+
+    // Set or remove marker on format name...
+    $current_name = $format->name;
+    $nocache = $enabled? !$format->cache : FALSE;
+    _filtercheck_set_format_name($format->name, $nocache);
+    if ($format->name != $current_name) {
+      // Save updated format.
+      filter_format_save($format);
+    }
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function filtercheck_uninstall() {
+  //db_query('DELETE FROM {variable} WHERE name LIKE "filtercheck_%"');
+}

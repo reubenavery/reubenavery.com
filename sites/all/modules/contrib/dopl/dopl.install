@@ -1,0 +1,10 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * dopl module installation hooks
+ */
+function dopl_install() {
+  drupal_set_message(st('In order to activate the Drupal.org project link filter, you must !activate_it in the text formats admin screen.', array('!activate_it' => l(st('activate it'), 'admin/config/content/formats'))));
+}

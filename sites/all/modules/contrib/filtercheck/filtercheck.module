@@ -1,0 +1,85 @@
+<?php
+
+/*
+ * @file
+ * "Filter Check" module for Drupal 7.
+ * Utility module to show which filters and input formats are not cacheable.
+ *
+ * Project page: http://drupal.org/project/filtercheck
+ * Contact for commercial support and custom development: http://www.netgenius.co.uk/contact
+ */
+
+// We use an asterisk as a marker - change this line to use something else.
+define('FILTERCHECK_MARK', '*');
+
+/*
+ * Implements hook_filter_info_alter to modify names of non-cacheable filters.
+ */
+function filtercheck_filter_info_alter(&$filters) {
+
+  foreach ($filters as &$filter) {
+    if (isset($filter['cache']) && !$filter['cache']) {
+      $filter['title'] .= ' ' . FILTERCHECK_MARK;
+    }
+  }
+}
+
+/*
+ * Implements hook_form_FORM_ID_alter for the filter_admin_overview form.
+ */
+function filtercheck_form_filter_admin_overview_alter(&$form, $form_state) {
+  $form['filtercheck_msg']['#markup'] = t('NOTE: %mark indicates a format whose output cannot be cached.', array('%mark' => FILTERCHECK_MARK));
+}
+
+/*
+ * Implements hook_form_FORM_ID_alter for the filter_admin_format_form form.
+ */
+function filtercheck_form_filter_admin_format_form_alter(&$form, $form_state) {
+
+  // Add messages to the form...
+  $mark = FILTERCHECK_MARK;
+  $msg1 = t('If the output of this format cannot be cached, %mark will be automatically appended to this name.', array('%mark' => $mark));
+  $msg2 = t('NOTE: %mark indicates a filter whose output cannot be cached.', array('%mark' => $mark));
+  _filtercheck_append_msg($form['name']['#description'], $msg1);
+  _filtercheck_append_msg($form['filters']['status']['#description'], $msg2);
+
+  // For editing, set the format name *without* any asterisk.
+  _filtercheck_set_format_name($form['name']['#default_value'], FALSE);
+
+  // Add a custom validate function for later processing.
+  $form['#validate'][] = '_filtercheck_format_save';
+}
+
+// On form validate, update the format name.
+function _filtercheck_format_save($form, &$form_state) {
+
+  // Get format and filters.
+  $format = $form['#format'];
+  $format->filters = $form_state['values']['filters'];
+  $non_cacheable = !_filter_format_is_cacheable($format);
+
+  // Set format name with or without an asterisk.
+  _filtercheck_set_format_name($form_state['values']['name'], $non_cacheable);
+}
+
+function _filtercheck_set_format_name(&$name, $non_cacheable) {
+  $mark = ' ' . FILTERCHECK_MARK;
+  // Remove the mark if already preset.
+  $name = preg_replace(sprintf('/%s$/m', preg_quote($mark)), '', $name);
+  // Add the mark if applicable.
+  if ($non_cacheable) {
+    $name .= $mark;
+  }
+}
+
+function _filtercheck_append_msg(&$element, $msg) {
+  $class = 'filtercheck-message';
+  if (isset($element) && $element) {
+    $element = sprintf('%s<p class="%s">%s</p>', $element, $class, $msg);
+  }
+  else {
+    $element = sprintf('<p class="%s">%s</p>', $class, $msg);
+  }
+}
+
+// --- Drupal docs advise NOT closing PHP tags ---
