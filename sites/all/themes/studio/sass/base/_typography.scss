@@ -125,8 +125,10 @@ mark,
 code, pre, samp, var {
   font-family: $monospace;
 }
-pre.codeblock {
+pre.code {
+  font-family: $monospace;
   background-color: tint($base-background-color, 20%);
   border: 1px solid $dark-grey;
   padding: 0.5em;
+  margin-bottom: 1.5em;
 }

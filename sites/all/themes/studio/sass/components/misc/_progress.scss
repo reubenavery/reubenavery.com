@@ -11,3 +11,8 @@
     background: $mid-blue;
   }
 }
+
+.batch-progress {
+  @include clearfix;
+  margin: 3em 0;
+}

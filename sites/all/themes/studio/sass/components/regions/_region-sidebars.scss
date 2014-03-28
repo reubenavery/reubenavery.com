@@ -1,0 +1,16 @@
+.l-region--sidebar-second {
+  .block {
+    margin: $vert-spacing-unit*2 0;
+    .block__title {
+      padding-bottom: 0.25em;
+      border-bottom: 1px solid $dark-grey;
+    }
+    & > .menu {
+      margin-left: -1.5em;
+      margin-top: 0;
+    }
+  }
+  .block:first-child {
+    margin-top: 0;
+  }
+}
