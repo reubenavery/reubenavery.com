@@ -54,4 +54,4 @@
  * @see http://drupal.org/documentation/install/multi-site
  */
 
-$sites['reubenavery.local'] = 'reubenavery.com';
+$sites['reubenavery.local'] = $sites['default'] = 'reubenavery.com';
