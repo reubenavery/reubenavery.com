@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the RA Cron feature.
+ */
+
+include_once 'ra_cron.features.inc';
