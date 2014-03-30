@@ -92,7 +92,10 @@
   <?php if ($display_submitted): ?>
     <footer class="node__submitted">
       <?php print $user_picture; ?>
-      <p class="submitted"><?php print $submitted; ?></p>
+      <div class="submitted"><?php print $submitted; ?></div>
+      <?php if ($updated): ?>
+      <div class=""updated"><?php print $updated; ?></div>
+      <?php endif; ?>
     </footer>
   <?php endif; ?>
 
