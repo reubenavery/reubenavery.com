@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the RA Advance Aggregation feature.
+ */
+
+include_once 'ra_advagg.features.inc';
