@@ -1,0 +1,10 @@
+name = RA Livereload
+core = 7.x
+package = Features
+version = 7.x-1.0
+project = ra_livereload
+dependencies[] = features
+dependencies[] = livereload
+features[features_api][] = api:2
+features[user_permission][] = use livereload
+project path = sites/all/modules/features
