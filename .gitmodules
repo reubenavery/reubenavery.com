@@ -1,0 +1,3 @@
+[submodule "sites/all/modules/contrib/demote_filter"]
+	path = sites/all/modules/contrib/demote_filter
+	url = reubidium@git.drupal.org:sandbox/reubidium/2230123.git
