@@ -21,6 +21,9 @@ function studio_preprocess_node(&$vars) {
     if ($tags) {
       $vars['tags'] = t('Explore: !tags', array('!tags' => $tags));
     }
+    else {
+      $vars['tags'] = '';
+    }
   }
   else {
     $vars['display_submitted'] = FALSE;
