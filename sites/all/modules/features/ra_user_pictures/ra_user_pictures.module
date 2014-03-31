@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the RA User Pictures feature.
+ */
+
+include_once 'ra_user_pictures.features.inc';
