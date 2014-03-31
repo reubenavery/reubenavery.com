@@ -10,11 +10,8 @@
  * @see user-picture.tpl.php
  */
 function studio_process_user_picture(&$variables) {
-  $variables['user_picture'] = '';
-
-  // Make sure the cache dir exists.
-  if (!is_dir(drupal_realpath(GRAVATAR_CACHE))) {
-    drupal_mkdir(GRAVATAR_CACHE);
+  if (empty($variables['user_picture_style'])) {
+    return;
   }
 
   if (variable_get('user_pictures', 0) && module_exists('gravatar')) {

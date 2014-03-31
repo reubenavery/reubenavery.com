@@ -1,0 +1,54 @@
+.node__submitted {
+  @include inline-block;
+  @include clearfix;
+
+  position: relative;
+
+  float: left;
+
+  padding: 0 $horz-spacing-unit 0 0;
+
+  line-height: normal;
+
+  & > div {
+    margin-left: 73px;
+    @include font-size(12px);
+    white-space: nowrap;
+  }
+  .user-picture {
+    float: left;
+    margin-right: $horz-spacing-unit;
+    border: 1px solid $mid-grey;
+    padding: 1px;
+    margin-left: 0;
+  }
+  .submitted {
+    line-height: $vert-spacing-unit;
+  }
+  .updated {
+    font-style: italic;
+  }
+  .tags {
+    position: absolute;
+    bottom: 0;
+    * {
+      display: inline;
+      float: none;
+      margin: 0;
+      padding: 0;
+    }
+    .field {
+      .field__items {
+        .field__item {
+          &:after {
+            content: ', ';
+          }
+          &:last-child:after {
+            content: '';
+          }
+        }
+      }
+    }
+  }
+}
+

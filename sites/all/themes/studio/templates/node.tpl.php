@@ -94,7 +94,10 @@
       <?php print $user_picture; ?>
       <div class="submitted"><?php print $submitted; ?></div>
       <?php if ($updated): ?>
-      <div class=""updated"><?php print $updated; ?></div>
+      <div class="updated"><?php print $updated; ?></div>
+      <?php endif; ?>
+      <?php if ($tags): ?>
+      <div class="tags"><?php print $tags; ?></div>
       <?php endif; ?>
     </footer>
   <?php endif; ?>

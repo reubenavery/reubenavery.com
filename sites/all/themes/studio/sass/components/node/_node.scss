@@ -17,13 +17,17 @@
       }
     }
   }
-
   .field--name-field-tags {
     float: right;
     .field__item {
       float: left;
     }
   }
+}
+
+.node__content {
+  text-align: justify;
+  text-overflow: ellipsis;
 }
 
 .node__links {
@@ -34,4 +38,3 @@
     padding-right: 1.1em;
   }
 }
-
