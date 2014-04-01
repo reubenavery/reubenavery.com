@@ -1,0 +1,11 @@
+name = User Pic Kit Robohashes
+description = Provide Robohash pictures.
+core = 7.x
+package = User Picture
+dependencies[] = userpickit
+; Information added by drupal.org packaging script on 2013-04-25
+version = "7.x-1.0-beta1"
+core = "7.x"
+project = "userpickit"
+datestamp = "1366887012"
+
