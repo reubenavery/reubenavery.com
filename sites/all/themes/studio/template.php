@@ -58,8 +58,8 @@ function drupaldrupal() {
     $level = rand(1, 6);
     $size = rand(3, 10);
     $top = rand(1, 14);
-    $left = rand(1, 6);
-    $color_array = array('red', 'blue', 'green', 'orange', 'pink', 'white');
+    $left = rand(1, 5);
+    $color_array = array('red', 'blue', 'green', 'yellow', 'pink', 'white');
     $color = $color_array[rand(0, count($color_array))];
     $output .= '<h' . $level . ' style="font-size: ' . $size . 'em; position:absolute;  top: ' . $top . 'em; left: ' . $left . 'em; color: ' . $color . '">DRUPAL!</h' . $level . '>';
   }
