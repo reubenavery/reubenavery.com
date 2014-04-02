@@ -54,6 +54,7 @@ function studio_status_messages($variables) {
 }
 
 function drupaldrupal() {
+  $output = '';
   for ($i = 0; $i < 14; $i++) {
     $level = rand(1, 6);
     $size = rand(3, 10);
