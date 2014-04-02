@@ -50,6 +50,7 @@ h2, .beta {
 .node--content h2, .node h2, body.cke_editable h2 {
   padding-bottom: 0.25em;
   border-bottom: 2px solid $dark-grey;
+  overflow: hidden;
 }
 h3, .gamma {
   @include font-size(20px);

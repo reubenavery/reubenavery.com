@@ -1,9 +1,11 @@
 /*
-Syntax error: Undefined variable: "$helveticaneue".
-        on line 15 of /Users/ravery/Sites/reubenavery.com/sites/all/themes/studio/sass/base/_typography.scss
+Syntax error: Undefined variable: "$vert-spacing-unit".
+        on line 5 of /Users/ravery/Sites/reubenavery.com/sites/all/themes/studio/sass/components/node/_node.scss
+
+1: /Users/ravery/Sites/reubenavery.com/sites/all/themes/studio/sass/components/node/_node.scss
 
 Backtrace:
-/Users/ravery/Sites/reubenavery.com/sites/all/themes/studio/sass/base/_typography.scss:15
+/Users/ravery/Sites/reubenavery.com/sites/all/themes/studio/sass/components/node/_node.scss:5
 /Users/ravery/.rvm/gems/ruby-1.9.3-p545/gems/sass-3.2.18/lib/sass/script/variable.rb:49:in `_perform'
 /Users/ravery/.rvm/gems/ruby-1.9.3-p545/gems/sass-3.2.18/lib/sass/script/node.rb:40:in `perform'
 /Users/ravery/.rvm/gems/ruby-1.9.3-p545/gems/sass-3.2.18/lib/sass/tree/visitors/perform.rb:298:in `visit_prop'
@@ -56,4 +58,4 @@ Backtrace:
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$helveticaneue\".\A         on line 15 of /Users/ravery/Sites/reubenavery.com/sites/all/themes/studio/sass/base/_typography.scss"; }
+  content: "Syntax error: Undefined variable: \"$vert-spacing-unit\".\A         on line 5 of /Users/ravery/Sites/reubenavery.com/sites/all/themes/studio/sass/components/node/_node.scss\A \A 1: /Users/ravery/Sites/reubenavery.com/sites/all/themes/studio/sass/components/node/_node.scss"; }

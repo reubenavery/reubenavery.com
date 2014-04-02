@@ -1,0 +1,42 @@
+/* about us landing page */
+.page-node-1080055 {
+  .pane-staff {
+    h2 {
+      display: none;
+    }
+    .pane-title {
+      display: block;
+      @include font-size(28px);
+    }
+    .view-content {
+      & > div {
+        margin: $vert-spacing-unit 0;
+      }
+      .field-name {
+        margin-left: -$horz-spacing-unit;
+        padding-left: $horz-spacing-unit;
+        h3 {
+          @include font-size(24px);
+          a {
+            @include hover-link();
+            &:link, &:visited {
+              color: $base-foreground-color;
+            }
+          }
+        }
+      }
+      .field--name-field-picture {
+        float: left;
+        margin-right: $horz-spacing-unit;
+        img {
+          border: 1px solid $mid-grey;
+        }
+      }
+      .field--name-field-contact-link {
+        a:after {
+          content: ' >';
+        }
+      }
+    }
+  }
+}

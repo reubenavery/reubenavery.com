@@ -8,12 +8,9 @@
   }
   .node__title {
     a {
-      text-decoration: none;
+      @include hover_link();
       &:link, &:visited {
         color: $base-foreground-color;
-      }
-      &:hover {
-        text-decoration: underline;
       }
     }
   }

@@ -1,4 +1,12 @@
 (function ($) {
+  Drupal.behaviors.studioProfileLandingPage = {
+    attach: function(context, settings) {
+      $('.page-node-1080055 .view-staff .views-row').each(function(index, element) {
+        $(element).wrapInner('<div class="profile-inner"></div>');
+        $('.field--name-field-picture', element).insertBefore('.profile-inner', element);
+      })
+    }
+  }
 
   /**
    * The recommended way for producing HTML markup through JavaScript is to write
