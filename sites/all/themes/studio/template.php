@@ -52,3 +52,15 @@ function studio_status_messages($variables) {
 
   return $output;
 }
+
+function drupaldrupal() {
+  for ($i = 0; $i < 14; $i++) {
+    $level = rand(1, 6);
+    $size = rand(3, 10);
+    $top = rand(1, 14);
+    $left = rand(1, 6);
+    $color_array = ['red', 'blue', 'green', 'orange', 'pink', 'white'];
+    $color = $color_array[rand(0, count($color_array))];
+    echo '<h' . $level . ' style="font-size: ' . $size . 'em; position:absolute;  top: ' . $top . 'em; left: ' . $left . 'em; color: ' . $color . '">DRUPAL!</h' . $level . '>';
+  }
+}
