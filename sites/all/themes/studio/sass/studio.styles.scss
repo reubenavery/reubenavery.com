@@ -61,3 +61,13 @@ h3.callout {
   line-height: normal;
   margin: 2em 0;
 }
+
+h4.callout {
+  a {
+    @include hover-link
+  }
+  border: none;
+  @include font-size(36px);
+  line-height: normal;
+  margin: 2em 0;
+}
