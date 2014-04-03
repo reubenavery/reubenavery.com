@@ -1777,8 +1777,9 @@ h1.page-title {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/studio\.styles\.scss}line{font-family:\0000346}}
 h2.callout {
   border: none;
-  font-size: 48px;
-  font-size: 3rem;
+  font-size: 60px;
+  font-size: 3.75rem;
+  line-height: normal;
   margin: 2em 0; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/studio\.styles\.scss}line{font-family:\0000347}}
   h2.callout a {
@@ -1787,13 +1788,14 @@ h2.callout {
     h2.callout a:hover {
       text-decoration: underline; }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/studio\.styles\.scss}line{font-family:\0000354}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/studio\.styles\.scss}line{font-family:\0000355}}
 h3.callout {
   border: none;
-  font-size: 36px;
-  font-size: 2.25rem;
+  font-size: 48px;
+  font-size: 3rem;
+  line-height: normal;
   margin: 2em 0; }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/studio\.styles\.scss}line{font-family:\0000355}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/Sites\/reubenavery\.com\/sites\/all\/themes\/studio\/sass\/studio\.styles\.scss}line{font-family:\0000356}}
   h3.callout a {
     text-decoration: none; }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/Users\/ravery\/\.rvm\/gems\/ruby-1\.9\.3-p545\@omega\.studio\/gems\/compass-0\.12\.4\/frameworks\/compass\/stylesheets\/compass\/typography\/links\/_hover-link\.scss}line{font-family:\000034}}

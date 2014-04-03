@@ -48,7 +48,8 @@ h2.callout {
     @include hover-link
   }
   border: none;
-  @include font-size(48px);
+  @include font-size(60px);
+  line-height: normal;
   margin: 2em 0;
 }
 h3.callout {
@@ -56,6 +57,7 @@ h3.callout {
     @include hover-link
   }
   border: none;
-  @include font-size(36px);
+  @include font-size(48px);
+  line-height: normal;
   margin: 2em 0;
 }
