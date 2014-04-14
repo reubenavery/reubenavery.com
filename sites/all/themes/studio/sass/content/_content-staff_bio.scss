@@ -17,6 +17,8 @@
     .field-name .name {
       @include font-size(36px);
       margin-bottom: $vert-spacing-unit;
+      line-height: 27px;
+      border-bottom: none;
     }
   }
 
