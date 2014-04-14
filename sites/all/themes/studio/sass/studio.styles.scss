@@ -21,6 +21,7 @@
 @import "abstractions/**/*";
 @import "base/**/*";
 @import "components/**/*";
+@import "content/**/*";
 
 body {
   background-color: $base-background-color;
@@ -70,4 +71,10 @@ h4.callout {
   @include font-size(36px);
   line-height: normal;
   margin: 2em 0;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  a {
+    @include hover-link
+  }
 }
