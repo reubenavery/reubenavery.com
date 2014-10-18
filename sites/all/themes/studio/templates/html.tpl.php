@@ -56,6 +56,7 @@
 <head>
   <title><?php print $head_title; ?></title>
   <?php print $head; ?>
+  <meta name="google-site-verification" content="_GkIwdJZQoGQ2YurcwMNkFe7YjOhQ_k1Lzqhcrj6P7U" />
   <?php print $styles; ?>
   <?php print $scripts; ?>
 </head>
