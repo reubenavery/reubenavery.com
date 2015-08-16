@@ -2,7 +2,8 @@
 .idea
 sites/default/files
 sites/default/settings.php
-
+**/files/advagg_js
+**/files/advagg_css
 logs
 private
 
