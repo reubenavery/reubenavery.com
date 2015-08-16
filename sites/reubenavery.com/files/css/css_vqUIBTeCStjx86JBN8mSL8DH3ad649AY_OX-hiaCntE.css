@@ -1,0 +1,4 @@
+.ctools-locked{color:red;border:1px solid red;padding:1em;}.ctools-owns-lock{background:#FFFFDD none repeat scroll 0 0;border:1px solid #F0C020;padding:1em;}a.ctools-ajaxing,input.ctools-ajaxing,button.ctools-ajaxing,select.ctools-ajaxing{padding-right:18px !important;background:url(/sites/all/modules/contrib/ctools/images/status-active.gif) right center no-repeat;}div.ctools-ajaxing{float:left;width:18px;background:url(/sites/all/modules/contrib/ctools/images/status-active.gif) center center no-repeat;}
+a.itweak_buttonwrap,a.itweak_buttonwrap:hover,a.itweak_buttonwrap:visited{text-decoration:none !important;}
+.shortener-toggle{cursor:pointer;font-size:85%;margin-left:0.5em;}.shortener-toggle:before{content:"(";font-size:85%;}.shortener-toggle:after{content:")";font-size:85%;}
+div.admin.my-workbench .left{width:35%;}div.admin.my-workbench .right{width:65%;}
